@@ -1,0 +1,11 @@
+## How to quickly benchmark your code
+
+```{r, microbenchmark, out.width = '.5\\textwidth'}
+func.one <- function(n) {return(rnorm(n,0,1))}
+func.two <- function(n) {return(rpois(n,1))}
+
+library(microbenchmark)
+n <- 1000
+res <- microbenchmark(func.one(n), func.two(n), times=1000)
+ggplot2::autoplot(res)
+```
