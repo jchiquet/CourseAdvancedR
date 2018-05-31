@@ -7,6 +7,7 @@ date: "Juin 2018"
 csl: "../resources/apa-no-doi-no-issue.csl"
 output:
   beamer_presentation:
+    highlight: tango
     includes: 
       in_header: ../resources/common_preamble.tex
       before_body: ../resources/common_startup.tex
@@ -22,10 +23,18 @@ fontsize: 10pt
 - @efficientR: efficient R programming
 - @advr
 
+## Part 0: Prerequesties
+
+- xpply family, do.call, Reduce
+
 # Part 1: Benchmark your code
 
 ```{r microbenchmark_child, child="../Rmd_files/profiling/microbenchmark.Rmd"}
 ```
+
+```{r microbenchmark_child, child="../Rmd_files/profiling/profiling.Rmd"}
+```
+
 
 # Part 2: Use multiple cores in your simulations
 
@@ -33,6 +42,6 @@ fontsize: 10pt
 
 # Part 4: Remember that R is object oriented
 
-# Part 4: Interface with lower-level languages
+# Part 4: Interface with lower-level languages
 
-## References
+## References

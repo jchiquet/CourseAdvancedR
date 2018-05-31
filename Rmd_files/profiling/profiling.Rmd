@@ -1,0 +1,60 @@
+## Profile your code with `base` `Rprof` {.allowframebreaks}
+
+Suppose you want to evaluate which part of the following function is hot:
+
+```{r profile_func}
+## generate data, center/scale and perform ridge regression
+my_func <- function(n,p) {
+
+  require(MASS)
+
+  ## draw data
+  x <- matrix(rnorm(n*p),n,p)
+  y <- rnorm(n)
+
+  ## center/scale
+  xs <- scale(x)
+  ys <- y - mean(y)
+
+  ## return ridge's coefficients
+  ridge <- lm.ridge(ys~xs+0,lambda=1)
+
+  return(ridge$coef)
+}
+```
+
+One can  rely on  the default  \texttt{Rprof} function,  with somewhat
+technical outputs
+```{r Rproof}
+Rprof(file="profiling.out", interval=0.05)
+res <- my_func(1000,500)
+Rprof(NULL)
+```
+
+```{r Rprof_by_self}
+summaryRprof("profiling.out")$by.self
+```
+
+```{r Rprof_by_total}
+summaryRprof("profiling.out")$by.total
+```
+
+## Profile your code with `profr`
+
+The *profr* package is maybe a little easier to understand\dots
+```{r profr}
+library(profr)
+profiling <- profr({my_func(1000,500)}, interval = 0.01)
+plot(profiling)
+```
+
+## Profile your code within R Studiow with `profvis`
+
+Profvis integrates the profiling to the Rstudio API
+```{r profvis, eval = FALSE}
+library(profvis)
+profvis({my_func(1000,500)})
+``` 
+
+![](../Rmd_files/profiling/screenshot_profvis.png)
+

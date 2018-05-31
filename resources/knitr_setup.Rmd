@@ -25,6 +25,13 @@ theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
              plot.background = element_rect(fill = "transparent", colour = NA))
 knitr::opts_chunk$set(dev.args=list(bg="transparent"))
 
+color_block = function(color) {
+  function(x, options) sprintf('\\color{%s}\\begin{verbatim}%s\\end{verbatim}',
+                               color, x)
+}
+
+knitr::knit_hooks$set(output = color_block('gray'))
+knitr::opts_chunk$set(results = "markup")
 
 
 # Set a color-blind friendly pallette
