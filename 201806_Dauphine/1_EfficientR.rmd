@@ -42,12 +42,20 @@ fontsize: 10pt
 ```{r child_parellel, child="../Rmd_files/parallel_computing/parallel.Rmd"}
 ```
 
-# Part 2: Use multiple cores in your simulations
+# Good and bad practices in `R`
 
-# Part 3: Be aware of what `R` is good at
+```{r child_vectorize, child="../Rmd_files/good_bad_practices/vectorize.Rmd"}
+```
+
+```{r child_vectorize, child="../Rmd_files/good_bad_practices/compilation.Rmd"}
+```
+
+```{r child_vectorize, child="../Rmd_files/good_bad_practices/growing.Rmd"}
+```
+
 
 # Part 4: Remember that R is object oriented
 
-# Part 4: Interface with lower-level languages
+# Interface with lower-level languages
 
 ## References

@@ -15,7 +15,8 @@ knitr::opts_chunk$set(fig.path = "figures/", cache.path = "cache/")
 # Set plotting to bw plot default, but with transparent background elements.  
 # Note transparency requires the panel.background, plot.background, and device background all be set!
 
-library(ggplot2) 
+library(microbenchmark)
+library(tidyverse)
 theme_set(theme_bw(base_size=12))
 theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
              plot.background = element_rect(fill = "transparent", colour = NA))
@@ -34,4 +35,7 @@ knitr::opts_chunk$set(results = "markup")
 # adapted from http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
 cbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", 
                "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+
+
 ```

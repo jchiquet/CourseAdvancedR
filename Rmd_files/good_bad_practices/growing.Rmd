@@ -1,0 +1,47 @@
+## Preallocate whenever it is possible
+
+```{r prealloc}
+grow <- function(n) {vec <- numeric(0); for (i in 1:n) vec <- c(vec,i)}
+loop <- function(n) {vec <- numeric(n); for (i in 1:n) vec[i] <- i}
+vect <- function(n) {1:n}
+```
+
+```{r do.prealloc, echo = FALSE}
+res <- do.call(rbind, lapply(10^(1:4), function(n) {
+ out <- microbenchmark(grow = grow(n), loop = loop(n), vect = vect(n), times=10)
+ return(data.frame(method = out$expr, timings = out$time, n = factor(n)))
+}))
+ggplot(res, aes(x=n, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10")
+```
+  
+## Do not stack objects {.allowframebreaks}
+  
+Even if it is tempting when the final size is unknown.
+
+```{r stack_func}
+simu.stack <- function(x) { ## x is a n x p matrix
+  out <- data.frame(mean = numeric(0), sd = numeric(0))
+  for (i in 1:n) 
+    out <- rbind(out, data.frame(mean = mean(x[i,]), sd = sd(x[i, ])) )
+  return(out)
+}
+
+simu.df <- function(x) {
+  out <- data.frame(mean = numeric(n), sd = numeric(n))
+  for (i in 1:n)
+    out[i, ] <- c(mean = mean(x[i,]), sd = sd(x[i, ])) 
+  return(out)
+}
+
+simu.list <- function(x) {
+  my.list <- lapply(1:n, function(i) c(mean(x[i,]), sd(x[i, ])))
+  out <- data.frame(do.call(rbind, my.list))
+  colnames(out) <- c("mean","sd")  
+  return(out)
+}
+```
+
+```{r stack.roll}
+n <- 1000; p <- 10; x <- matrix(rnorm(n*p), n, p)
+autoplot(microbenchmark(simu.stack(x), simu.df(x), simu.list(x), times=20))
+```

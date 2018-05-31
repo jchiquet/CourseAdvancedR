@@ -1,0 +1,39 @@
+## Compile your functions with `base::compiler` {.allowframebreaks}
+
+If you cannot avoid a loop, you will save some time
+
+```{r, include = FALSE}
+compiler::enableJIT(0)
+```
+
+```{r}
+cumsum.R <- function(n) {
+  x <- rnorm(n)
+  cumsum(x)
+}
+
+cumsum.me <- function(n) {
+  x <- rnorm(n)
+  res <- 0
+  for (i in 1:length(x)) 
+    res <- res + x[i]
+  res
+}
+
+cumsum.cmp <- compiler::cmpfun(cumsum.me)
+
+autoplot(
+  microbenchmark(
+    cumsum.R(1000),
+    cumsum.me(1000),
+    cumsum.cmp(1000), 
+    times=1000)
+)
+```
+
+```{r, include = FALSE}
+compiler::enableJIT(3)
+```
+
+\rsa Can be set automatically with `compiler::enableJIT(3)`
+

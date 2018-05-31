@@ -1,0 +1,104 @@
+<<echo=FALSE>>=
+library(ggplot2)
+library(microbenchmark)
+@ 
+
+\begin{frame}[containsverbatim]
+  \frametitle{Factor conversion are slow (\texttt{nlevels})}
+
+  Do not use \texttt{factor} if you need to perform just one operation
+  on it.
+
+  \begin{columns}
+    \begin{column}{.475\textwidth}
+<<nlevels.factor>>=
+nlevels.factor <- function(n,K) {
+  x <- sample(1:K, n, rep=TRUE)
+  return(nlevels(factor(x)))
+}      
+@ 
+\end{column}
+    \begin{column}{.475\textwidth}
+<<nlevels.num>>=
+nlevels.numeric <- function(n,K) {
+  x <- sample(1:K, n, rep=TRUE)
+  return(length(unique(x)))
+}      
+@ 
+    \end{column}
+  \end{columns}
+
+<<nlevels>>=
+res <- microbenchmark(factor = nlevels.factor (1000,10),
+                      numeric = nlevels.numeric(1000,10), times=1000)
+@ 
+
+\begin{center}
+  \begin{minipage}{.6\linewidth}
+<<nlevels_plot, echo=FALSE>>=
+library(ggplot2)
+autoplot(res)
+@   
+  \end{minipage}
+\end{center}
+  
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Operations on factors are fast (\texttt{nlevels})}
+
+  Use  \texttt{factor} if  you need  repeated operations  on  the same
+  vector.
+
+<<nlevels2>>=
+nk <- 20
+seq.K <- c(10,100,1000)
+res <- do.call(rbind, lapply(seq.K, function(K) {
+  x1 <- rep(1:K,nk)
+  x2 <- factor(x1)
+  out <- microbenchmark(factor  = nlevels(x2),
+                        numeric = length(unique(x1)), times=1000)
+  return(data.frame(method = out$expr, timings = out$time, K = factor(K)))
+}))
+@ 
+
+\begin{columns}
+  \begin{column}{.4\textwidth}
+<<nlevels2_head>>=
+head(res)
+@ 
+  \end{column}
+  \begin{column}{.6\textwidth}
+<<nlevels2_plot, echo=FALSE>>=
+print(ggplot(res, aes(x=K, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10"))
+@   
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Avoid \texttt{table} whenever you can}
+
+  \texttt{table}  is a  complex function  that should  not be  use for
+  simple  operations like counting  the occurrences  of integers  in a
+  vector.
+  
+<<table>>=
+n <- 1000
+K <- 10
+res <- microbenchmark(table    = table   (sample(1:K, n, rep=TRUE)),
+                      tabulate = tabulate(sample(1:K, n, rep=TRUE)),
+                      times=1000)
+@ 
+
+\begin{center}
+  \begin{minipage}{.6\linewidth}
+<<table_plot, echo=FALSE>>=
+library(ggplot2)
+autoplot(res)
+@   
+  \end{minipage}
+\end{center}
+
+\end{frame}
