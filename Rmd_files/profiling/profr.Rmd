@@ -1,4 +1,4 @@
-## Profile your code with `base` `Rprof` {.allowframebreaks}
+## Profile your code
 
 Suppose you want to evaluate which part of the following function is hot:
 
@@ -22,6 +22,8 @@ my_func <- function(n,p) {
   return(ridge$coef)
 }
 ```
+
+## Profile your code with `base` `Rprof` {.allowframebreaks}
 
 One can  rely on  the default  \texttt{Rprof} function,  with somewhat
 technical outputs

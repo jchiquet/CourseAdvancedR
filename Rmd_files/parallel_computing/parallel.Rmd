@@ -1,0 +1,79 @@
+## Parallel computing with `parallel`
+
+### Package `parallel`
+  - merge of packages `multicore` and `snow`
+  - included in base `R` and maintained by the `R` Core team
+
+### Check your computer
+
+```{r show_cores, cache = FALSE}
+library(parallel) ## embedded with R since version 2.9 or something
+cores <- detectCores() ## How many cores do I have?
+print(cores)
+```
+
+\rsa `parallel` features both socketing (`parLapply`) and forking (`mclapply`)
+
+## Forking approach with `parallel::mclapply`
+
+Very easy: use parallel features as soon as you do simulations !
+
+### Example: estimates the test error from ridge regression
+
+```{r simple_parallel, cache = FALSE}
+one.simu <- function(i) {
+  ## draw data
+  n <- 1000; p <- 500
+  x <- matrix(rnorm(n*p),n,p) ; y <- rnorm(n)
+  ## return ridge's coefficients
+  train <- 1:floor(n/2)
+  test  <- setdiff(1:n,train)
+  ridge <- MASS::lm.ridge(y~x+0,lambda=1,subset=train)
+  err <- (y[test] - x[test, ] %*% ridge$coef )^2
+  return(list(err = mean(err), sd = sd(err)))
+}
+```
+
+```{r, show_parallel}
+head(do.call(rbind, mclapply(1:8, one.simu, mc.cores = cores)), n = 3)
+```
+
+## Forking approach with `parallel::mclapply` (cont'd)
+
+```{r do_mclapply}
+library(microbenchmark)
+res <- microbenchmark(s1_core  = mclapply(1:8, one.simu, mc.cores = 1),
+                      s2_cores = mclapply(1:8, one.simu, mc.cores = 2),
+                      s8_cores = mclapply(1:8, one.simu, mc.cores = 8), times = 10)
+```
+
+```{r plot_do_mclapply2, echo = FALSE}
+ggplot2::autoplot(res)
+```
+
+## Socket approach with `parallel::parLapply`
+
+Windows users need a bit more code to make it work
+
+### A possible option: export from base workspace
+
+```{r snow2}
+cl <- makeCluster(4)
+clusterExport(cl,"one.simu")
+res <- parSapply(cl, 1:8, one.simu) # several parLapply call are possible
+stopCluster(cl)
+res
+```
+
+## Parallel computing with `parallel`: final remarks
+
+- Parallelize piece of code complex enough
+
+- Do not choose stupidly the number of cores
+
+- Screen outputs are lost in `Rstudio`: use `pbmcapply` (progress bar)
+
+```{r pbmcapply}
+pbmcapply::pbmcmapply(1:8, FUN = one.simu, mc.cores = 2)
+```
+

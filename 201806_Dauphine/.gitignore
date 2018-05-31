@@ -1,5 +1,6 @@
-*_cache/
-*_files/
+*cache/
+*figures/
+*files/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

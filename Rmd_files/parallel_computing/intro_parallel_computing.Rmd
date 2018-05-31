@@ -1,0 +1,35 @@
+## Parallel computing
+
+### Usual Roadmap
+
+  (1) Start up and intialize  $M$ ‘worker’ processes 
+  
+  (2) Send data required for each task to the workers 
+  
+  (3) Split the task into $M$ roughly equally-sized chunks and send them (including the R code needed) to the workers 
+  
+  (4) Wait for all the workers to complete their tasks, and ask them for their results 
+  
+  (5) Repeat steps (2–4) for any further tasks 
+  
+  (6) Shut down the worker processes
+
+## Socketing vs Forking
+
+Two approaches achieving the same goal 
+
+### The socket approach 
+
+  - launches a new version of R on each core 
+  - connection is done via networking all happening on your own computer
+
+### The forking approach
+
+  - copies the entire current version of `R` and moves it to a new core
+  - several processes acheive the same task resulting in different outputs
+
+\rsa \emphase{ Forking is only possible on Unix systems (Linux, Mac OS)}
+
+
+<!-- TODO: Add solution proposed by future (more general) and others popuolar approaches -->
+

@@ -6,16 +6,12 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
 
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = FALSE, verbose = TRUE,
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE, verbose = TRUE,
                size = 'scriptsize',dev = 'pdf', fig.align = "center",
                fig.width = 6, fig.height = 4,  fig.pos = 'htbp!', out.width = '.8\\textwidth')
 
 # Name the cache path and fig.path based on filename...
-knitr::opts_chunk$set(fig.path = paste("figures/",
-                                gsub(".Rmd", "", knitr:::knit_concord$get('infile')),
-                                "-", sep=""),
-               cache.path = paste(gsub(".Rmd", "", knitr:::knit_concord$get('infile') ), 
-                                "/", sep=""))
+knitr::opts_chunk$set(fig.path = "figures/", cache.path = "cache/")
 # Set plotting to bw plot default, but with transparent background elements.  
 # Note transparency requires the panel.background, plot.background, and device background all be set!
 
