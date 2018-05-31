@@ -47,14 +47,20 @@ fontsize: 10pt
 ```{r child_vectorize, child="../Rmd_files/good_bad_practices/vectorize.Rmd"}
 ```
 
-```{r child_vectorize, child="../Rmd_files/good_bad_practices/compilation.Rmd"}
+```{r child_compilation, child="../Rmd_files/good_bad_practices/compilation.Rmd"}
 ```
 
-```{r child_vectorize, child="../Rmd_files/good_bad_practices/growing.Rmd"}
+```{r child_growing, child="../Rmd_files/good_bad_practices/growing.Rmd"}
 ```
 
 
 # Part 4: Remember that R is object oriented
+
+```{r child_factor, child="../Rmd_files/good_bad_practices/factors.Rmd"}
+```
+
+```{r child_factor, child="../Rmd_files/good_bad_practices/float.Rmd"}
+```
 
 # Interface with lower-level languages
 

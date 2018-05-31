@@ -1,25 +1,23 @@
-\begin{frame}[containsverbatim,fragile]
-  \frametitle{\texttt{R} masks the numerical errors} 
+## `R` masks the numerical errors
 
 by printing a \emph{convenient} summary of objects
-<<float1>>=
+```{r float1}
 7/13
 print(7/13, digits=16)
-@   
+```
 
 \pause
 
 So do not use binary operator to compare floats because
-<<float2>>=
-.1 == (.3/3)
+```{r float2}
+.1 == .3/3
 print(.3/3, digits=16)
-@ 
+```
 
 \pause
 
 Try
-<<float3>>=
+```{r float3}
 all.equal(.1, .3/3)
-@ 
+```
 
-\end{frame}

@@ -1,0 +1,47 @@
+## Factor conversion are slow (\texttt{nlevels})
+
+Do not convert large vector to `factor` if you need to perform just one operation on it.
+
+```{r nlevels, out.width = '.6\\textwidth'}
+n <- 1000; K <- 10
+autoplot(microbenchmark(
+  factor = nlevels(factor(sample(1:K, n, rep=TRUE))),
+  numeric = length(unique(sample(1:K, n, rep=TRUE))), times=1000)
+)
+```
+
+## Operations on factors are fast (e.g. `nlevels`)
+
+  Use  `factor` if  you need  repeated operations  on  the same vector.
+
+```{r nlevels2}
+nk <- 20
+seq.K <- c(10,100,1000)
+res <- do.call(rbind, lapply(seq.K, function(K) {
+  x1 <- rep(1:K,nk)
+  x2 <- factor(x1)
+  out <- microbenchmark(factor  = nlevels(x2),
+                        numeric = length(unique(x1)), times=1000)
+  return(data.frame(method = out$expr, timings = out$time, K = factor(K)))
+}))
+```
+
+```{r, echo = FALSE, out.width = '.6\\textwidth'}
+print(ggplot(res, aes(x=K, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10"))
+```
+
+## Prefer `tabulate` to  `table` whenever you can
+
+`table`  is a  complex function  that should  not be  use for simple  operations
+like counting  the occurrences  of integers  in a vector.
+
+```{r table, out.width = '.6\\textwidth'}
+n <- 1000; K <- 10
+autoplot(
+  microbenchmark(
+    table    = table   (sample(1:K, n, rep=TRUE)),
+    tabulate = tabulate(sample(1:K, n, rep=TRUE)),
+  times=1000)
+)
+```
+  
