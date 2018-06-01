@@ -1,0 +1,15 @@
+## Variable type matters
+
+Sorting a vector of integers is much faster than a vector of double, but `R` is so permissive that you might loss the gain if you do not take care:
+
+```{r order}
+
+x_int <- sample.int(1e7, 1e7)
+x_dbl <- as.numeric(x_int)
+res <- microbenchmark(integer = order(x_int),
+                      double = order(x_dbl))
+```
+
+```{r order_plot, echo = FALSE, out.width='.7\\textwidth'}
+autoplot(res)
+```

@@ -1,6 +1,6 @@
-## Interfacing \texttt{C++} with \texttt{R} is \emph{really} easy
+## Interfacing \texttt{C++} with \texttt{R} is \emph{really} easy {.allowframebreaks}
 
-Example that couples C++ + algeraic tricks
+\emphase{Example} that couples C++ + algebraic tricks
 
 Let $\bT$ be an $n\times n$ lower triangular matrix with nonzero elements equal to one. We need fast computation of
 \[

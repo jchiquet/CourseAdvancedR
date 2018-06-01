@@ -7,7 +7,6 @@ date: "Juin 2018"
 csl: "../resources/apa-no-doi-no-issue.csl"
 output:
   beamer_presentation:
-    toc: true
     slide_level: 2
     highlight: tango
     includes: 
@@ -32,6 +31,7 @@ fontsize: 10pt
 
 ```{r child_profiling, child="../Rmd_files/profiling/profr.Rmd"}
 ```
+
 # Use all your cores when needed
 
 ```{r child_intro_parallel, child="../Rmd_files/parallel_computing/intro_parallel_computing.Rmd"}
@@ -51,7 +51,12 @@ fontsize: 10pt
 ```{r child_growing, child="../Rmd_files/good_bad_practices/growing.Rmd"}
 ```
 
-```{r child_factor, child="../Rmd_files/tricks/use_algebra.Rmd"}
+# Tricks
+
+```{r child_internal, child="../Rmd_files/tricks/internal.Rmd"}
+```
+
+```{r child_use_algebra, child="../Rmd_files/tricks/use_algebra.Rmd"}
 ```
 
 # Remember that R is object oriented
@@ -59,32 +64,32 @@ fontsize: 10pt
 ```{r child_factor, child="../Rmd_files/good_bad_practices/factors.Rmd"}
 ```
 
-```{r child_factor, child="../Rmd_files/good_bad_practices/float.Rmd"}
+```{r child_float, child="../Rmd_files/good_bad_practices/float.Rmd"}
+```
+
+```{r child_order, child="../Rmd_files/good_bad_practices/order.Rmd"}
 ```
 
 # Mind your vocabulary: `R` fast built in function
 
-<!-- TODO: order with/without integer -->
-
-```{r child_factor, child="../Rmd_files/vocabulary/colSums_family.Rmd"}
+```{r child_colSums, child="../Rmd_files/vocabulary/colSums_family.Rmd"}
 ```
 
-```{r child_factor, child="../Rmd_files/vocabulary/rowsum.Rmd"}
+```{r child_rowsum, child="../Rmd_files/vocabulary/rowsum.Rmd"}
 ```
 
-```{r child_factor, child="../Rmd_files/vocabulary/algebra.Rmd"}
+```{r child_algebra, child="../Rmd_files/vocabulary/algebra.Rmd"}
 ```
 
-```{r child_factor, child="../Rmd_files/vocabulary/Matrix.Rmd"}
+```{r child_Matrix, child="../Rmd_files/vocabulary/Matrix.Rmd"}
 ```
 
 # Interface with lower-level languages
 
-```{r child_RcppExample1, child="../Rmd_files/vocabulary/Matrix.Rmd"}
+```{r child_RcppExample1, child="../Rmd_files/Rcpp/RcppArmadillo.Rmd"}
 ```
 
-```{r child_RcppExample2, child="../Rmd_files/vocabulary/Matrix.Rmd"}
+```{r child_RcppExample2, child="../Rmd_files/Rcpp/RcppArmadillo2.Rmd"}
 ```
-
 
 ## References
