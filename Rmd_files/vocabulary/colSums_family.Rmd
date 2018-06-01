@@ -1,0 +1,34 @@
+## The `row/col`Sums family {.allowframebreaks}
+
+`col/rowSums`, `col/rowMeans`  and their extensions in the  `matrixStats` package (`rank,max,min`,  etc.) are very efficient.
+
+```{r colSums_func}
+colSums.default <- function(x) return(colSums)
+colSums.algebra <- function(x) return(crossprod(rep(1,nrow(x)), x))
+colSums.apply   <- function(x) return(apply(x,2,sum))
+colSums.loop    <- function(x) {
+  res <- rep(0,ncol(x))
+  for (i in 1:ncol(x)) {
+    res[i] <- sum(x[,i])
+  }
+  res
+}
+```
+
+```{r colSums_do, echo = FALSE}
+seq.n <- c(10,100,1000)
+res <- do.call(rbind, lapply(seq.n, function(n) {
+  x <- matrix(rnorm(n*n),n,n)
+  out <- microbenchmark(
+           colSums = colSums.default(x),
+           algebra = colSums.algebra(x),
+           loop    = colSums.loop   (x),
+           apply   = colSums.apply  (x), times=100)
+  return(data.frame(method = out$expr, timings = out$time, problem.size = factor(n)))
+}))
+```
+
+```{r colSums_plot, echo = FALSE}
+print(ggplot(res, aes(x=problem.size, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10"))
+```
+

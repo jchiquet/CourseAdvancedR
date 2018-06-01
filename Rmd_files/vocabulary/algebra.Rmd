@@ -1,0 +1,61 @@
+## Dedicated function: cross-product
+
+Generally (a bit) fastest than `\% * \%` !
+
+```{r crossprod_func}
+crossprod.prod <- function(x) return(t(x) %*% x)
+crossprod.func1 <- function(x) return(crossprod(x,x))
+crossprod.func2 <- function(x) return(crossprod(x))
+```
+
+```{r crossprod_do, echo = FALSE}
+seq.n <- c(10,100,500)
+res <- do.call(rbind, lapply(seq.n, function(n) {
+  x <- matrix(rnorm(n*n),n,n)
+  out <- microbenchmark(
+           crossprod.prod (x),
+           crossprod.func1(x),
+           crossprod.func2(x), times=20)
+  data.frame(method = out$expr, timings = out$time, problem.size = factor(n))
+}))
+```
+
+```{r crossprod_plot, echo = FALSE, out.width = '.7\\textwidth'}
+print(ggplot(res, aes(x=problem.size, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10"))
+```
+
+## Dedicated function: inverting a PD matrices {.allowframebreaks}
+
+Use a Cholesky factorization
+
+```{r chol_func}
+use.chol <- function(n,p) {
+  x <- matrix(rnorm(n*p),n,p)
+  xtx <- crossprod(x)
+  return(chol2inv(chol(xtx)))
+}
+
+use.solve <- function(n,p) {
+  x <- matrix(rnorm(n*p),n,p)
+  xtx <- crossprod(x)
+  return(solve(xtx))
+}
+
+bench.p.fixed <- function(p, times) {
+  res <- microbenchmark(solve = use.solve(2*p,p),
+                        chol  = use.chol (2*p,p), times=times)
+  return(data.frame(method  = res$expr,
+                    timings = res$time,
+                    size    = rep(as.character(p),times)))
+}
+```
+
+```{r chol_do, echo = FALSE}
+out <- do.call(rbind,
+               lapply(c(10,50,100,250),
+                      bench.p.fixed, times=10)
+               )
+p <- ggplot(out, aes(x=size, y=timings, fill=method)) +
+  geom_boxplot() +  coord_trans(y="log10")
+print(p)
+```

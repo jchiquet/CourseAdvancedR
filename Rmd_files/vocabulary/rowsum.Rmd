@@ -1,0 +1,24 @@
+## The secret function `rowsum` {.allowframebreaks}
+
+`rowsum` (not to  be confused with `rowSums`) computes sums  in a  vector split  according  a grouping  variable (work  for matrices).
+
+```{r rowsum_ex}
+vec <- runif(1000)
+grp <- sample(1:5, 1000, TRUE)
+print(c(rowsum(vec, grp)))
+```
+
+There are many possibilities to perform the required task:
+
+```{r}
+res <- microbenchmark(
+ rowsum = rowsum(vec, grp),
+ split  = sapply(split(vec, grp), sum),
+ tapply = tapply(vec, grp, sum),
+ aggreg = aggregate(vec, list(grp), sum),
+times = 1000)
+```
+
+```{r rowsum_plot, echo = FALSE}
+autoplot(res)
+```

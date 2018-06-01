@@ -1,0 +1,55 @@
+## The `[a-z]*pply` family {.allowframebreaks}
+
+Some texte here... (check slides from L3)
+
+### Example with factors (`tapply`)
+
+```{r tapply}
+data <- rnorm(100)
+sexe <- factor( sample(c("H","F"), 100, replace = TRUE))
+mean.1 <- tapply(data, sexe, mean) ## good
+mean.2 <- c()  ## complicated
+for (l in levels(sexe))
+  mean.2 <- c(mean.2, mean(data[sexe == l]))
+```
+
+### Example with list or data.frame  (`sapply`/`lapply`)
+
+```{r sapply}
+data(oats)
+oats[1:2, ]
+sapply(oats, is.factor) ## readable
+for (c in 1:ncol(oats)) ## less readable (I think)
+    print(is.factor(oats[,c]))
+```
+
+<!-- Add some (replicate and ) -->
+
+<!-- \begin{frame}[containsverbatim] -->
+<!--   \frametitle{\texttt{[a-z]pply} is elegant but might be inefficient} -->
+
+<!--   \texttt{col/rowSums}, \texttt{col/rowMeans}  and their extensions in -->
+<!--   the \texttt{matrixStats} package are very efficient -->
+
+<!-- <<echo=FALSE,colsums>>= -->
+<!-- seq.n <- c(10,100,1000) -->
+<!-- res <- do.call(rbind, lapply(seq.n, function(n) { -->
+<!--   x <- matrix(rnorm(n*n),n,n) -->
+<!--   out <- microbenchmark(apply   = apply(x,2,sum), -->
+<!--                         colSums = colSums(x), times=100) -->
+<!--   return(data.frame(method = out$expr, timings = out$time, n = factor(n))) -->
+<!-- })) -->
+<!-- @ -->
+
+<!--   \begin{columns} -->
+<!--     \begin{column}{.4\textwidth} -->
+
+<!--     \end{column} -->
+<!--   \begin{column}{.6\textwidth} -->
+<!-- <<plot.colsums, echo=FALSE>>= -->
+<!-- print(ggplot(res, aes(x=n, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10")) -->
+<!-- @ -->
+<!--     \end{column} -->
+<!--   \end{columns} -->
+
+<!-- \end{frame} -->

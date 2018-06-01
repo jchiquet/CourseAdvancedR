@@ -1,0 +1,23 @@
+\begin{frame}[containsverbatim]{Internal function are faster}
+
+  Function   defined  internally   are  sometimes   incredibly  faster
+  (written in \texttt{C}), but cannot  by called in packages submitted
+  to CRAN.
+
+<<do.internal>>=
+x <- rnorm(100)
+res <- microbenchmark(mean = mean(x),
+                      mine = sum(x)/length(x),
+                      internal = .Internal(mean(x)), times = 1e+05)
+@
+
+\begin{center}
+  \begin{minipage}{.5\linewidth}
+<<plot.internal,echo=FALSE>>=
+autoplot(res)
+@
+  \end{minipage}
+\end{center}
+
+\end{frame}
+

@@ -1,6 +1,13 @@
 
 \usepackage{../resources/themeBeamer}
 
+\usepackage{etextools}
+% make space after console-output smaller:
+\setlength{\OuterFrameSep}{2pt}
+\makeatletter
+\preto{\@verbatim}{\topsep=-0pt \partopsep=0pt }
+\makeatother
+
 \graphicspath{{../resources/common_figs/}}
 \usepackage{tikz}
 \usetikzlibrary{calc,shapes,backgrounds,arrows,automata,shadows,positioning}

@@ -1,0 +1,40 @@
+## Interfacing `C++` with `R` is _really_ easy
+
+### Example 1
+
+For  a vector  $\mathbf{x} =  (x_1,\dots,x_n)$, consider  the simple task of computing
+\begin{equation*}
+  y_k = \sum_{i=1}^k \log(x_i), \quad k=1,\dots,n.
+\end{equation*}
+
+One can easily integrate some \texttt{C++} version of this code with \texttt{Rcpp}.
+
+```{r Rcpp}
+library(Rcpp)
+cppFunction('NumericVector rcpp(NumericVector x) {
+  using namespace Rcpp;
+
+  int n = x.size() ;
+  NumericVector res(x) ;
+  res(0) = log(x(0));
+  for (int i=1; i<n; i++) {
+    res(i) = res(i-1) + log(x(i)) ;
+  }
+  return(wrap(res)) ;
+}')
+```
+
+```{r RcppArmadillo}
+cppFunction(depends="RcppArmadillo", 'NumericVector Arma(NumericVector x) {
+  using namespace Rcpp;
+  using namespace arma;
+  return(wrap(cumsum(log(as<vec>(x))))) ;
+}')
+```
+
+```{r do_plot}
+x <-  runif(1e7, 1,2)
+res <- microbenchmark(cpp = rcpp(x), arma = Arma(x), times=40)
+print(autoplot(res, log=F))
+```
+

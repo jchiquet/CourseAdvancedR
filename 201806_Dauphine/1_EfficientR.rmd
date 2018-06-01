@@ -7,6 +7,8 @@ date: "Juin 2018"
 csl: "../resources/apa-no-doi-no-issue.csl"
 output:
   beamer_presentation:
+    toc: true
+    slide_level: 2
     highlight: tango
     includes: 
       in_header: ../resources/common_preamble.tex
@@ -22,10 +24,6 @@ fontsize: 10pt
 
 - @efficientR: efficient R programming
 - @advr
-
-## Part 0: Prerequesties
-
-- xpply family, do.call, Reduce
 
 # Benchmark your code
 
@@ -53,8 +51,10 @@ fontsize: 10pt
 ```{r child_growing, child="../Rmd_files/good_bad_practices/growing.Rmd"}
 ```
 
+```{r child_factor, child="../Rmd_files/tricks/use_algebra.Rmd"}
+```
 
-# Part 4: Remember that R is object oriented
+# Remember that R is object oriented
 
 ```{r child_factor, child="../Rmd_files/good_bad_practices/factors.Rmd"}
 ```
@@ -62,6 +62,29 @@ fontsize: 10pt
 ```{r child_factor, child="../Rmd_files/good_bad_practices/float.Rmd"}
 ```
 
+# Mind your vocabulary: `R` fast built in function
+
+<!-- TODO: order with/without integer -->
+
+```{r child_factor, child="../Rmd_files/vocabulary/colSums_family.Rmd"}
+```
+
+```{r child_factor, child="../Rmd_files/vocabulary/rowsum.Rmd"}
+```
+
+```{r child_factor, child="../Rmd_files/vocabulary/algebra.Rmd"}
+```
+
+```{r child_factor, child="../Rmd_files/vocabulary/Matrix.Rmd"}
+```
+
 # Interface with lower-level languages
+
+```{r child_RcppExample1, child="../Rmd_files/vocabulary/Matrix.Rmd"}
+```
+
+```{r child_RcppExample2, child="../Rmd_files/vocabulary/Matrix.Rmd"}
+```
+
 
 ## References

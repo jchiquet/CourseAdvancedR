@@ -1,30 +1,25 @@
-\begin{frame}[containsverbatim,fragile]
-  \frametitle{The \texttt{do.call} function}
+## The \texttt{do.call} function {.allowframebreaks}
 
-   \begin{quote} constructs and executes a function call from a name
-    or a function and a list of arguments to be passed to it
-   \end{quote}
+>>> constructs and executes a function call from a name or a function and a list of arguments to be passed to it
 
 Suppose you have the outputs of 100 simulations at your disposable, stored in a list like that
 
-<<echo=FALSE>>=
+```{r}
 res <- replicate(100, rbind(data.frame(method="lasso", mse=runif(1,.75,1) , timing=runif(1)),
                             data.frame(method="ridge", mse=runif(1,.5,.75), timing=runif(1)),
                             data.frame(method="bayes", mse=runif(1,.85,1) , timing=runif(1,100,200))
                               ), simplify=FALSE)
-@ 
+```
 
-<<>>=
+```{r}
+class(res)
 res[[1]]
 length(res)
-@ 
+```
 
 How would you store them in a single data frame?
-\pause
-<<>>=
+```{r}
 all.res <- do.call(rbind, res)
 dim(all.res)
-@ 
+```
 
-
-\end{frame}

@@ -67,7 +67,7 @@ res
 
 ## Parallel computing with `parallel`: final remarks
 
-- Parallelize piece of code complex enough
+- Parallelize pieces of code complex enough
 
 - Do not choose stupidly the number of cores
 

@@ -1,0 +1,37 @@
+## Interfacing \texttt{C++} with \texttt{R} is \emph{really} easy
+
+Example that couples C++ + algeraic tricks
+
+Let $\bT$ be an $n\times n$ lower triangular matrix with nonzero elements equal to one. We need fast computation of
+\[
+  \vect (\bT \bB \bT^\top) = (\bT \otimes \bT) \times \vect(\bB). 
+\]
+
+```{r kronecker_prod}
+library(Matrix); library(inline); library(RcppArmadillo)
+
+prod.rough <- function(B) {
+    n <- ncol(B); T <- bandSparse(n,k=(-n+1):0)
+    return(kronecker(T,T) %*% as.vector(B))}
+
+prod.smart <- function(B) {
+    return(as.vector(apply(apply(B,1,cumsum),1,cumsum)))}
+
+prod.wise <- cxxfunction(signature(B="matrix"),'
+  using namespace Rcpp;
+  using namespace arma;
+  return(wrap(vectorise(cumsum(cumsum(as<mat>(B),0),1)))) ;
+'  , plugin="RcppArmadillo")
+```
+
+```{r knonecker_prod_plot, echo = FALSE}
+B.ls <-  sapply(c(10, 50, 100), function(n) matrix(runif(n**2),n,n))
+res <- do.call(rbind, lapply(B.ls, function(B) {
+ out <- microbenchmark(rough = prod.rough(B),
+                       smart = prod.smart(B),
+                       wise  = prod.wise(B), times=20)
+ return(data.frame(method = out$expr, timings = out$time, n = factor(ncol(B))))
+}))
+print(ggplot(res, aes(x=n, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10"))
+```
+

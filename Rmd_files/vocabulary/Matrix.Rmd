@@ -1,0 +1,36 @@
+## The Matrix package {.allowframebreaks}
+
+Propose a collection of functions for of matrix algebra adapted to the
+type of matrix at hand (sparse, diagonal, triangular, block diagonal, etc.)
+
+```{r prod_sparse}
+library(Matrix)
+bench.par.fixed <- function(par) {
+    n <- par$n; density <- par$density
+    data <- sample(c(0,1),n**2,rep=TRUE,prob=c(1-density,density))
+    x.dense  <- matrix(data,n,n)
+    x.sparse <- Matrix(data,n,n)
+    res <- microbenchmark(dense  = crossprod(x.dense) ,
+                          sparse = crossprod(x.sparse), times=10)
+    return(data.frame(method  = res$expr,
+                      timings = res$time,
+                      size    = n       ,
+                      density = density ))
+}
+```
+
+```{r prod_sparse_do, echo = FALSE}
+par <- expand.grid(n=c(100,250,500,1000), density=c(.05,.2,.5,.9))
+out <- do.call(rbind, 
+         lapply(1:nrow(par), 
+             function(k) {
+               return(bench.par.fixed(par[k, ]))
+         }))
+out$density <- factor(out$density) 
+out$method  <- factor(out$method) 
+out$size    <- factor(out$size) 
+p <- ggplot(out, aes(x=size, y=timings, fill=method)) +
+    geom_boxplot() +  coord_trans(y="log10") + facet_wrap(~density, nrow=2)
+p
+```
+

@@ -1,0 +1,45 @@
+## Mind some algebra
+
+`Sweep` is a general way to apply a statistic on a given dimension of an array.
+
+```{r mean_func}
+center1 <- function(x) return(scale(x, colMeans(x), FALSE))
+center2 <- function(x) return(sweep(x, 2, colMeans(x), "-", check.margin = FALSE))
+center3 <- function(x) return(x - outer(rep(1, nrow(x)), colMeans(x)) )
+
+seq.p <- 10^(1:5); n <- 100; times <- 20
+```
+
+```{r mean_plot, echo = FALSE, out.width='.7\\textwidth'}
+res <- do.call(rbind, lapply(seq.p, function(p) {
+  x   <- matrix(rnorm(n*p),n,p)
+  out <- microbenchmark::microbenchmark(scale = center1(x),
+                        sweep = center2(x),
+                        algebra = center3(x), times=times)
+  data.frame(method = out$expr, timings = out$time, p = factor(p))
+}))
+ggplot(res, aes(x = p, y = timings, fill = method)) + geom_boxplot() + coord_trans(y = "log10")
+```
+
+## Algebra does not always pay
+
+Example for scaling a matrix
+
+```{r var_func}
+scale1 <- function(x) return(scale(x, FALSE, colSums(x^2)))
+scale2 <- function(x) return(sweep(x, 2, colSums(x^2), "/", check.margin=FALSE))
+scale3 <- function(x) return(x %*% diag(1/colSums(x^2)) )
+
+seq.p <- 10^(1:3); n <- 100; times <- 20
+```
+
+```{r var_plot, echo = FALSE, out.width='.6\\textwidth'}
+res <- do.call(rbind, lapply(seq.p, function(p) {
+  x   <- matrix(rnorm(n*p),n,p)
+  out <- microbenchmark(scale = scale1(x),
+                        sweep = scale2(x),
+                        algebra = scale3(x),  times=10)
+  return(data.frame(method = out$expr, timings = out$time, p = factor(p)) )
+}))
+ggplot(res, aes(x=p, y=timings, fill=method)) + geom_boxplot() + coord_trans(y="log10")
+```

@@ -1,0 +1,51 @@
+## The Reduce function
+
+> ‘Reduce’ uses a binary function to successively combine the elements of a given vector 
+
+\rsa can be  use  to  post-process your  list  of simulations obtained via `mclapply` just like `do.call`
+
+Say more... (map, Reduce)
+
+## A Reduce example: "jacknifing" a lasso solution path
+
+A single Lasso fit of the diabete data set
+```{r Reduce_load, out.width=".6\textwidth"}
+library(glmnet)
+library(lars) # the diabetes data set (part of the lars package)
+data(diabetes)
+y <- diabetes$y
+x <- diabetes$x
+n <- length(y)
+lasso <- glmnet(x,y)
+plot(lasso)
+```
+
+
+## A Reduce example: "jacknifing" a lasso solution path II {.allowframebreaks}
+
+Compute the regularization paths for all subsets, removing one individual at once
+
+```{r Reduce_sim}
+paths <- parallel::mclapply(1:n, function(i) {
+    glmnet(x[-i, ], y[-i], lambda = lasso$lambda)$beta
+}, mc.cores = 4)
+```
+
+Computing the envelop around the average regularization path with Reduce
+
+```{r Reduce_do}
+mean.path <- Reduce("+", paths)/n
+sdev.path <- sqrt(Reduce("+", lapply(paths, function(path) path**2))/n - 
+                  mean.path**2)
+```
+
+```{r Reduce_plot}
+library(ggplot2)
+library(reshape2)
+mean.path <- t(as.matrix(mean.path)); rownames(mean.path) <- lasso$lambda
+sdev.path <- t(as.matrix(sdev.path)); rownames(sdev.path) <- lasso$lambda
+dplot <- cbind(reshape2::melt(mean.path), reshape2::melt(sdev.path)[, 3])
+colnames(dplot) <- c("lambda","predictor","mean","sdev")
+ggobj <- ggplot(dplot, aes(x=lambda, y=mean, group=predictor, color=predictor)) + geom_smooth(aes(ymin=mean-sdev,ymax=mean+sdev))
+print(ggobj + coord_trans(x="log10"))
+```
