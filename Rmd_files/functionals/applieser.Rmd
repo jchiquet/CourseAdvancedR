@@ -1,7 +1,5 @@
 ## The `[a-z]*pply` family {.allowframebreaks}
 
-Some texte here... (check slides from L3)
-
 ### Example with factors (`tapply`)
 
 ```{r tapply}
@@ -16,7 +14,7 @@ for (l in levels(sexe))
 ### Example with list or data.frame  (`sapply`/`lapply`)
 
 ```{r sapply}
-data(oats)
+data(oats, package = "MASS")
 oats[1:2, ]
 sapply(oats, is.factor) ## readable
 for (c in 1:ncol(oats)) ## less readable (I think)

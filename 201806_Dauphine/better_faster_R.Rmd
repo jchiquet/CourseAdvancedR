@@ -1,6 +1,6 @@
 ---
 title: (A bit of) Advanced R
-subtitle: Efficient `R` programming
+subtitle: Part 1 - towards better `R`-base programming
 author: Julien Chiquet
 institute: Université Paris Dauphine
 date: "Juin 2018"
@@ -19,10 +19,50 @@ fontsize: 10pt
 ```{r setup, child="../resources/knitr_setup.Rmd", include = FALSE}
 ```
 
-## Resources
+## References
 
-- @efficientR: efficient R programming
-- @advr
+- @Rbase: A Language and Environment for Statistical Computing [https://www.R-project.org/](https://www.R-project.org/)
+- @advr: Advanced R, retrieved from [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
+- @efficientR: efficient R programming [https://bookdown.org/csgillespie/efficientR/](https://bookdown.org/csgillespie/efficientR/)
+
+## Prerequisites
+
+### Data Structure in base R
+
+  1. Atomic vector (integer, double, logical, character)
+  2. Recursive vector (list)
+  3. Factors
+  4. Matrices and array
+  5. Data Frame
+
+\rsa Creation, Basic Operation, Manipulation, Representation
+
+### Resources
+
+  - Advanced R, chapters I.2, I.3 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)]
+  - An introduction to R programmming [http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html](http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html)
+
+# Function, Functionals
+
+```{r child_appliser, child="../Rmd_files/functionals/applieser.Rmd"}
+```
+
+```{r child_doCall, child="../Rmd_files/functionals/doCall.Rmd"}
+```
+
+```{r child_Reduce, child="../Rmd_files/functionals/Reduce.Rmd"}
+```
+
+# Good and bad practices in `R`
+
+```{r child_vectorize, child="../Rmd_files/good_bad_practices/vectorize.Rmd"}
+```
+
+```{r child_compilation, child="../Rmd_files/good_bad_practices/compilation.Rmd"}
+```
+
+```{r child_growing, child="../Rmd_files/good_bad_practices/growing.Rmd"}
+```
 
 # Benchmark your code
 
@@ -38,17 +78,6 @@ fontsize: 10pt
 ```
 
 ```{r child_parellel, child="../Rmd_files/parallel_computing/parallel.Rmd"}
-```
-
-# Good and bad practices in `R`
-
-```{r child_vectorize, child="../Rmd_files/good_bad_practices/vectorize.Rmd"}
-```
-
-```{r child_compilation, child="../Rmd_files/good_bad_practices/compilation.Rmd"}
-```
-
-```{r child_growing, child="../Rmd_files/good_bad_practices/growing.Rmd"}
 ```
 
 # Tricks
@@ -93,3 +122,5 @@ fontsize: 10pt
 ```
 
 ## References
+
+@nocite{*}
