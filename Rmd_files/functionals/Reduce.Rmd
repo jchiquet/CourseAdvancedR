@@ -9,7 +9,7 @@ Say more... (map, Reduce)
 ## A Reduce example: "jacknifing" a lasso solution path
 
 A single Lasso fit of the diabete data set
-```{r Reduce_load, out.width=".6\textwidth"}
+```{r Reduce_load, out.width=".6\\textwidth"}
 library(glmnet)
 library(lars) # the diabetes data set (part of the lars package)
 data(diabetes)
@@ -19,7 +19,6 @@ n <- length(y)
 lasso <- glmnet(x,y)
 plot(lasso)
 ```
-
 
 ## A Reduce example: "jacknifing" a lasso solution path II {.allowframebreaks}
 
