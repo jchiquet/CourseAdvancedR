@@ -1,4 +1,3 @@
-
 \usepackage{../resources/themeBeamer}
 
 \usepackage{etextools}
@@ -15,10 +14,6 @@
 \tikzstyle{every edge}=[-,shorten >=1pt,auto,thin,draw]
 \tikzstyle{alertstate}=[fill=bleu]
 \definecolor{genecolor}{RGB}{94,135,173}
-
-\def\currentDate{\thedate}
-\def\currentInstitute{}
-\def\currentCourse{A bit of advanced \texttt{R}}
 
 \let\oldtitle\title
 \subtitle{\huge\oldtitle\normalsize}
@@ -55,20 +50,11 @@
 \renewcommand{\titlepage}{%
     \oldtitlepage
     \vfill
-    \begin{center}
-        \scriptsize\url{http://github/jchiquet/CourseAdvancedR}
-    \end{center}
-    \vfill
-    \includegraphics[width=2.5cm]{logo_dauphine}\hfill
-    \includegraphics[width=2.5cm]{logo_inra}
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node [xshift=2cm,yshift=1.5cm] at (current page.south west)    {\includegraphics[width=2.5cm]{logo_dauphine}};
+  \node [yshift=-3.5cm] at (current page.center)    {\includegraphics[width=2cm]{sticker_sotr}};
+  \node [xshift=-2cm,yshift=1.35cm] at (current page.south east)   {\includegraphics[width=2.5cm]{logo_inra}};
+\end{tikzpicture}
 }
 
-\newcommand{\dotoc}{%
-  \begin{frame}
-    \frametitle{Outline}
-    \tableofcontents[currentsection,
-    sectionstyle=show/show,
-    subsectionstyle=hide]
-  \end{frame}
-  %
-}

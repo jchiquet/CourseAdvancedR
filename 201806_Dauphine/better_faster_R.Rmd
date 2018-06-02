@@ -2,8 +2,8 @@
 title: (A bit of) Advanced R
 subtitle: Part 1 - towards better `R`-base programming
 author: Julien Chiquet
-institute: Université Paris Dauphine
-date: "Juin 2018"
+institute: "http://github/jchiquet/CourseAdvancedR"
+date: "Université Paris Dauphine, Juin 2018"
 csl: "../resources/apa-no-doi-no-issue.csl"
 output:
   beamer_presentation:
@@ -14,9 +14,14 @@ output:
       before_body: ../resources/common_startup.tex
 bibliography: ../resources/bibliography.bib
 fontsize: 10pt
+nocite: '@*'
+params: 
+  child_path : "../Rmd_files/"
+  setup_path : "../resources/"
 ---
 
-```{r setup, child="../resources/knitr_setup.Rmd", include = FALSE}
+```{r setup, include = FALSE}
+source(paste0(params$setup_path, "knitr_setup.R"))
 ```
 
 ## References
@@ -27,7 +32,7 @@ fontsize: 10pt
 
 ## Prerequisites
 
-### Data Structure in base R
+### Data Structure in base R
 
   1. Atomic vector (integer, double, logical, character)
   2. Recursive vector (list)
@@ -44,83 +49,74 @@ fontsize: 10pt
 
 # Function, Functionals
 
-```{r child_appliser, child="../Rmd_files/functionals/applieser.Rmd"}
+```{r setup_functionals, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "functionals/"))
 ```
 
-```{r child_doCall, child="../Rmd_files/functionals/doCall.Rmd"}
-```
-
-```{r child_Reduce, child="../Rmd_files/functionals/Reduce.Rmd"}
+```{r functionals, child=c("applieser.Rmd", "doCall.Rmd", "Reduce.Rmd")}
 ```
 
 # Good and bad practices in `R`
 
-```{r child_vectorize, child="../Rmd_files/good_bad_practices/vectorize.Rmd"}
+```{r setup_practices, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "good_bad_practices/"))
 ```
 
-```{r child_compilation, child="../Rmd_files/good_bad_practices/compilation.Rmd"}
-```
-
-```{r child_growing, child="../Rmd_files/good_bad_practices/growing.Rmd"}
+```{r practices, child=c("vectorize.Rmd", "compilation.Rmd", "growing.Rmd")}
 ```
 
 # Benchmark your code
 
-```{r child_microbenchmark, child="../Rmd_files/profiling/microbenchmark.Rmd"}
+```{r setup_benchmark, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "profiling/"))
 ```
 
-```{r child_profiling, child="../Rmd_files/profiling/profr.Rmd"}
+```{r microbenchmark, child=c("microbenchmark.Rmd", "profr.Rmd")}
 ```
 
 # Use all your cores when needed
 
-```{r child_intro_parallel, child="../Rmd_files/parallel_computing/intro_parallel_computing.Rmd"}
+```{r setup_parallel, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "parallel_computing/"))
 ```
 
-```{r child_parellel, child="../Rmd_files/parallel_computing/parallel.Rmd"}
+```{r parallel, child=c("intro_parallel_computing.Rmd", "parallel.Rmd")}
 ```
 
 # Tricks
 
-```{r child_internal, child="../Rmd_files/tricks/internal.Rmd"}
+```{r setup_internal, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "tricks/"))
 ```
 
-```{r child_use_algebra, child="../Rmd_files/tricks/use_algebra.Rmd"}
+```{r internal, child=c("internal.Rmd", "use_algebra.Rmd")}
 ```
 
 # Remember that R is object oriented
 
-```{r child_factor, child="../Rmd_files/good_bad_practices/factors.Rmd"}
+```{r setup_types, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "types/"))
 ```
 
-```{r child_float, child="../Rmd_files/good_bad_practices/float.Rmd"}
-```
-
-```{r child_order, child="../Rmd_files/good_bad_practices/order.Rmd"}
+```{r types, child=c("factors.Rmd", "float.Rmd", "order.Rmd")}
 ```
 
 # Mind your vocabulary: `R` fast built in function
 
-```{r child_colSums, child="../Rmd_files/vocabulary/colSums_family.Rmd"}
+```{r setup_vocabulary, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "vocabulary/"))
 ```
 
-```{r child_rowsum, child="../Rmd_files/vocabulary/rowsum.Rmd"}
-```
-
-```{r child_algebra, child="../Rmd_files/vocabulary/algebra.Rmd"}
-```
-
-```{r child_Matrix, child="../Rmd_files/vocabulary/Matrix.Rmd"}
+```{r vocabulary, child=c("colSums_family.Rmd", "rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd")}
 ```
 
 # Interface with lower-level languages
 
-```{r child_RcppExample1, child="../Rmd_files/Rcpp/RcppArmadillo.Rmd"}
+```{r setup_Rcpp, include = FALSE}
+knitr::opts_knit$set(child.path = paste0(params$child_path, "Rcpp/"))
 ```
 
-```{r child_RcppExample2, child="../Rmd_files/Rcpp/RcppArmadillo2.Rmd"}
+```{r Rcpp, child=c("RcppArmadillo.Rmd", "RcppArmadillo2.Rmd")}
 ```
 
 ## References
-
-@nocite{*}

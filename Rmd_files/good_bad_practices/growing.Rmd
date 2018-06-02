@@ -6,7 +6,7 @@ loop <- function(n) {vec <- numeric(n); for (i in 1:n) vec[i] <- i}
 vect <- function(n) {1:n}
 ```
 
-```{r do.prealloc, echo = FALSE}
+```{r do_prealloc, echo = FALSE}
 res <- do.call(rbind, lapply(10^(1:4), function(n) {
  out <- microbenchmark(grow = grow(n), loop = loop(n), vect = vect(n), times=10)
  return(data.frame(method = out$expr, timings = out$time, n = factor(n)))
@@ -41,7 +41,7 @@ simu.list <- function(x) {
 }
 ```
 
-```{r stack.roll}
+```{r stack_roll}
 n <- 1000; p <- 10; x <- matrix(rnorm(n*p), n, p)
 autoplot(microbenchmark(simu.stack(x), simu.df(x), simu.list(x), times=20))
 ```

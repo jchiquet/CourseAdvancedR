@@ -1,0 +1,746 @@
+\documentclass[10pt,ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\newif\ifbibliography
+\hypersetup{
+            pdftitle={(A bit of) Advanced R},
+            pdfauthor={Julien Chiquet},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \let\insertsectionnumber\relax
+    \let\sectionname\relax
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+\usepackage{../resources/themeBeamer}
+
+\usepackage{etextools}
+% make space after console-output smaller:
+\setlength{\OuterFrameSep}{2pt}
+\makeatletter
+\preto{\@verbatim}{\topsep=-0pt \partopsep=0pt }
+\makeatother
+
+\graphicspath{{../resources/common_figs/}}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes,backgrounds,arrows,automata,shadows,positioning}
+\tikzstyle{every state}=[fill=red,draw=none,scale=0.7,font=\small,text=white]
+\tikzstyle{every edge}=[-,shorten >=1pt,auto,thin,draw]
+\tikzstyle{alertstate}=[fill=bleu]
+\definecolor{genecolor}{RGB}{94,135,173}
+
+\let\oldtitle\title
+\subtitle{\huge\oldtitle\normalsize}
+\title{\currentCourse}
+\institute{\currentInstitute}
+
+\date{\currentDate}
+
+\AtBeginSection{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \framesubtitle{\insertpart}
+    \tableofcontents[currentsection,currentsubsection, subsectionstyle=show/shaded/hide]  
+  \end{frame}
+}
+
+\AtBeginSubsection{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \framesubtitle{\insertpart}
+    \tableofcontents[currentsection,currentsubsection, subsectionstyle=show/shaded/hide]  
+  \end{frame}
+}
+
+\AtBeginSubsubsection{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \framesubtitle{\insertpart}
+    \tableofcontents[currentsection,currentsubsection, subsectionstyle=show/shaded/hide]  
+  \end{frame}
+}
+
+\let\oldtitlepage\titlepage
+\renewcommand{\titlepage}{%
+    \oldtitlepage
+    \vfill
+
+\begin{tikzpicture}[remember picture,overlay]
+  \node [xshift=2cm,yshift=1.5cm] at (current page.south west)    {\includegraphics[width=2.5cm]{logo_dauphine}};
+  \node [yshift=-3.5cm] at (current page.center)    {\includegraphics[width=2cm]{sticker_sotr}};
+  \node [xshift=-2cm,yshift=1.35cm] at (current page.south east)   {\includegraphics[width=2.5cm]{logo_inra}};
+\end{tikzpicture}
+}
+
+\title{(A bit of) Advanced R}
+\subtitle{Part 1 - towards better \texttt{R}-base programming}
+\author{Julien Chiquet}
+\institute{\url{http://github/jchiquet/CourseAdvancedR}}
+\date{Université Paris Dauphine, Juin 2018}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[currentsection, sectionstyle=show/show,subsectionstyle=hide]
+\end{frame}
+
+\begin{frame}{References}
+
+\begin{itemize}
+\tightlist
+\item
+  R Core Team (2017): A Language and Environment for Statistical
+  Computing \url{https://www.R-project.org/}
+\item
+  Wickham (2014): Advanced R, retrieved from
+  \url{http://adv-r.had.co.nz/}
+\item
+  Gillespie \& Lovelace (2016): efficient R programming
+  \url{https://bookdown.org/csgillespie/efficientR/}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Prerequisites}
+
+\begin{block}{Data Structure in base R}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Atomic vector (integer, double, logical, character)
+\item
+  Recursive vector (list)
+\item
+  Factors
+\item
+  Matrices and array
+\item
+  Data Frame
+\end{enumerate}
+
+\rsa Creation, Basic Operation, Manipulation, Representation
+
+\end{block}
+
+\begin{block}{Resources}
+
+\begin{itemize}
+\tightlist
+\item
+  Advanced R, chapters I.2, I.3 (Wickham, 2014,
+  \url{http://adv-r.had.co.nz/})
+\item
+  An introduction to R programmming
+  \url{http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html}
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\section{Function, Functionals}\label{function-functionals}
+
+\begin{frame}[fragile,allowframebreaks]{The \texttt{{[}a-z{]}*pply}
+family}
+
+\begin{block}{Example with factors (\texttt{tapply})}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{sexe <-}\StringTok{ }\KeywordTok{factor}\NormalTok{( }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"H"}\NormalTok{,}\StringTok{"F"}\NormalTok{), }\DecValTok{100}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{mean.}\DecValTok{1}\NormalTok{ <-}\StringTok{ }\KeywordTok{tapply}\NormalTok{(data, sexe, mean) ## good}
+\NormalTok{mean.}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{()  ## complicated}
+\ControlFlowTok{for}\NormalTok{ (l }\ControlFlowTok{in} \KeywordTok{levels}\NormalTok{(sexe))}
+\NormalTok{  mean.}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(mean.}\DecValTok{2}\NormalTok{, }\KeywordTok{mean}\NormalTok{(data[sexe }\OperatorTok{==}\StringTok{ }\NormalTok{l]))}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\end{block}
+
+\begin{block}{Example with list or data.frame
+(\texttt{sapply}/\texttt{lapply})}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(oats, }\DataTypeTok{package =} \StringTok{"MASS"}\NormalTok{)}
+\NormalTok{oats[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}##   B       V      N   Y
+## 1 I Victory 0.0cwt 111
+## 2 I Victory 0.2cwt 130
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sapply}\NormalTok{(oats, is.factor) ## readable}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}##     B     V     N     Y 
+##  TRUE  TRUE  TRUE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (c }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{ncol}\NormalTok{(oats)) ## less readable (I think)}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{is.factor}\NormalTok{(oats[,c]))}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}## [1] TRUE
+## [1] TRUE
+## [1] TRUE
+## [1] FALSE
+\end{verbatim}
+
+\normalsize
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{The \texttt{do.call} function}
+
+\begin{quote}
+\begin{quote}
+\begin{quote}
+constructs and executes a function call from a name or a function and a
+list of arguments to be passed to it
+\end{quote}
+\end{quote}
+\end{quote}
+
+Suppose you have the outputs of 100 simulations at your disposable,
+stored in a list like that
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res <-}\StringTok{ }\KeywordTok{replicate}\NormalTok{(}\DecValTok{100}\NormalTok{, }\KeywordTok{rbind}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{method=}\StringTok{"lasso"}\NormalTok{, }\DataTypeTok{mse=}\KeywordTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{,.}\DecValTok{75}\NormalTok{,}\DecValTok{1}\NormalTok{) , }\DataTypeTok{timing=}\KeywordTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)),}
+                            \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{method=}\StringTok{"ridge"}\NormalTok{, }\DataTypeTok{mse=}\KeywordTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{,.}\DecValTok{5}\NormalTok{,.}\DecValTok{75}\NormalTok{), }\DataTypeTok{timing=}\KeywordTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)),}
+                            \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{method=}\StringTok{"bayes"}\NormalTok{, }\DataTypeTok{mse=}\KeywordTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{,.}\DecValTok{85}\NormalTok{,}\DecValTok{1}\NormalTok{) , }\DataTypeTok{timing=}\KeywordTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{100}\NormalTok{,}\DecValTok{200}\NormalTok{))}
+\NormalTok{                              ), }\DataTypeTok{simplify=}\OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}## [1] "list"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}##   method       mse      timing
+## 1  lasso 0.8761956   0.1202532
+## 2  ridge 0.6308892   0.1159765
+## 3  bayes 0.8508328 123.9241986
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{length}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}## [1] 100
+\end{verbatim}
+
+\normalsize
+
+How would you store them in a single data frame? \scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{all.res <-}\StringTok{ }\KeywordTok{do.call}\NormalTok{(rbind, res)}
+\KeywordTok{dim}\NormalTok{(all.res)}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}## [1] 300   3
+\end{verbatim}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile]{The Reduce function}
+
+\begin{quote}
+`Reduce' uses a binary function to successively combine the elements of
+a given vector
+\end{quote}
+
+\rsa can be use to post-process your list of simulations obtained via
+\texttt{mclapply} just like \texttt{do.call}
+
+Say more\ldots{} (map, Reduce)
+
+\end{frame}
+
+\begin{frame}[fragile]{A Reduce example: ``jacknifing'' a lasso solution
+path}
+
+A single Lasso fit of the diabete data set \scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(glmnet)}
+\KeywordTok{library}\NormalTok{(lars) }\CommentTok{# the diabetes data set (part of the lars package)}
+\KeywordTok{data}\NormalTok{(diabetes)}
+\NormalTok{y <-}\StringTok{ }\NormalTok{diabetes}\OperatorTok{$}\NormalTok{y}
+\NormalTok{x <-}\StringTok{ }\NormalTok{diabetes}\OperatorTok{$}\NormalTok{x}
+\NormalTok{n <-}\StringTok{ }\KeywordTok{length}\NormalTok{(y)}
+\NormalTok{lasso <-}\StringTok{ }\KeywordTok{glmnet}\NormalTok{(x,y)}
+\KeywordTok{plot}\NormalTok{(lasso)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=.6 extwidth]{figures/Reduce_load-1} \end{center}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{A Reduce example: ``jacknifing''
+a lasso solution path II}
+
+Compute the regularization paths for all subsets, removing one
+individual at once
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{paths <-}\StringTok{ }\NormalTok{parallel}\OperatorTok{::}\KeywordTok{mclapply}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n, }\ControlFlowTok{function}\NormalTok{(i) \{}
+    \KeywordTok{glmnet}\NormalTok{(x[}\OperatorTok{-}\NormalTok{i, ], y[}\OperatorTok{-}\NormalTok{i], }\DataTypeTok{lambda =}\NormalTok{ lasso}\OperatorTok{$}\NormalTok{lambda)}\OperatorTok{$}\NormalTok{beta}
+\NormalTok{\}, }\DataTypeTok{mc.cores =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+Computing the envelop around the average regularization path with Reduce
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean.path <-}\StringTok{ }\KeywordTok{Reduce}\NormalTok{(}\StringTok{"+"}\NormalTok{, paths)}\OperatorTok{/}\NormalTok{n}
+\NormalTok{sdev.path <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{Reduce}\NormalTok{(}\StringTok{"+"}\NormalTok{, }\KeywordTok{lapply}\NormalTok{(paths, }\ControlFlowTok{function}\NormalTok{(path) path}\OperatorTok{**}\DecValTok{2}\NormalTok{))}\OperatorTok{/}\NormalTok{n }\OperatorTok{-}\StringTok{ }
+\StringTok{                  }\NormalTok{mean.path}\OperatorTok{**}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(reshape2)}
+\NormalTok{mean.path <-}\StringTok{ }\KeywordTok{t}\NormalTok{(}\KeywordTok{as.matrix}\NormalTok{(mean.path)); }\KeywordTok{rownames}\NormalTok{(mean.path) <-}\StringTok{ }\NormalTok{lasso}\OperatorTok{$}\NormalTok{lambda}
+\NormalTok{sdev.path <-}\StringTok{ }\KeywordTok{t}\NormalTok{(}\KeywordTok{as.matrix}\NormalTok{(sdev.path)); }\KeywordTok{rownames}\NormalTok{(sdev.path) <-}\StringTok{ }\NormalTok{lasso}\OperatorTok{$}\NormalTok{lambda}
+\NormalTok{dplot <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(reshape2}\OperatorTok{::}\KeywordTok{melt}\NormalTok{(mean.path), reshape2}\OperatorTok{::}\KeywordTok{melt}\NormalTok{(sdev.path)[, }\DecValTok{3}\NormalTok{])}
+\KeywordTok{colnames}\NormalTok{(dplot) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"lambda"}\NormalTok{,}\StringTok{"predictor"}\NormalTok{,}\StringTok{"mean"}\NormalTok{,}\StringTok{"sdev"}\NormalTok{)}
+\NormalTok{ggobj <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(dplot, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{lambda, }\DataTypeTok{y=}\NormalTok{mean, }\DataTypeTok{group=}\NormalTok{predictor, }\DataTypeTok{color=}\NormalTok{predictor)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{mean}\OperatorTok{-}\NormalTok{sdev,}\DataTypeTok{ymax=}\NormalTok{mean}\OperatorTok{+}\NormalTok{sdev))}
+\KeywordTok{print}\NormalTok{(ggobj }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_trans}\NormalTok{(}\DataTypeTok{x=}\StringTok{"log10"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=.8\textwidth]{figures/Reduce_plot-1} \end{center}
+
+\normalsize
+
+\end{frame}
+
+\section{\texorpdfstring{Good and bad practices in
+\texttt{R}}{Good and bad practices in R}}\label{good-and-bad-practices-in-r}
+
+\begin{frame}[fragile,allowframebreaks]{Vectorize any algebraic
+operation}
+
+\emphase{Example:} compute \(\exp(x) = \sum_{k=0}^{n} \frac{x^k}{k!}\)
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## the good way}
+\NormalTok{exp_vec <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, n)\{}
+\NormalTok{  res <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(x}\OperatorTok{^}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\NormalTok{n)}\OperatorTok{/}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\KeywordTok{cumprod}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n)))}
+\NormalTok{  res}
+\NormalTok{\}}
+\NormalTok{## the sad/bad/less readable way}
+\NormalTok{exp_loop <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, n)\{}
+\NormalTok{  res <-}\StringTok{ }\DecValTok{1}
+  \ControlFlowTok{for}\NormalTok{ (k }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{n) res <-}\StringTok{ }\NormalTok{res }\OperatorTok{+}\StringTok{ }\DecValTok{2}\OperatorTok{^}\NormalTok{k}\OperatorTok{/}\KeywordTok{factorial}\NormalTok{(k)}
+\NormalTok{  res}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{autoplot}\NormalTok{(}\KeywordTok{microbenchmark}\NormalTok{(}\DataTypeTok{vec =} \KeywordTok{exp_vec}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{loop =} \KeywordTok{exp_loop}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{100}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=.8\textwidth]{figures/vec_benchmark-1} \end{center}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Vectorize, even for
+non-algebraic operation}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{month_year_apply <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(year) \{}
+  \KeywordTok{sapply}\NormalTok{(month.name, }\ControlFlowTok{function}\NormalTok{(month) }\KeywordTok{paste}\NormalTok{(month, year, }\DataTypeTok{sep =} \StringTok{"_"}\NormalTok{))  }
+\NormalTok{\}}
+
+\NormalTok{month_year_outer <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(year) \{}
+  \KeywordTok{outer}\NormalTok{(month.name, year, }\DataTypeTok{FUN =}\NormalTok{ paste, }\DataTypeTok{sep =} \StringTok{'_'}\NormalTok{)}
+\NormalTok{\}}
+\KeywordTok{head}\NormalTok{(}\KeywordTok{month_year_outer}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2010}\NormalTok{, }\DecValTok{2013}\NormalTok{)), }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\color{gray}
+
+\begin{verbatim}##      [,1]            [,2]           
+## [1,] "January_2010"  "January_2013" 
+## [2,] "February_2010" "February_2013"
+## [3,] "March_2010"    "March_2013"
+\end{verbatim}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{autoplot}\NormalTok{(}\KeywordTok{microbenchmark}\NormalTok{(}
+  \DataTypeTok{sapply =} \KeywordTok{month_year_apply}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2011}\NormalTok{, }\DecValTok{2013}\NormalTok{)),}
+  \DataTypeTok{outer  =} \KeywordTok{month_year_outer}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2011}\NormalTok{, }\DecValTok{2013}\NormalTok{)), }
+  \DataTypeTok{times =} \DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=.8\textwidth]{figures/vec_outer_plot-1} \end{center}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Compile your functions with
+\texttt{base::compiler}}
+
+If you cannot avoid a loop, you will save some time
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cumsum.R <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(n) \{}
+\NormalTok{  x <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(n)}
+  \KeywordTok{cumsum}\NormalTok{(x)}
+\NormalTok{\}}
+
+\NormalTok{cumsum.me <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(n) \{}
+\NormalTok{  x <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(n)}
+\NormalTok{  res <-}\StringTok{ }\DecValTok{0}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(x)) }
+\NormalTok{    res <-}\StringTok{ }\NormalTok{res }\OperatorTok{+}\StringTok{ }\NormalTok{x[i]}
+\NormalTok{  res}
+\NormalTok{\}}
+
+\NormalTok{cumsum.cmp <-}\StringTok{ }\NormalTok{compiler}\OperatorTok{::}\KeywordTok{cmpfun}\NormalTok{(cumsum.me)}
+
+\KeywordTok{autoplot}\NormalTok{(}
+  \KeywordTok{microbenchmark}\NormalTok{(}
+    \KeywordTok{cumsum.R}\NormalTok{(}\DecValTok{1000}\NormalTok{),}
+    \KeywordTok{cumsum.me}\NormalTok{(}\DecValTok{1000}\NormalTok{),}
+    \KeywordTok{cumsum.cmp}\NormalTok{(}\DecValTok{1000}\NormalTok{), }
+    \DataTypeTok{times=}\DecValTok{1000}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=.8\textwidth]{figures/unnamed-chunk-5-1} \end{center}
+
+\normalsize
+
+\rsa Can be set automatically with \texttt{compiler::enableJIT(3)}
+
+\end{frame}
+
+\begin{frame}[fragile]{Preallocate whenever it is possible}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grow <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(n) \{vec <-}\StringTok{ }\KeywordTok{numeric}\NormalTok{(}\DecValTok{0}\NormalTok{); }\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{n) vec <-}\StringTok{ }\KeywordTok{c}\NormalTok{(vec,i)\}}
+\NormalTok{loop <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(n) \{vec <-}\StringTok{ }\KeywordTok{numeric}\NormalTok{(n); }\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{n) vec[i] <-}\StringTok{ }\NormalTok{i\}}
+\NormalTok{vect <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(n) \{}\DecValTok{1}\OperatorTok{:}\NormalTok{n\}}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{center}\includegraphics[width=.8\textwidth]{figures/do.prealloc-1} \end{center}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}[fragile,allowframebreaks]{Do not stack objects}
+
+Even if it is tempting when the final size is unknown.
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{simu.stack <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{ ## x is a n x p matrix}
+\NormalTok{  out <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{mean =} \KeywordTok{numeric}\NormalTok{(}\DecValTok{0}\NormalTok{), }\DataTypeTok{sd =} \KeywordTok{numeric}\NormalTok{(}\DecValTok{0}\NormalTok{))}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{n) }
+\NormalTok{    out <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(out, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(x[i,]), }\DataTypeTok{sd =} \KeywordTok{sd}\NormalTok{(x[i, ])) )}
+  \KeywordTok{return}\NormalTok{(out)}
+\NormalTok{\}}
+
+\NormalTok{simu.df <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  out <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{mean =} \KeywordTok{numeric}\NormalTok{(n), }\DataTypeTok{sd =} \KeywordTok{numeric}\NormalTok{(n))}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{n)}
+\NormalTok{    out[i, ] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(x[i,]), }\DataTypeTok{sd =} \KeywordTok{sd}\NormalTok{(x[i, ])) }
+  \KeywordTok{return}\NormalTok{(out)}
+\NormalTok{\}}
+
+\NormalTok{simu.list <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  my.list <-}\StringTok{ }\KeywordTok{lapply}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n, }\ControlFlowTok{function}\NormalTok{(i) }\KeywordTok{c}\NormalTok{(}\KeywordTok{mean}\NormalTok{(x[i,]), }\KeywordTok{sd}\NormalTok{(x[i, ])))}
+\NormalTok{  out <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\KeywordTok{do.call}\NormalTok{(rbind, my.list))}
+  \KeywordTok{colnames}\NormalTok{(out) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"mean"}\NormalTok{,}\StringTok{"sd"}\NormalTok{)  }
+  \KeywordTok{return}\NormalTok{(out)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n <-}\StringTok{ }\DecValTok{1000}\NormalTok{; p <-}\StringTok{ }\DecValTok{10}\NormalTok{; x <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(n}\OperatorTok{*}\NormalTok{p), n, p)}
+\KeywordTok{autoplot}\NormalTok{(}\KeywordTok{microbenchmark}\NormalTok{(}\KeywordTok{simu.stack}\NormalTok{(x), }\KeywordTok{simu.df}\NormalTok{(x), }\KeywordTok{simu.list}\NormalTok{(x), }\DataTypeTok{times=}\DecValTok{20}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=.8\textwidth]{figures/stack.roll-1} \end{center}
+
+\normalsize
+
+\end{frame}
+
+\begin{frame}{References}
+
+\hypertarget{refs}{}
+\hypertarget{ref-Rmarkdown}{}
+Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins,
+A., \ldots{} Chang, W. (2018). \emph{Rmarkdown: Dynamic documents for
+r}. Retrieved from \url{https://CRAN.R-project.org/package=rmarkdown}
+
+\hypertarget{ref-Rinferno}{}
+Burns, P. (2012). \emph{The r inferno}. Lulu. com. Retrieved from
+\url{http://www.burns-stat.com/documents/books/the-r-inferno/}
+
+\hypertarget{ref-cookbookR}{}
+Chang, W. (2012). \emph{R graphics cookbook: Practical recipes for
+visualizing data}. `` O'Reilly Media, Inc.'' Retrieved from
+\url{http://www.cookbook-r.com/Graphs/}
+
+\hypertarget{ref-rcpp}{}
+Eddelbuettel, D. (2013). \emph{Seamless r and c++ integration with
+rcpp}. Springer. Retrieved from \url{http://dirk.eddelbuettel.com}
+
+\hypertarget{ref-reproducibleR}{}
+Gandrud, C. (2016). \emph{Reproducible research with r and r studio}.
+Chapman; Hall/CRC. Retrieved from
+\url{https://github.com/christophergandrud/Rep-Res-Book}
+
+\hypertarget{ref-efficientR}{}
+Gillespie, C., \& Lovelace, R. (2016). \emph{Efficient r programming}.
+`` O'Reilly Media, Inc.'' Retrieved from
+\url{https://bookdown.org/csgillespie/efficientR/}
+
+\hypertarget{ref-Rbase}{}
+R Core Team. (2017). \emph{R: A language and environment for statistical
+computing}. Vienna, Austria: R Foundation for Statistical Computing.
+Retrieved from \url{https://www.R-project.org/}
+
+\hypertarget{ref-advr}{}
+Wickham, H. (2014). \emph{Advanced r}. CRC Press. Retrieved from
+\url{http://adv-r.had.co.nz/}
+
+\hypertarget{ref-rpkg}{}
+Wickham, H. (2015). \emph{R packages: Organize, test, document, and
+share your code}. `` O'Reilly Media, Inc.'' Retrieved from
+\url{http://r-pkgs.had.co.nz/}
+
+\hypertarget{ref-ggplot2}{}
+Wickham, H. (2016). \emph{Ggplot2: Elegant graphics for data analysis}.
+Springer. Retrieved from \url{http://ggplot2.tidyverse.org/reference/}
+
+\hypertarget{ref-r4ds}{}
+Wickham, H., \& Grolemund, G. (2016). \emph{R for data science: Import,
+tidy, transform, visualize, and model data}. `` O'Reilly Media, Inc.''
+Retrieved from \url{http://r4ds.had.co.nz}
+
+\hypertarget{ref-knitr}{}
+Xie, Y. (2015). \emph{Dynamic documents with r and knitr} (Vol. 29). CRC
+Press. Retrieved from \url{https://yihui.name/knitr/}
+
+\end{frame}
+
+\end{document}
