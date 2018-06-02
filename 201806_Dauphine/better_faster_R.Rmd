@@ -45,78 +45,46 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 ### Resources
 
   - Advanced R, chapters I.2, I.3 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)]
-  - An introduction to R programmming [http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html](http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html)
+  - An introduction to R programming [http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html](http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html)
 
 # Function, Functionals
 
-```{r setup_functionals, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "functionals/"))
-```
-
-```{r functionals, child=c("applieser.Rmd", "doCall.Rmd", "Reduce.Rmd")}
+```{r functionals, child = paste0('functionals/', c("applieser.Rmd", "doCall.Rmd", "Reduce.Rmd")), cache = FALSE}
 ```
 
 # Good and bad practices in `R`
 
-```{r setup_practices, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "good_bad_practices/"))
-```
-
-```{r practices, child=c("vectorize.Rmd", "compilation.Rmd", "growing.Rmd")}
+```{r practices, child = paste0('good_bad_practices/', c("vectorize.Rmd", "compilation.Rmd", "growing.Rmd"))}
 ```
 
 # Benchmark your code
 
-```{r setup_benchmark, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "profiling/"))
-```
-
-```{r microbenchmark, child=c("microbenchmark.Rmd", "profr.Rmd")}
+```{r microbenchmark, child = paste0('profiling/', c("microbenchmark.Rmd", "profr.Rmd"))}
 ```
 
 # Use all your cores when needed
 
-```{r setup_parallel, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "parallel_computing/"))
-```
-
-```{r parallel, child=c("intro_parallel_computing.Rmd", "parallel.Rmd")}
+```{r parallel, child = paste0('parallel_computing/', c("intro_parallel_computing.Rmd", "parallel.Rmd"))}
 ```
 
 # Tricks
 
-```{r setup_internal, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "tricks/"))
-```
-
-```{r internal, child=c("internal.Rmd", "use_algebra.Rmd")}
+```{r internal, child = paste0('tricks/', c("internal.Rmd", "use_algebra.Rmd"))}
 ```
 
 # Remember that R is object oriented
 
-```{r setup_types, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "types/"))
-```
-
-```{r types, child=c("factors.Rmd", "float.Rmd", "order.Rmd")}
+```{r types, child = paste0('types/', c("factors.Rmd", "float.Rmd", "order.Rmd"))}
 ```
 
 # Mind your vocabulary: `R` fast built in function
 
-```{r setup_vocabulary, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "vocabulary/"))
-```
-
-```{r vocabulary, child=c("colSums_family.Rmd", "rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd")}
+```{r vocabulary, child = paste0('vocabulary/', c("colSums_family.Rmd", "rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd"))}
 ```
 
 # Interface with lower-level languages
 
-```{r setup_Rcpp, include = FALSE}
-knitr::opts_knit$set(child.path = paste0(params$child_path, "Rcpp/"))
-```
-
-```{r Rcpp, child=c("RcppArmadillo.Rmd", "RcppArmadillo2.Rmd")}
+```{r Rcpp, child = paste0('Rcpp/', c("RcppArmadillo.Rmd", "RcppArmadillo2.Rmd"))}
 ```
 
 ## References

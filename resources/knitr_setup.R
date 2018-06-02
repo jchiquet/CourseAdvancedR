@@ -10,6 +10,13 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE, verbose = 
 
 knitr::opts_knit$set(child.path = params$child_path)
 
+# knitr::knit_hooks$set(subdir = function(before, options, envir) {
+# 
+#     knitr::opts_knit$set(child.path = paste0(opt$child_path, "functionals/"))
+#   options$child.path <- paste(options$child.path, subdir)
+#   options
+# })
+
 ## -----------------------------------------------------------------------------
 ## CUSTOMIZE CHUNKS
 
