@@ -28,23 +28,17 @@ for (i in seq_along(v))  v[i] <- i*3
 ```
 
 ### Exercice:  
-
 Use a for loop to display the colnames of the data frame `iris` which are not a factor, by completing the follwoing piece of code
-
-```{r for_iris}
-data(iris)
-cat("\nColumn names are:")
-```
 
 \pause
 
 ```{r for_iris_soluce}
+data(iris)
 for (nom in colnames(iris)) {
   if (!is.factor(iris[,nom])) cat("",nom)  
 }
 ```
 \pause
-
 
 A more R-style way to do that is
 

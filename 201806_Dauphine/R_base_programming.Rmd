@@ -24,7 +24,7 @@ params:
 source(paste0(params$setup_path, "knitr_setup.R"))
 ```
 
-## References I
+## References
 
 ### Advanced R [@advr], [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 
@@ -33,7 +33,7 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 ### A Language and Environment for Statistical Computing  [@Rbase], [https://www.R-project.org/](https://www.R-project.org/)
 
-![](../resources/common_figs/cover_baseR.png){width="50px"}\
+![](../resources/common_figs/cover_Rbase.png){width="50px"}\
 
 
 \rsa Many ideas/examples inspired/stolen there.
