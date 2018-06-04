@@ -1,0 +1,55 @@
+## Lexical Scoping I 
+
+### Definition 
+Set of rule that governs how `R` looks up the value of a symbol
+
+### Name masking
+If a name is not defined inside a function, `R` looks a level up
+
+```{r name_masking1}
+y <- 2
+func <- function(x) c(x,y)
+func(4)
+```
+
+This applies to funciton defined in another function
+
+```{r name_masking2}
+x <- 2
+func <- function(y) {
+  sub_func <- function(z) c(x,y,z)
+  sub_func(5)
+}
+func(3)
+```
+
+## Lexical Scoping II
+
+### function vs variable
+`R` makes the distinction between variable and function names 
+
+```{r func_vs_var}
+n <- function(x) x/2
+f <- function() {n <- 10 ; n(n)}
+f()
+```
+
+### Fresh star
+An environement is created at _each time a function is called_ 
+
+```{r, include = FALSE}
+if (exists("a")) rm(a)
+```
+
+```{r fresh_start}
+f <- function() {
+  a <- ifelse(exists("a"), a + 1, 1)
+  print(a)
+}
+f()
+f()
+a <- 4
+f()
+f()
+```
+

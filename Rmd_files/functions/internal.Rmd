@@ -1,0 +1,29 @@
+## Primitive functions: definition
+
+- Primitive functions are functions from the `base` package that call `C` code directly
+- Primitive functions  do not contain `R` code, as so
+
+```{r primitive_empty}
+sum
+formals(sum)
+body(sum)
+environment(sum)
+```
+
+## Primitive functions: performance
+
+Function defined internally (either with `.Primitive` either called via `.Internal`)   are  sometimes incredibly  faster (written in \texttt{C}), but cannot by called directly in packages submitted to CRAN.
+
+```{r do_internal}
+x <- rnorm(100)
+R_mean <- function(x) mean(x)
+my_mean <- function(x) sum(x)/length(x)
+internal_mean <- function(x) .Internal(mean(x))
+```
+
+```{r do_internal_plot, echo = FALSE, out.width='.65\\textwidth'}
+res <- microbenchmark(R_mean = mean(x),
+                      my_mean = sum(x)/length(x),
+                      internal_mean = .Internal(mean(x)), times = 1e+05)
+autoplot(res)
+```

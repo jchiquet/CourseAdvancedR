@@ -1,0 +1,46 @@
+## Grouped expressions
+  
+### Syntax 
+
+```{r grouped_expression, eval = FALSE}
+{expr_1; expr_2; ...; expr_n }
+{  
+  expr_1
+   ...   
+  expr_n 
+} 
+```
+
+### Remarks
+
+- the last value is sent back
+- un group statement can be passed to a function
+
+## Grouped expressions: examples
+
+### Example 1
+
+```{r grouped_expression_example1}
+expr1 <- {a<-3; b<-5; a*b}
+expr1
+```
+
+### Example 2
+
+```{r grouped_expression_example2}
+tmp <- 12
+expr2 <- {a<-3; b<-5; tmp<-a*b+tmp}
+```
+
+\pause
+
+```{r grouped_expression_example2_out1}
+expr2
+```
+
+\pause
+
+```{r grouped_expression_example2_out2}
+tmp
+```
+

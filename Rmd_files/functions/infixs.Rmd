@@ -1,0 +1,18 @@
+## Infix functions
+
+### Definition
+Infix function (contrary to prefix functions) are function where the name comes between the argument (like "-" or "+"). 
+
+R comes with the following infix functions predefined: 
+`%%, %*%, %/%, %in%, %o%, %x%, :, ::, :::, $, @, ^, *, /, +, -, >, >=, <, <=, ==, !=, !, &, &&, |, ||, ~, <-, <<-`
+
+### Example 
+Can be use to define operator
+```{r infix_examples}
+`%+%` <- function(x,y) paste(x,y) 
+"Université" %+% "Paris" %+% "Dauphine"
+```
+
+
+### Exercice
+Create infix functions for `intersection`, `union` and `setdiff` and test it on simple vectors.

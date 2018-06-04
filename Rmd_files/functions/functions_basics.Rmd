@@ -1,0 +1,31 @@
+## Functions definition
+
+### Syntax
+
+```{r function_definition, eval = FALSE}
+
+my_func <- function(arg1,arg2, ...) {
+  expression
+}
+```
+
+### Remarks 
+-  The last value of the expression is returned
+-  One must use a list to send  back several objects
+- `return()` is used only when you need to send a value at an early stage in the expression
+-  In `R`, functions are object like any others and can manipulated as such
+
+## Function components {.allowframebreaks}
+
+Most of functions have three parts
+
+- the `body()` (code inside the function)
+- the `formals()` (list of arguments)
+- the `environment()` (a set of bindings between symbols and objects, i.e, a place to store variables)
+
+```{r function_components}
+environment(var)
+formals(var)
+body(var)
+```
+

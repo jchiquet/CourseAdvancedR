@@ -1,0 +1,130 @@
+## Function arguments
+
+### Calling function
+Arguments can be specified 
+1. by name
+2. by partial name
+3. by position
+
+Here are some stupid (but correct) call to `mean(x=,trim=,na.rm=)`
+```{r}
+mean(1:10, n = T)
+mean(1:10, , FALSE)
+mean(1:10, 0.05, FALSE)
+mean(, TRUE, x = c(1:10, NA))
+```
+
+### Exercice
+Clarify the following function calls
+
+```{r clarify_call, eval = FALSE}
+x <- sample(replace = TRUE, 20, x = c(1:10, NA))
+y <- runif(min = 0, max = 1, 20)
+cor(m = "k", y = y, u = "p", x = x)
+```
+
+## Default arguments
+
+### Arguments can have default values in `R`
+
+```{r default}
+f <- function(a = 1, b = 2) c(a,b)
+f()
+```
+
+\pause 
+
+### The `missing` function
+
+You can check wether an argument was passed or not with `missing`:
+
+```{r missing1}
+f <- function(a = 1, b = 2) c(missing(a),missing(b))
+f(a)
+```
+
+Hence, you can assign a default value _a posteriori_
+
+```{r missing2}
+f <- function(a, b = 2) {
+  if (missing(a)) a <- 3  
+c(a, b)
+}
+f(a)
+```
+
+## Lazy evaluation
+
+Arguments are evaluated only if they are used, which is known as "lazy evaluation"
+
+```{r defaultlazy}
+f <- function(a = 1, b = 4*a) c(a,b)
+f()
+f(43)
+```
+
+Even better (or worse...)
+
+```{r defaultsuperlazy}
+f <- function(a = 1, b = d) {
+  d <- 4 + 2 * a; c(a,b)
+}
+f()
+f(4)
+```
+
+## The ... argument
+
+The argument `...` matches any argument not otherwise matched
+
+- useful when collecting argument to call another function
+- do not need to precify the name ofd required argument
+- the counterpart is that any misspelled argument is passed to `...` and show no warning
+
+### Example: `plot`
+Many argument in `plot` are passed to the `par` function that manages the graphical paramters:
+
+```{r plot_dot, eval = FALSE}
+plot(1:5, col = "red")
+plot(1:5, llty = "dotted")
+```
+
+### Capturing ...
+`list()` can be used to easily captured arguments passed with `...`
+```{r capture_dot}
+f <- function(...) names(list(...))
+f(a = 1, b = 2)
+```
+
+## Calling function with a list
+
+The `do.call` function constructs and executes a function call from a name or a function and a list of arguments to be passed to it:
+```{r do.call1}
+do.call(mean, list(x = 1:10, trim = 0.05, na.rm = FALSE))
+```
+
+\pause
+
+### Exercice
+Suppose the outputs of 100 simulations are stored in a list like that
+
+```{r docallSim, echo = FALSE}
+res <- replicate(100, 
+  rbind(data.frame(method="lasso", mse=runif(1,.75,1) , timing=runif(1)),
+    data.frame(method="ridge", mse=runif(1,.5,.75), timing=runif(1)),
+    data.frame(method="bayes", mse=runif(1,.85,1) , timing=runif(1,100,200))
+  ), simplify=FALSE)
+```
+
+```{r docallSim2}
+class(res)
+res[[1]]
+length(res)
+```
+How would you store them in a single data frame?
+
+\pause
+
+```{r docallSim3}
+head(do.call(rbind, res), 2)
+```

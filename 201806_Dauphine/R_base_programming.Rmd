@@ -54,11 +54,28 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 - Interface with github
 \rsa required tool for efficent development in `R`
 
+### My favorites shortcuts
+
+- `ctrl + return`: execute current selection in console
+- `ctrl + 1/2/3/4`: naviguate between panels
+- `ctrl + down/up`: naviguate between tabs
+- `ctrl + shift + k`: knit current doccument
+
 ### 
 
 ![Screenshot of the Rstudio API](figures/rstudio)
 
+# Control Statements
 
+```{r control_statements, child = paste0('control_statements/', c("grouped_expressions.Rmd", "conditional_statements.Rmd", "loop_statements.Rmd")), cache = FALSE}
+```
+
+# Functions
+
+```{r functions, child = paste0('functions/', c("functions_basics.Rmd", "lexical_scoping.Rmd", "functions_arguments.Rmd", "infixs.Rmd", "internal.Rmd", "compilation.Rmd")), cache = FALSE}
+```
+
+# Functionals
 
 <!-- # Function, Functionals -->
 

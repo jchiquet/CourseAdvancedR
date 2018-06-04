@@ -22,7 +22,7 @@ knitr::opts_knit$set(child.path = params$child_path)
 
 ## Block font color in light gray
 color_block = function(color) {
-  function(x, options) sprintf('\\color{%s}\\begin{verbatim}%s\\end{verbatim}', color, x)
+  function(x, options) sprintf('\\color{%s}\\begin{verbatim}%s\\end{verbatim}\\color{black}', color, x)
 }
 knitr::knit_hooks$set(output = color_block('gray'))
 def.chunk.hook  <- knitr::knit_hooks$get("chunk")

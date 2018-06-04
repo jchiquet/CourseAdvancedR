@@ -1,0 +1,101 @@
+## Conditional statements: `if,if/else,ifelse`
+
+### Standard syntax
+
+```{r if, eval = FALSE}
+if (condition) { 
+  expr_1
+} else {
+  expr_2
+}
+```
+
+### Vectorial form
+
+```{r ifelse, eval = FALSE}
+ifelse(condition, a, b)
+```
+
+### Remarks
+
+- `condition` is logical, so use `&`, `|`, `!`, etc. 
+- `else`  is optional
+- `elseif` allows imbricating statements
+
+
+## Conditional statements: example
+
+```{r, conditional_statement_example}
+partiel <- 11
+DS <- 14
+if (partiel > 6 & mean(DS,partiel) > 10) {
+    cat("\nreçu(e).")
+} else {
+    cat("\nrecalé(e).")
+}
+```
+
+### Exercice
+Use the vectorial `ifelse` to  send the full vector of results
+
+```{r conditional_statement_example_data}
+partiel <- c(11,5,6,12,9,8,14)
+DS <- c(14,16,12,12,19,12,7)
+```
+
+\pause
+
+```{r conditional_statement_example_soluce}
+ifelse(partiel > 6 & rowMeans(cbind(DS,partiel)) > 10, "reçu(e)", "recalé(e)")
+```
+
+## Conditional statement: `switch`
+
+### Syntax
+
+```{r switch_syntax, eval = FALSE}
+switch (expr,
+ expr_1 = do_1,
+ ...,
+ expr_n = do_n,
+ do_default
+) 
+```
+
+### Remarks
+
+- `expr` is either an integer or a character
+-  if an integer with value $i$, the $ith$ expression `do_i` is evaluated
+-  if a string the expression `do_i` so that `expr == expr_i` is evaluated
+
+## `switch`: examples 
+
+### `integer` form
+
+```{r switch_example1}
+expr <- 2
+switch(expr, cat("My value is 1"), cat("My value is 2"))
+```
+
+```{r switch_example2, eval = FALSE}
+expr <- 3
+switch(expr, cat("My value is 2"), cat("My value is 2"))
+```
+
+```{r switch_example2_answer, echo = FALSE}
+expr <- 3
+switch(expr, cat("My value is 2"), cat("My value is 2"))
+```
+
+### `character` form
+
+```{r switch_example3}
+stat <- "variance"
+f_stat <- switch(stat,
+    "mean"  = mean,
+    "variance" = var,
+NULL)
+f_stat(1:10)
+```
+
+

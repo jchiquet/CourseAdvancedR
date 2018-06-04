@@ -2,9 +2,19 @@
 
 \usepackage{etextools}
 % make space after console-output smaller:
-% \setlength{\OuterFrameSep}{2pt}
+\setlength{\OuterFrameSep}{2pt}
 \makeatletter
-\preto{\@verbatim}{\topsep=-0pt \partopsep=0pt }
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+\makeatother
+
+\makeatletter
+\addtobeamertemplate{block begin}{
+\def\@listi{\leftmargin\leftmargini
+              \topsep    0pt
+              \parsep    0pt
+              \itemsep   3pt plus 2pt minus 3pt}
+\partopsep 0pt
+}
 \makeatother
 
 \graphicspath{{../resources/common_figs/}}

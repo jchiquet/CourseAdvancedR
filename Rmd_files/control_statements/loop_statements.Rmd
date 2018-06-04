@@ -1,0 +1,83 @@
+## loop statement: `for`
+
+### Syntax
+
+```{r for_syntax, eval = FALSE}
+for (var in set) {
+  expr(var)
+}
+for (var in set) # avoid this syntax!!
+  expr(var)
+for (var in set) expr(var)
+```
+
+### Remarks
+
+- `var` is the incremented variable
+- `set` is a vector of the successive values
+- generally slow compared to matricial/vectorize operation
+
+## `for` loop: examples
+
+### Example: C/C++ like
+
+```{r for_example}
+for (i in sample(1:5)) cat(i)
+v <- numeric(7)
+for (i in seq_along(v))  v[i] <- i*3
+```
+
+### Exercice:  
+
+Use a for loop to display the colnames of the data frame `iris` which are not a factor, by completing the follwoing piece of code
+
+```{r for_iris}
+data(iris)
+cat("\nColumn names are:")
+```
+
+\pause
+
+```{r for_iris_soluce}
+for (nom in colnames(iris)) {
+  if (!is.factor(iris[,nom])) cat("",nom)  
+}
+```
+\pause
+
+
+A more R-style way to do that is
+
+```{r for_iris_correct_soluce}
+cat(colnames(iris)[!sapply(iris, is.factor)])
+```
+
+## Loop statement: `while, repeat`
+
+### Syntax
+
+```{r while_repeat_syntax, eval = FALSE}
+while (condition) {
+  expr
+}
+repeat {
+  expr
+}
+```
+
+### Remarks
+
+- avoid imbrication (slow)
+- can be interrupted/controlled with with `break`/`next`
+
+```{r while_example, eval = FALSE}
+repeat {
+  expr
+  if (condition) {break}
+}
+while (condition1){
+  expr_1
+  if (condition2) {next}
+  expr_2
+}
+```

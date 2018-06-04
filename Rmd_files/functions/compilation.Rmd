@@ -1,12 +1,13 @@
 ## Compile your functions with `base::compiler` {.allowframebreaks}
 
-If you cannot avoid a loop, you will save some time
+### The `R` byte code compiler
+The function `cmpfun` compiles the body of your function and returns a new function with the same formals and the body replaced by the compiled body expression.
 
 ```{r, include = FALSE}
 compiler::enableJIT(0)
 ```
 
-```{r}
+```{r compile_example}
 cumsum.R <- function(n) {
   x <- rnorm(n)
   cumsum(x)
@@ -21,7 +22,11 @@ cumsum.me <- function(n) {
 }
 
 cumsum.cmp <- compiler::cmpfun(cumsum.me)
+```
 
+### 
+
+```{r compile_plot, echo=FALSE}
 autoplot(
   microbenchmark(
     cumsum.R(1000),
@@ -31,9 +36,11 @@ autoplot(
 )
 ```
 
+- If you cannot avoid a loop, you will save some time
+- Can be set automatically with `compiler::enableJIT(3)`
+
+
 ```{r, include = FALSE}
 compiler::enableJIT(3)
 ```
-
-\rsa Can be set automatically with `compiler::enableJIT(3)`
 
