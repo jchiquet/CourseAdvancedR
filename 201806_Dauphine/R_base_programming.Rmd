@@ -29,6 +29,8 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 - @Rbase: A Language and Environment for Statistical Computing [https://www.R-project.org/](https://www.R-project.org/)
 - @advr: Advanced R, retrieved from [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 
+\rsa Many ideas/examples inspired/stolen there.
+
 ## Prerequisites
 
 ### Data Structure in base R

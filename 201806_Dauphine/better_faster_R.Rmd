@@ -1,6 +1,6 @@
 ---
 title: (A bit of) Advanced R
-subtitle: Part 1 - towards better `R`-base programming
+subtitle: Part 2 - faster `R` programming
 author: Julien Chiquet
 institute: "http://github/jchiquet/CourseAdvancedR"
 date: "Université Paris Dauphine, Juin 2018"
@@ -26,7 +26,6 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 ## References
 
-- @Rbase: A Language and Environment for Statistical Computing [https://www.R-project.org/](https://www.R-project.org/)
 - @advr: Advanced R, retrieved from [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 - @efficientR: efficient R programming [https://bookdown.org/csgillespie/efficientR/](https://bookdown.org/csgillespie/efficientR/)
 
@@ -42,47 +41,44 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 \rsa Creation, Basic Operation, Manipulation, Representation
 
-### Resources
+### Basic `R` programming
 
-  - Advanced R, chapters I.2, I.3 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)]
-  - An introduction to R programming [http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html](http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html)
+  1. Control Statements
+  2. Functions 
+  3. Basic on Functionals 
 
-# Function, Functionals
+  - Advanced R, chapters I.6,  II.10,  II.11 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)]
 
-```{r functionals, child = paste0('functionals/', c("applieser.Rmd", "doCall.Rmd", "Reduce.Rmd")), cache = FALSE}
-```
 
-# Good and bad practices in `R`
-
-```{r practices, child = paste0('good_bad_practices/', c("vectorize.Rmd", "compilation.Rmd", "growing.Rmd"))}
-```
-
-# Benchmark your code
+# Benchmark
 
 ```{r microbenchmark, child = paste0('profiling/', c("microbenchmark.Rmd", "profr.Rmd"))}
 ```
 
-# Use all your cores when needed
+# Vectorize
+
+```{r practices, child = paste0('good_bad_practices/', c("vectorize.Rmd", "growing.Rmd"))}
+```
+
+# Parallelize
 
 ```{r parallel, child = paste0('parallel_computing/', c("intro_parallel_computing.Rmd", "parallel.Rmd"))}
 ```
 
-# Tricks
-
-```{r internal, child = paste0('tricks/', c("internal.Rmd", "use_algebra.Rmd"))}
+```{r internal, child = paste0('tricks/', c("use_algebra.Rmd"))}
 ```
 
-# Remember that R is object oriented
+# Prefer simple objects, as `R` is a typed language
 
-```{r types, child = paste0('types/', c("factors.Rmd", "float.Rmd", "order.Rmd"))}
+```{r types, child = paste0('types/', c("float.Rmd", "factors.Rmd", "order.Rmd"))}
 ```
 
-# Mind your vocabulary: `R` fast built in function
+# Mind your vocabulary: `R` fast built in function, an others
 
-```{r vocabulary, child = paste0('vocabulary/', c("colSums_family.Rmd", "rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd"))}
+```{r vocabulary, child = paste0('vocabulary/', c("colSums_family.Rmd", "rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd", "use_algebra.Rmd"))}
 ```
 
-# Interface with lower-level languages
+# Use `Rcpp` and C++ code
 
 ```{r Rcpp, child = paste0('Rcpp/', c("RcppArmadillo.Rmd", "RcppArmadillo2.Rmd"))}
 ```
