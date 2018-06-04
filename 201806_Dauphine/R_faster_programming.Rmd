@@ -1,0 +1,109 @@
+---
+title: (A bit of) Advanced R
+subtitle: Part 2 - faster `R` programming
+author: Julien Chiquet
+institute: "http://github/jchiquet/CourseAdvancedR"
+date: "Université Paris Dauphine, Juin 2018"
+csl: "../resources/apa-no-doi-no-issue.csl"
+output:
+  beamer_presentation:
+    slide_level: 2
+    highlight: tango
+    includes: 
+      in_header: ../resources/common_preamble.tex
+      before_body: ../resources/common_startup.tex
+bibliography: ../resources/bibliography.bib
+fontsize: 10pt
+nocite: |
+  @advr, @efficientR, @Rbase, @Rcpp, @Rinferno
+params: 
+  child_path : "../Rmd_files/"
+  setup_path : "../resources/"
+---
+
+```{r setup, include = FALSE}
+source(paste0(params$setup_path, "knitr_setup.R"))
+```
+
+## References I
+
+### Advanced R [@advr], [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
+
+![](../resources/common_figs/cover_advancerdR.png){width="50px"}\
+
+
+### Efficient R programming [@efficientR], [https://bookdown.org/csgillespie/efficientR/](https://bookdown.org/csgillespie/efficientR/)
+
+![](../resources/common_figs/cover_efficientR.png){width="50px"}\
+
+
+## References II
+
+### Seamless R and C++ integration with Rcpp [@Rcpp], for sale but see [http://dirk.eddelbuettel.com](http://dirk.eddelbuettel.com)
+
+![](../resources/common_figs/cover_Rcpp.jpg){width="50px"}\
+
+
+### The R inferno [@Rinferno], [http://www.burns-stat.com/documents/books/the-r-inferno/](http://www.burns-stat.com/documents/books/the-r-inferno/)
+
+![](../resources/common_figs/cover_Rinferno.jpeg){width="50px"}\
+
+
+## Prerequisites
+
+### Data Structure in base R
+
+  1. Atomic vector (integer, double, logical, character)
+  2. Recursive vector (list)
+  3. Factors
+  4. Matrices and array
+  5. Data Frame
+
+\rsa Creation, Basic Operation, Manipulation, Representation
+
+### Basic `R` programming
+
+  1. Control Statements
+  2. Functions 
+  3. Basics on Functionals 
+
+\rsa Advanced R, Chapters I.6,  II.10,  II.11
+
+
+# Benchmark
+
+```{r microbenchmark, child = paste0('profiling/', c("microbenchmark.Rmd", "profr.Rmd"))}
+```
+
+# Vectorize
+
+```{r practices, child = "good_bad_practices/vectorize.Rmd"}
+```
+
+```{r practices, child = "vocabulary/colSums_family.Rmd"}
+```
+
+```{r practices, child = "good_bad_practices/growing.Rmd"}
+```
+
+# Parallelize
+
+```{r parallel, child = paste0('parallel_computing/', c("intro_parallel_computing.Rmd", "parallel.Rmd"))}
+```
+
+# Prefer simple objects
+
+```{r types, child = paste0('types/', c("types_surprises.Rmd", "factors.Rmd", "order.Rmd"))}
+```
+
+# Use `Rcpp` and C++ code
+
+```{r Rcpp, child = paste0('Rcpp/', c("RcppArmadillo.Rmd", "RcppArmadillo2.Rmd"))}
+```
+
+# Mind your vocabulary: `R` fast built in function, an others
+
+```{r vocabulary, child = paste0('vocabulary/', c("rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd", "use_algebra.Rmd"))}
+```
+
+## References

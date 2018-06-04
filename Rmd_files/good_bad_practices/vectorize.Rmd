@@ -1,36 +1,35 @@
-## Vectorize any algebraic operation {.allowframebreaks}
+## Vectorize any algebraic operation
 
 \emphase{Example:} compute  $\exp(x) = \sum_{k=0}^{n} \frac{x^k}{k!}$
 
-```{r, vec_fun}
-## the good way
-exp_vec <- function(x, n){
-  res <- sum(x^(0:n)/c(1,cumprod(1:n)))
-  res
-}
-## the sad/bad/less readable way
-exp_loop <- function(x, n){
+```{r, loop_fun}
+exp_loop <- function(x, n){ ## the sad/bad/less readable way
   res <- 1
   for (k in 1:n) res <- res + 2^k/factorial(k)
   res
 }
 ```
 
-```{r vec_benchmark}
-autoplot(microbenchmark(vec = exp_vec(2, 100), loop = exp_loop(2, 100)))
+\pause 
+```{r, vec_fun}
+## the good way
+exp_vec <- function(x, n) sum(x^(0:n)/c(1,cumprod(1:n)))
 ```
 
-<!-- ```{r vec_benchmark, echo = FALSE} -->
-<!-- map_df(10^(1:4),  -->
-<!--   ~ microbenchmark(vec = exp_vec(2, .x), loop = exp_loop(2, .x))  %>%  -->
-<!--   as.data.frame() %>% select(expr, time) %>% mutate(n = .x) -->
-<!-- )  %>%  -->
-<!--   ggplot(aes(x = factor(n), y = time, group = expr, fill = expr)) + geom_boxplot() -->
-<!-- ``` -->
+```{r vec_benchmark, echo = FALSE, out.width='.6\\textwidth'}
+autoplot(microbenchmark(vec = exp_vec(2, 100), loop = exp_loop(2, 100)))
+```
 
 ## Vectorize, even for non-algebraic operation {.allowframebreaks}
 
 ```{r vec_outer}
+month_year_loop <- function(year) {
+  res <- c()
+  for (month in month.name)
+    res <- c(res, paste(month, year, sep = "_"))   
+  res
+}
+
 month_year_apply <- function(year) {
   sapply(month.name, function(month) paste(month, year, sep = "_"))  
 }
@@ -43,8 +42,10 @@ head(month_year_outer(c(2010, 2013)), 3)
 
 ```{r vec_outer_plot}
 autoplot(microbenchmark(
+  loop   = month_year_loop(c(2011, 2013)),
   sapply = month_year_apply(c(2011, 2013)),
-  outer  = month_year_outer(c(2011, 2013)), 
-  times = 100))
+  outer  = month_year_outer(c(2011, 2013))
+  )
+)
 ```
 

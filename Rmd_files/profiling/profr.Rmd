@@ -50,9 +50,9 @@ profiling <- profr({my_func(1000,500)}, interval = 0.01)
 plot(profiling)
 ```
 
-## Profile your code within R Studiow with `profvis`
+## Profile your code within Rstudio with `profvis`
 
-Profvis integrates the profiling to the Rstudio API
+Profvis integrates the profiling to the Rstudio API: try it!
 ```{r profvis, eval = FALSE}
 library(profvis)
 profvis({my_func(1000,500)})

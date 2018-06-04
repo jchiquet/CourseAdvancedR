@@ -77,3 +77,15 @@ res
 pbmcapply::pbmcmapply(1:8, FUN = one.simu, mc.cores = 2)
 ```
 
+## Parallel computing: exercise
+
+Here are two function to bootstrap a table and to extract the $R^2$ from the output of `lm`, a linear model fit.
+
+```{r bootstrap_example}
+
+boot_df  <- function(x) x[sample(nrow(x), rep = T), ]
+rsquared <- function(mod) summary(mod)$r.squared
+summary(lm(mpg ~ wt + disp, data = mtcars))
+```
+Bootstrap the $R^2$ with `lapply`, `mclapply` and `replicate`.
+

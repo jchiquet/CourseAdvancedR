@@ -6,8 +6,8 @@ library(tidyverse)
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE, verbose = TRUE,
                size = 'scriptsize',dev = 'pdf', fig.align = "center", results = "markup", 
                fig.width = 6, fig.height = 4,  fig.pos = 'htbp!', out.width = '.8\\textwidth',
-               fig.path = "figures/", cache.path = "cache/")
 
+               fig.path = "figures/", cache.path = "cache/")
 knitr::opts_knit$set(child.path = params$child_path)
 
 # knitr::knit_hooks$set(subdir = function(before, options, envir) {

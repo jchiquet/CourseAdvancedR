@@ -21,27 +21,37 @@ Even if it is tempting when the final size is unknown.
 ```{r stack_func}
 simu.stack <- function(x) { ## x is a n x p matrix
   out <- data.frame(mean = numeric(0), sd = numeric(0))
-  for (i in 1:n) 
-    out <- rbind(out, data.frame(mean = mean(x[i,]), sd = sd(x[i, ])) )
-  return(out)
+  for (i in 1:n) out <- rbind(out, data.frame(mean = mean(x[i,]), sd = sd(x[i, ])) )
+  out
 }
 
 simu.df <- function(x) {
   out <- data.frame(mean = numeric(n), sd = numeric(n))
-  for (i in 1:n)
-    out[i, ] <- c(mean = mean(x[i,]), sd = sd(x[i, ])) 
-  return(out)
+  for (i in 1:n) out[i, ] <- c(mean = mean(x[i,]), sd = sd(x[i, ])) 
+  out
 }
 
 simu.list <- function(x) {
-  my.list <- lapply(1:n, function(i) c(mean(x[i,]), sd(x[i, ])))
+  my.list <- lapply(1:nrow(x), function(i) c(mean(x[i,]), sd(x[i, ])))
   out <- data.frame(do.call(rbind, my.list))
   colnames(out) <- c("mean","sd")  
-  return(out)
+  out
+}
+```
+
+```{r stack_smart, echo = FALSE}
+simu.smart <- function(x) {
+  mean_x <- rowMeans(x)
+  sd_x <- sqrt(rowMeans(x^2 - outer(mean_x^2, rep(1, ncol(x))))*ncol(x)/(ncol(x)-1))
+  data.frame(mean_x, sd_x)
 }
 ```
 
 ```{r stack_roll}
 n <- 1000; p <- 10; x <- matrix(rnorm(n*p), n, p)
-autoplot(microbenchmark(simu.stack(x), simu.df(x), simu.list(x), times=20))
+autoplot(microbenchmark(simu.stack(x), simu.df(x), simu.list(x), simu.smart(x), times=20))
 ```
+
+### Exercice: code the smart function (no loop)
+
+

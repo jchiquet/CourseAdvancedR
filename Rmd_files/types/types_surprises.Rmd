@@ -1,6 +1,6 @@
-## `R` masks the numerical errors
+## `R` is a typed language
 
-by printing a \emph{convenient} summary of objects
+`R` masks the numerical errors by printing a \emph{convenient} summary of objects
 ```{r float1}
 7/13
 print(7/13, digits=16)

@@ -11,6 +11,9 @@ system.time(replicate(100, func.one(n)))
 system.time(replicate(100, func.two(n)))
 ```
 
+### Exercice
+Write functions to compute the variance of a real vector, with an without loops. Benchmark them.  
+
 ## Quick benchmarking with `microbenchmark`
 
 ```{r, microbenchmark, out.width = '.6\\textwidth'}
