@@ -101,7 +101,7 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 ```{r Rcpp, child = paste0('Rcpp/', c("RcppArmadillo.Rmd", "RcppArmadillo2.Rmd"))}
 ```
 
-# Mind your vocabulary: `R` fast built in function, an others
+# Mind your vocabulary
 
 ```{r vocabulary, child = paste0('vocabulary/', c("rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd", "use_algebra.Rmd"))}
 ```

@@ -1,0 +1,73 @@
+## Functional for `matrix` and `arrays`: `apply`
+
+### Definition
+Applies a function along a dimension of an array (row/columns of matrix).
+```{r apply_syntax, eval = FALSE}
+apply(array, dim, FUN, ...)
+```
+
+### Example
+```{r apply_example}
+mat <- matrix(1:6, 2, 3)
+apply(mat, 2, max)
+arr <- array(1:12, c(2,3,2))
+apply(arr, 3, colMeans)
+```
+
+## Other array functionals: `sweep`
+
+### Definition
+'Sweep out' a summary statistic along a dimension of an array for a given function
+```{r sweep_syntax, eval = FALSE}
+sweep(array, dim, stat, FUN, ...)
+```
+
+```{r load_iris, include = FALSE}
+data(iris)
+```
+
+### Example
+```{r sweep_iris, out.width=".6\\textwidth"}
+out <- sweep(iris[, 1:4], 2, colMeans(iris[, 1:4]), "-") ## center
+out <- sweep(out, 2, sqrt(colSums(out^2)/(nrow(out) - 1)), "/") ## scale
+iris_sc <- data.frame(out, Species = iris$Species)
+GGally::ggpairs(iris_sc, columns = 1:4, ggplot2::aes(colour = Species))
+```
+
+
+## Other array functionals: `outer`
+
+### Definition
+```{r outer_syntax, eval = FALSE}
+outer(array1, array2, FUN, ...)
+```
+
+### Example
+The more basic example is the kronecker product, but `FUN` can be anything!
+```{r outer_example}
+outer(1:3, 1:4, "*")
+1:3 %o% 1:4
+
+```
+
+
+## Grouped functional: `tapply`
+
+### Definition
+
+Applies a function on a vector partioned by a factor: combine a `split` + `lapply` operation
+
+```{r, include = FALSE}
+data(iris)
+```
+
+### Example 
+```{r tapply_iris}
+with(iris, tapply(Sepal.Length, Species, mean)) # readable
+with(iris, lapply(split(Sepal.Length, Species), mean)) # still ok (I think)
+stat <- c() # less readable (and naming is lost)
+for (l in levels(iris$Species))
+  stat <- c(stat, mean(iris$Sepal.Length[iris$Species == l]))
+stat
+```
+

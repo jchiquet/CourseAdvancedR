@@ -14,7 +14,8 @@ output:
       before_body: ../resources/common_startup.tex
 bibliography: ../resources/bibliography.bib
 fontsize: 10pt
-nocite: '@*'
+nocite: |
+  @advr, @Rbase
 params: 
   child_path : "../Rmd_files/"
   setup_path : "../resources/"
@@ -87,45 +88,9 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 # Functionals
 
-<!-- # Function, Functionals -->
+```{r functionals, child = paste0('functionals/', c("apply.Rmd", "Reduce.Rmd"))}
+```
 
-<!-- ```{r functionals, child = paste0('functionals/', c("applieser.Rmd", "doCall.Rmd", "Reduce.Rmd")), cache = FALSE} -->
-<!-- ``` -->
-
-<!-- # Good and bad practices in `R` -->
-
-<!-- ```{r practices, child = paste0('good_bad_practices/', c("vectorize.Rmd", "compilation.Rmd", "growing.Rmd"))} -->
-<!-- ``` -->
-
-<!-- # Benchmark your code -->
-
-<!-- ```{r microbenchmark, child = paste0('profiling/', c("microbenchmark.Rmd", "profr.Rmd"))} -->
-<!-- ``` -->
-
-<!-- # Use all your cores when needed -->
-
-<!-- ```{r parallel, child = paste0('parallel_computing/', c("intro_parallel_computing.Rmd", "parallel.Rmd"))} -->
-<!-- ``` -->
-
-<!-- # Tricks -->
-
-<!-- ```{r internal, child = paste0('tricks/', c("internal.Rmd", "use_algebra.Rmd"))} -->
-<!-- ``` -->
-
-<!-- # Remember that R is object oriented -->
-
-<!-- ```{r types, child = paste0('types/', c("factors.Rmd", "float.Rmd", "order.Rmd"))} -->
-<!-- ``` -->
-
-<!-- # Mind your vocabulary: `R` fast built in function -->
-
-<!-- ```{r vocabulary, child = paste0('vocabulary/', c("colSums_family.Rmd", "rowsum.Rmd", "algebra.Rmd", "Matrix.Rmd"))} -->
-<!-- ``` -->
-
-<!-- # Interface with lower-level languages -->
-
-<!-- ```{r Rcpp, child = paste0('Rcpp/', c("RcppArmadillo.Rmd", "RcppArmadillo2.Rmd"))} -->
-<!-- ``` -->
 
 ## References {.allowframebreaks}
 
