@@ -1,4 +1,4 @@
-## Functionals for list: `Reduce` and co
+## Functional for working on lists: `Reduce`
 
 ### Definition
 ‘Reduce’ uses a binary function to successively combine the elements of a given vector 

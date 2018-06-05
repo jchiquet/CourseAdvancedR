@@ -1,1 +1,24 @@
-## Mathematical functionals 
+## Mathematical functionals {.allowframebreaks}
+
+- functionals are quite natural mathematics!
+- `R` includes a couple of mathematical functionals for univariate functions
+
+### `integrate`
+Finds the area under the cruve defined by a function:
+```{r integrate_syntax}
+integrate(sin, 0, pi)
+```
+
+### `optimise` and `optim` (multivariate)
+Find the location of lowest value of the function
+```{r optimise_syntax}
+optimise(sin, c(0, 2*pi))
+```
+\rsa `optim` is much more powerful but is out of the scope of this course
+
+### `uniroot`
+Finds where the function hits zero
+```{r uniroot_syntax}
+uniroot(sin, c(pi/2, 3*pi/2))
+```
+
