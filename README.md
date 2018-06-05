@@ -6,11 +6,11 @@ Material used to generate slides for various teachings about R language and prog
 
 ### Part 1: towards better R-base programming
 
-[slides](Dauphine2018/R_base_programming.pdf)
+[slides](https://github.com/jchiquet/CourseAdvancedR/raw/master/201806_Dauphine/R_base_programming.pdf)
 
 ### Part 2: towards faster R programming 
 
-[slides](Dauphine2018/R_faster_programming.pdf)
+[slides](https://github.com/jchiquet/CourseAdvancedR/raw/master/201806_Dauphine/R_faster_programming.pdf)
 
 ### Part 3: a tour of the `tidyverse`
 
