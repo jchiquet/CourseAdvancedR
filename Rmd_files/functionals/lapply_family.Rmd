@@ -35,8 +35,50 @@ boots <- replicate(100, datasets::iris[sample.int(n, n, replace=TRUE), ], simpli
 
 
 
-## Cousins of `lapply`: multiple inputs
+## Cousins of `lapply`: multiple inputs I
 
+### Caveat
+`lapply` and its vector-input variants like `sapply` and `vapply` works for a single vector to loop over.
+
+### Example 
+Suppose we want to compute the weighted mean for series of 10 couple of vectors $(x,w)\in\mathbb{R}^{2 \times 100}$  :
+```{r weighted_mean_problem}
+x <- replicate(5, rnorm(100      ), simplify = FALSE)
+w <- replicate(5, runif(100, 0, 1), simplify = FALSE)
+```
+
+### Solution
+It is possible to handle this problem with  `lapply`.
+\pause
+```{r lapply_weighted_mean_soluce}
+unlist(
+  lapply(seq_along(x), function(i) {
+    weighted.mean(x[[i]], w[[i]])  
+  })
+)
+```
+
+## Cousins of `lapply`: multiple inputs II
+
+A more elegant and readable solution is to rely on ` mapply` or `Map`, which let the possibility to pass several vectors to jointly loop over:
+
+### Syntax
+```{r Map_syntax, eval = FALSE}
+Map(FUN, ...)
+mapply(FUN, ..., MoreArgs = NULL, simplify = TRUE, USE.NAMES = TRUE)
+```
+
+### Remarks
+- `Map` and ` mapply` are equivalent
+- `Map` is more consistent with `lapply` (do not simplify, a bit simpler)
+
+### Exercise
+Use `Map` and `mapply` to compute the weighted means for the set $\{(x_i,w_i)\}_{i=1, \dots, 10}$
+
+\pause 
+```{r Map_weigthed_mean_soluce}
+unlist(Map(weighted.mean, x, w))
+```
 
 
 
