@@ -1,0 +1,44 @@
+## Anonymous function
+
+### Definition
+A function that does not deserve a name, defined 'on the fly' during its use
+```{r anonymous_syntax_equivalent}
+(function(x) (x^2))(2)
+f <- function(x) {x^2}
+f(2)
+```
+
+### Remark
+- generally very short with few arguments
+- it style owns an environment, formals and body:
+
+```{r}
+formals(function(x) (x^2))
+body(function(x) (x^2))
+environment(function(x) (x^2))
+```
+
+- mostly used in conjunction with `lapply`-like functionals
+
+```{r anonymous_syntax}
+unlist(lapply(datasets::iris, function(x) length(unique(x))))
+```
+
+## Exercises on `lapply`
+
+### Exercise 1
+
+Use the closure `power` to generate various exponentation functions that you will store in a list. Use a functionals to compute the exponents of numbers of your choice. 
+
+### Exercise 2
+
+Consider the dataset `datasets::mtcars`. Use `lapply` and an anonymous function to find the coefficient of variation (`sd(x)/mean(x)`) on each column of the dataset.
+
+### Exercise 3
+ 
+Suppose we want to predict `mpg` (consumption) from the regressors `disp` (engine size) and `wt` (weight). We test several linear models whose corresponding `R` formulae are
+- `mgp ~ 1 + disp`
+- `mgp ~ I(1/disp)`
+- `mgp ~ 1 + I(1 / disp) + wt`
+
+Use ` lapply` to adjust linear models with such formulaes and extract the coefficient of determination ($R^2$).

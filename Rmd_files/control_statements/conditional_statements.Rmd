@@ -35,7 +35,7 @@ if (partiel > 6 & mean(DS,partiel) > 10) {
 }
 ```
 
-### Exercice
+### Exercise
 Use the vectorial `ifelse` to  send the full vector of results
 
 ```{r conditional_statement_example_data}
@@ -86,6 +86,8 @@ switch(expr, cat("My value is 2"), cat("My value is 2"))
 expr <- 3
 switch(expr, cat("My value is 2"), cat("My value is 2"))
 ```
+
+\pause
 
 ### `character` form
 

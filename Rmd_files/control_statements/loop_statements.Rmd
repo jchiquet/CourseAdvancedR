@@ -27,7 +27,9 @@ v <- numeric(7)
 for (i in seq_along(v))  v[i] <- i*3
 ```
 
-### Exercice:  
+\pause
+
+### Exercise:  
 Use a for loop to display the colnames of the data frame `iris` which are not a factor, by completing the follwoing piece of code
 
 \pause
@@ -40,7 +42,7 @@ for (nom in colnames(iris)) {
 ```
 \pause
 
-A more R-style way to do that is
+A more `R`-style way to do that would be
 
 ```{r for_iris_correct_soluce}
 cat(colnames(iris)[!sapply(iris, is.factor)])

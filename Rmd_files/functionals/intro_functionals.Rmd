@@ -1,1 +1,23 @@
-## Functional programming: basics
+## Functional programming: general idea
+
+### Definition
+`R` is _a Functional programming language_ with _first class functions_:  it places functions at the same level  as variables. One can
+
+1. _pass functions as arguments_ to other functions
+2. _return functions_ from other functions
+3. _store functions in data structures_ 
+
+\pause
+
+### Ingredients
+In `R` the tools/ingredients allowing functional programming are 
+
+- _closure_, i.e. functions that output functions
+- _list_, in which you can store functions
+- _anonymous functions_, i.e. function that does not deserve a name
+- _functionals_, i.e. functions that take function(s) as input
+
+### 
+
+\rsa we briefly review some of `R`'s functional tools, which you probably already use
+

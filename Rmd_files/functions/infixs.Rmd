@@ -14,5 +14,5 @@ Can be use to define operator
 ```
 
 
-### Exercice
+### Exercise
 Create infix functions for `intersection`, `union` and `setdiff` and test it on simple vectors.

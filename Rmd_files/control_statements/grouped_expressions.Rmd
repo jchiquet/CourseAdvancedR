@@ -32,12 +32,14 @@ tmp <- 12
 expr2 <- {a<-3; b<-5; tmp<-a*b+tmp}
 ```
 
+What is `expr`?
 \pause
 
 ```{r grouped_expression_example2_out1}
 expr2
 ```
 
+What is `tmp`?
 \pause
 
 ```{r grouped_expression_example2_out2}

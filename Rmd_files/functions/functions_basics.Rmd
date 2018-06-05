@@ -1,4 +1,4 @@
-## Functions definition
+## Function definition
 
 ### Syntax
 
@@ -12,7 +12,7 @@ my_func <- function(arg1,arg2, ...) {
 ### Remarks 
 -  The last value of the expression is returned
 -  One must use a list to send  back several objects
-- `return()` is used only when you need to send a value at an early stage in the expression
+- `return()` is used only when you need to send a value at an early stage
 -  In `R`, functions are object like any others and can manipulated as such
 
 ## Function components {.allowframebreaks}

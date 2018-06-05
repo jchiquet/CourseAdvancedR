@@ -14,7 +14,9 @@ mean(1:10, 0.05, FALSE)
 mean(, TRUE, x = c(1:10, NA))
 ```
 
-### Exercice
+\pause
+
+### Exercise
 Clarify the following function calls
 
 ```{r clarify_call, eval = FALSE}
@@ -89,14 +91,14 @@ plot(1:5, col = "red")
 plot(1:5, llty = "dotted")
 ```
 
-### Capturing ...
+### Capturing "..."
 `list()` can be used to easily captured arguments passed with `...`
 ```{r capture_dot}
 f <- function(...) names(list(...))
 f(a = 1, b = 2)
 ```
 
-## Calling function with a list
+## Calling a function with a list
 
 The `do.call` function constructs and executes a function call from a name or a function and a list of arguments to be passed to it:
 ```{r do.call1}
@@ -105,7 +107,7 @@ do.call(mean, list(x = 1:10, trim = 0.05, na.rm = FALSE))
 
 \pause
 
-### Exercice
+### Exercise
 Suppose the outputs of 100 simulations are stored in a list like that
 
 ```{r docallSim, echo = FALSE}

@@ -27,6 +27,8 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 ## References
 
+Many ideas/examples inspired/stolen in the following books:
+
 ### Advanced R [@advr], [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 
 ![](../resources/common_figs/cover_advancerdR.png){width="50px"}\
@@ -37,17 +39,15 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 ![](../resources/common_figs/cover_Rbase.png){width="50px"}\
 
 
-\rsa Many ideas/examples inspired/stolen there.
-
 
 ## Prerequisites
 
 ### Data Structure in base R
   1. Atomic vector (integer, double, logical, character)
   2. Recursive vector (list)
-  3. Factors
-  4. Matrices and array
-  5. Data Frame
+  3. Factor
+  4. Matrix and array
+  5. Data Frame\
 
 \rsa Creation, Basic Operation, Manipulation, Representation
 
@@ -88,7 +88,7 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 # Functionals
 
-```{r functionals, child = paste0('functionals/', c("intro_functionals.Rmd", "lapply.Rmd", "lapply_family.Rmd", "apply.Rmd", "Reduce.Rmd", "math_functionals.Rmd"))}
+```{r functionals, child = paste0('functionals/', c("intro_functionals.Rmd", "closure.Rmd",  "lapply.Rmd", "anonymous_function.Rmd", "lapply_family.Rmd", "apply.Rmd", "Reduce.Rmd", "math_functionals.Rmd"))}
 ```
 
 ## References

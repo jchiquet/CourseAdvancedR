@@ -23,35 +23,3 @@ my_lapply <-function(vector, FUN, ...) {
 }
 ```
 
-## Anonymous function
-
-### Definition
-A function that does not deserve a name, defined 'on the fly' during its use
-```{r anonymous_syntax}
-unlist(lapply(datasets::iris, function(x) length(unique(x))))
-```
-
-\rsa Generally very short with few arguments, used in cunjunction with `lapply`-like functionals
-
-```{r anonymous_syntax_equivalent}
-(function(x) (x^2))(2)
-f <- function(x) {x^2}
-f(2)
-```
-
-## Exercises on `lapply`
-
-Consider the dataset `datasets::mtcars`.
-
-### Exercise 1
-
-Use `lapply` and an anonymous function to find the coefficient of variation (`sd(x)/mean(x)`) on each column of the dataset.
-
-### Exercise 2
- 
-Suppose we want to predict `mpg` (consumption) from the regressors `disp` (engine size) and `wt` (weight). We test several linear models whose corresponding `R` formulae are
-- `mgp ~ 1 + disp`
-- `mgp ~ I(1/disp)`
-- `mgp ~ 1 + I(1 / disp) + wt`
-
-Use ` lapply` to adjust linear models with such formulaes and extract the coefficient of determination ($R^2$).

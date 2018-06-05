@@ -1,0 +1,42 @@
+##  Closure I
+
+### Definition
+A closure is a function that takes a function as input and returns a function as output
+
+### Example
+```{r closure_basics}
+power <- function(exponent) {
+  function(x) x^exponent
+}
+sqrt   <- power(1/2)
+square <- power(2)
+cube  <- power(3)
+```
+
+\pause
+
+We can check that their environement is related to the exponent :
+```{r closure_example2}
+as.list(environment(sqrt))
+as.list(environment(square))
+as.list(environment(cube))
+```
+
+##  Closure II
+
+And that tkey work!
+```{r closure_example3}
+sqrt(2)
+square(2)
+cube(2)
+```
+
+\pause
+
+This is the same as
+```{r closure_example4}
+power(1/2)(2)
+power(2)(2)
+power(3)(2)
+```
+

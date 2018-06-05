@@ -12,7 +12,9 @@ func <- function(x) c(x,y)
 func(4)
 ```
 
-This applies to funciton defined in another function
+\pause 
+
+This applies to function defined in another function
 
 ```{r name_masking2}
 x <- 2
@@ -48,8 +50,20 @@ f <- function() {
 }
 f()
 f()
+```
+
+## Lexical Scoping III
+
+but
+
+```{r fresh_start2}
+f <- function() {
+  a <- ifelse(exists("a"), a + 1, 1)
+  print(a)
+}
 a <- 4
 f()
 f()
+
 ```
 
