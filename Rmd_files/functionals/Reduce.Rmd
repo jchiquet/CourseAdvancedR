@@ -1,10 +1,18 @@
 ## Functionals for list: `Reduce` and co
 
-> ‘Reduce’ uses a binary function to successively combine the elements of a given vector 
+### Definition
+‘Reduce’ uses a binary function to successively combine the elements of a given vector 
+```{r reduce_syntax, eval = FALSE}
+Reduce(FUN, vector, init, right = FALSE, accumulate = FALSE)
+Reduce(f, 1:3) <-> f(f(1,2))
+```
 
-\rsa can be use  to  post-process your  list  of simulations obtained via `mclapply` just like `do.call`
-
-Say more... (map, Reduce)
+### Exercise
+Consider a list of vectors of integer. 
+```{r }
+my_list <- replicate(10, sample.int(20, 10, replace = TRUE), simplify = FALSE)
+```
+Find which values occur in every element of the list visited so far, starting from the end.
 
 ## Example: "jacknifing" a lasso solution path
 A single Lasso fit of the diabete data set
