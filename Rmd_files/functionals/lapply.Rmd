@@ -1,4 +1,57 @@
 ## For loop functional: `lapply`
 
+### Definition
+Applies a function to each element found in a vector. The vector is defined in a `R`-way, that is, it can be a list.
+```{r lapply_syntax, eval = FALSE}
+lapply(vector, FUN, ...)
+```
 
+### Remarks
+- `lapply` is the more spred functional in `R` 
+- Works on vector of _elements_, _numeric indices_ and _names_
+- Most of other functionals that we will meat build on `lapply`
+- Make your code _elegant_  and _easier to read_
 
+### Implementation
+The way `lapply` operates can be understood as follows:
+```{r lapply_implementation, eval = FALSE}
+my_lapply <-function(vector, FUN, ...) {
+  res <- vector("list", length(vector))
+  for (i in seq_along(vector))
+    res[[i]] <- FUN(vector[[i]], ...)
+  res
+}
+```
+
+## Anonymous function
+
+### Definition
+A function that does not deserve a name, defined 'on the fly' during its use
+```{r anonymous_syntax}
+unlist(lapply(datasets::iris, function(x) length(unique(x))))
+```
+
+\rsa Generally very short with few arguments, used in cunjunction with `lapply`-like functionals
+
+```{r anonymous_syntax_equivalent}
+(function(x) (x^2))(2)
+f <- function(x) {x^2}
+f(2)
+```
+
+## Exercises on `lapply`
+
+Consider the dataset `datasets::mtcars`.
+
+### Exercise 1
+
+Use `lapply` and an anonymous function to find the coefficient of variation (`sd(x)/mean(x)`) on each column of the dataset.
+
+### Exercise 2
+ 
+Suppose we want to predict `mpg` (consumption) from the regressors `disp` (engine size) and `wt` (weight). We test several linear models whose corresponding `R` formulae are
+- `mgp ~ 1 + disp`
+- `mgp ~ I(1/disp)`
+- `mgp ~ 1 + I(1 / disp) + wt`
+
+Use ` lapply` to adjust linear models with such formulaes and extract the coefficient of determination ($R^2$).

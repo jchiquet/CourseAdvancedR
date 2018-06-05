@@ -88,7 +88,7 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 # Functionals
 
-```{r functionals, child = paste0('functionals/', c("apply.Rmd", "Reduce.Rmd", "math_functionals.Rmd"))}
+```{r functionals, child = paste0('functionals/', c("lapply.Rmd", "lapply_family.Rmd", "apply.Rmd", "Reduce.Rmd", "math_functionals.Rmd"))}
 ```
 
 ## References
