@@ -15,9 +15,10 @@ cumsum.R <- function(n) {
 
 cumsum.me <- function(n) {
   x <- rnorm(n)
-  res <- 0
-  for (i in 1:length(x)) 
-    res <- res + x[i]
+  res <- vector("numeric", n)  
+  res <- x[1]
+  for (i in 2:length(x)) 
+    res[i] <- res[i - 1] + x[i]
   res
 }
 

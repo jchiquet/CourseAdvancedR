@@ -59,6 +59,8 @@ source(paste0(params$setup_path, "knitr_setup.R"))
   4. Matrices and array
   5. Data Frame
 
+&nbsp;
+
 \rsa Creation, Basic Operation, Manipulation, Representation
 
 ### Basic `R` programming
@@ -66,6 +68,8 @@ source(paste0(params$setup_path, "knitr_setup.R"))
   1. Control Statements
   2. Functions 
   3. Basics on Functionals 
+
+&nbsp;
 
 \rsa Advanced R, Chapters I.6,  II.10,  II.11
 

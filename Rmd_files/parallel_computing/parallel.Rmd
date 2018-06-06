@@ -12,6 +12,8 @@ cores <- detectCores() ## How many cores do I have?
 print(cores)
 ```
 
+&nbsp;
+
 \rsa `parallel` features both socketing (`parLapply`) and forking (`mclapply`)
 
 ## Forking approach with `parallel::mclapply`

@@ -37,10 +37,6 @@ Rprof(NULL)
 summaryRprof("profiling.out")$by.self
 ```
 
-```{r Rprof_by_total}
-summaryRprof("profiling.out")$by.total
-```
-
 ## Profile your code with `profr`
 
 The *profr* package is maybe a little easier to understand\dots

@@ -26,7 +26,9 @@ Two approaches achieving the same goal
 ### The forking approach
 
   - copies the entire current version of `R` and moves it to a new core
-  - several processes acheive the same task resulting in different outputs
+  - several processes achieve the same task resulting in different outputs
+
+&nbsp;
 
 \rsa \emphase{ Forking is only possible on Unix systems (Linux, Mac OS)}
 

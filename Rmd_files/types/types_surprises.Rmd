@@ -9,6 +9,7 @@ print(7/13, digits=16)
 \pause
 
 So do not use binary operator to compare floats because
+
 ```{r float2}
 .1 == .3/3
 print(.3/3, digits=16)
@@ -16,7 +17,9 @@ print(.3/3, digits=16)
 
 \pause
 
+
 Try
+
 ```{r float3}
 all.equal(.1, .3/3)
 ```
