@@ -1,7 +1,7 @@
 ## Lexical Scoping I 
 
 ### Definition 
-Set of rule that governs how `R` looks up the value of a symbol
+Set of rules that governs how `R` looks up the value of a symbol
 
 ### Name masking
 If a name is not defined inside a function, `R` looks a level up
@@ -37,7 +37,7 @@ f()
 ```
 
 ### Fresh star
-An environement is created at _each time a function is called_ 
+An environement is created _each time a function is called_ 
 
 ```{r, include = FALSE}
 if (exists("a")) rm(a)
@@ -64,6 +64,6 @@ f <- function() {
 a <- 4
 f()
 f()
-
+rm(a)
 ```
 

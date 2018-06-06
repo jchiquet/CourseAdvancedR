@@ -24,7 +24,7 @@ as.list(environment(cube))
 
 ##  Closure II
 
-And that tkey work!
+And it works!
 ```{r closure_example3}
 sqrt(2)
 square(2)

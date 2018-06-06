@@ -27,7 +27,7 @@ data(iris)
 ```
 
 ### Example
-```{r sweep_iris, out.width=".6\\textwidth"}
+```{r sweep_iris, out.width=".5\\textwidth"}
 out <- sweep(iris[, 1:4], 2, colMeans(iris[, 1:4]), "-") ## center
 out <- sweep(out, 2, sqrt(colSums(out^2)/(nrow(out) - 1)), "/") ## scale
 iris_sc <- data.frame(out, Species = iris$Species)

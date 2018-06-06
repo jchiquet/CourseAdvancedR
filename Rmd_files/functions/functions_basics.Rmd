@@ -17,7 +17,7 @@ my_func <- function(arg1,arg2, ...) {
 
 ## Function components {.allowframebreaks}
 
-Most of functions have three parts
+Most functions have three parts
 
 - the `body()` (code inside the function)
 - the `formals()` (list of arguments)

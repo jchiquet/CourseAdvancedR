@@ -2,7 +2,7 @@
 title: (A bit of) Advanced R
 subtitle: Part 1 - `R`-base programming
 author: Julien Chiquet
-institute: "http://github/jchiquet/CourseAdvancedR"
+institute: "https://github.com/jchiquet/CourseAdvancedR"
 date: "Université Paris Dauphine, Juin 2018"
 csl: "../resources/apa-no-doi-no-issue.csl"
 output:
@@ -27,7 +27,7 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 ## References
 
-Many ideas/examples inspired/stolen in the following books:
+Many ideas/examples inspired/stolen from the following books:
 
 ### Advanced R [@advr], [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 
@@ -42,12 +42,14 @@ Many ideas/examples inspired/stolen in the following books:
 
 ## Prerequisites
 
-### Data Structure in base R
+### Data Structures in base R
   1. Atomic vector (integer, double, logical, character)
   2. Recursive vector (list)
   3. Factor
   4. Matrix and array
-  5. Data Frame\
+  5. Data Frame
+
+&nbsp;
 
 \rsa Creation, Basic Operation, Manipulation, Representation
 
@@ -63,20 +65,23 @@ Many ideas/examples inspired/stolen in the following books:
 - Package developement and external code integration are easier
 - Notebooks integration with Rmarkdown
 - Interface with github
-\rsa required tool for efficent development in `R`
+
+&nbsp;
+
+\rsa Rstudio is a state-of-the-art tool for efficent development in `R`
 
 ### My favorites shortcuts
 
 - `ctrl + return`: execute current selection in console
-- `ctrl + 1/2/3/4`: naviguate between panels
-- `ctrl + down/up`: naviguate between tabs
+- `ctrl + 1/2/3/4`: navigate between panels
+- `ctrl + down/up`: navigate between tabs
 - `ctrl + shift + k`: knit current doccument
 
 ### 
 
 ![Screenshot of the Rstudio API](figures/rstudio)
 
-# Control Statements
+# Control Statements
 
 ```{r control_statements, child = paste0('control_statements/', c("grouped_expressions.Rmd", "conditional_statements.Rmd", "loop_statements.Rmd")), cache = FALSE}
 ```
@@ -88,7 +93,7 @@ Many ideas/examples inspired/stolen in the following books:
 
 # Functionals
 
-```{r functionals, child = paste0('functionals/', c("intro_functionals.Rmd", "closure.Rmd",  "lapply.Rmd", "anonymous_function.Rmd", "lapply_family.Rmd", "apply.Rmd", "Reduce.Rmd", "math_functionals.Rmd"))}
+```{r functionals, child = paste0('functionals/', c("intro_functionals.Rmd", "closure.Rmd",  "anonymous_function.Rmd", "lapply.Rmd", "lapply_family.Rmd", "apply.Rmd", "Reduce.Rmd", "math_functionals.Rmd"))}
 ```
 
 ## References

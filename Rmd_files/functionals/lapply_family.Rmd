@@ -14,6 +14,8 @@ unlist(lapply(datasets::iris, is.numeric))  ## equivalent
 - `sapply` is very permissive and always find a way to output something
 - `vapply` will throw an error if the required operation is not possible
 
+&nbsp;
+
 \rsa `sapply` should be avoid when writing function as it can mask and propagate important error.
 
 ## Cousins of `lapply`: repeated evaluation
@@ -29,8 +31,9 @@ replicate(number_of_repetition, {expression}, simplify = "array")
 Use `replicate` to generate 100 bootstrap samples of the `iris` dataset stocked as a list.
 \pause
 ```{r replicate_example}
-n <- nrow(datasets::iris)
-boots <- replicate(100, datasets::iris[sample.int(n, n, replace=TRUE), ], simplify = FALSE)
+data(iris)
+n <- nrow(iris)
+boots <- replicate(100, iris[sample.int(n, n, replace = TRUE), ], simplify = FALSE)
 ```
 
 

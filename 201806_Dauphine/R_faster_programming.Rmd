@@ -2,7 +2,7 @@
 title: (A bit of) Advanced R
 subtitle: Part 2 - faster `R` programming
 author: Julien Chiquet
-institute: "http://github/jchiquet/CourseAdvancedR"
+institute: "https://github.com/jchiquet/CourseAdvancedR"
 date: "Université Paris Dauphine, Juin 2018"
 csl: "../resources/apa-no-doi-no-issue.csl"
 output:

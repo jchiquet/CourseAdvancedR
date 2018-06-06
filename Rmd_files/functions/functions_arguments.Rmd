@@ -1,11 +1,13 @@
-## Function arguments
+## Function arguments {.allowframebreaks}
 
 ### Calling function
 Arguments can be specified 
+
 1. by name
 2. by partial name
 3. by position
 
+### Bad habits
 Here are some stupid (but correct) call to `mean(x=,trim=,na.rm=)`
 ```{r}
 mean(1:10, n = T)
@@ -13,8 +15,6 @@ mean(1:10, , FALSE)
 mean(1:10, 0.05, FALSE)
 mean(, TRUE, x = c(1:10, NA))
 ```
-
-\pause
 
 ### Exercise
 Clarify the following function calls
@@ -50,9 +50,9 @@ Hence, you can assign a default value _a posteriori_
 ```{r missing2}
 f <- function(a, b = 2) {
   if (missing(a)) a <- 3  
-c(a, b)
+  c(a, b)
 }
-f(a)
+f()
 ```
 
 ## Lazy evaluation
@@ -98,14 +98,26 @@ f <- function(...) names(list(...))
 f(a = 1, b = 2)
 ```
 
-## Calling a function with a list
+## Calling a function with a list I
 
 The `do.call` function constructs and executes a function call from a name or a function and a list of arguments to be passed to it:
-```{r do.call1}
+
+### Syntax
+```{r do.call_syntax, eval = FALSE}
+do.call(what, args, quote = FALSE, envir = parent.frame())
+```
+
+- `what` is either a function or a string for a function name
+- `args` the list of arguments for the call
+- `quote` is a logical specifying if the argument should be quoted
+- `envir` specifies the environment of the call
+
+### Example
+```{r do.call_example}
 do.call(mean, list(x = 1:10, trim = 0.05, na.rm = FALSE))
 ```
 
-\pause
+## Calling a function with a list II
 
 ### Exercise
 Suppose the outputs of 100 simulations are stored in a list like that
@@ -128,5 +140,5 @@ How would you store them in a single data frame?
 \pause
 
 ```{r docallSim3}
-head(do.call(rbind, res), 2)
+head(do.call(rbind, res))
 ```
