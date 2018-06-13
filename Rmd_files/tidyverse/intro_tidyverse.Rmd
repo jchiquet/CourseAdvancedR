@@ -1,0 +1,80 @@
+## data analysis process
+
+![scheme for data analysis process](../Rmd_files/tidyverse/figs/data_science.png){width='80%'} 
+
+  * **import:** read / load the data  
+  * **tidy:**  formating (individuals/variables data frame)
+  * **transform:**  suppression/creation/filtering/selection
+  * **visualization:** representation and validation
+  * **model**: statistical fits
+  * **communication**: diffusion (web/talk/article)
+  
+## The tidyverse 
+
+### Definition
+
+ - contraction of 'tidy' ("well arranged) and 'universe'.
+ - an _opinionated collection_ of `R` packages designed for data science. 
+ - all packages share an underlying _design philosophy_, _grammar_, and _data structures_
+
+### Phylosophy
+
+> allows the user to focus on the important statistical questions rather than focusing on the technical aspects of data analysis
+
+## Let's have a look {.allowframebreaks}
+
+### Installation
+
+```{r install_tidyverse, eval = FALSE}
+install.packages("tidyverse")
+```
+
+### Load 
+
+The core `tidyverse` loads `ggplot2`, `tibble`, `tidyr`, `readr`, `purrr`, `stringr`, `forecats`, `dplyr` and others in a fancy and unconflicted way.
+
+```{r load_tidyverse, message = TRUE, warning = TRUE}
+library(tidyverse)
+```
+
+## Packages roles and overview {.allowframebreaks}
+
+### tibble ![tibble](../Rmd_files/tidyverse/figs/hex-tibble.png){width="30px"}
+
+a modern re-imagining of the data frame
+
+### tidyr ![tidyr](../Rmd_files/tidyverse/figs/hex-tidyr.png){width="30px"}
+
+a set of functions that help you get to tidy data
+
+### dplyr ![dplyr](../Rmd_files/tidyverse/figs/hex-dplyr.png){width="30px"}
+
+a consistent set of verbs that solve the most common data manipulation challenges
+
+### readr ![readr](../Rmd_files/tidyverse/figs/hex-readr.png){width="30px"}
+
+a fast and friendly way to read rectangular data (like csv, tsv, and fwf)
+
+### stringr ![stringr](../Rmd_files/tidyverse/figs/hex-stringr.png){width="30px"}
+
+a cohesive set of functions designed to make working with strings as easy as possible
+
+### forcats ![forcats](../Rmd_files/tidyverse/figs/hex-forcats.png){width="30px"}
+
+a suite of useful tools that solve common problems with factors
+ 
+### ggplot2 ![ggplot2](../Rmd_files/tidyverse/figs/hex-ggplot2.png){width="30px"}
+
+a system for declaratively creating graphics, based on The Grammar of Graphics
+
+### purrr ![purrr](../Rmd_files/tidyverse/figs/hex-purrr.png){width="30px"}
+
+enhances R's functional programming (FP) toolkit
+
+### magrittr ![magrittr](../Rmd_files/tidyverse/figs/hex-magrittr.png){width="30px"}
+
+offers a set of operators which make your code more readable
+
+## Data analysis with the tidyverse
+
+![Updated scheme for data analysis process](../Rmd_files/tidyverse/figs/tidyverse_data_science.png) 

@@ -1,0 +1,73 @@
+---
+title: (A bit of) Advanced R
+subtitle: Part 3 - a tour of the `tidyverse`
+author: Julien Chiquet
+institute: "https://github.com/jchiquet/CourseAdvancedR"
+date: "Université Paris Dauphine, Juin 2018"
+csl: "../resources/apa-no-doi-no-issue.csl"
+output:
+  beamer_presentation:
+    slide_level: 2
+    highlight: tango
+    includes: 
+      in_header: ../resources/common_preamble.tex
+      before_body: ../resources/common_startup.tex
+bibliography: ../resources/bibliography.bib
+fontsize: 10pt
+nocite: |
+  @advr, @Rbase
+params: 
+  child_path : "../Rmd_files/"
+  setup_path : "../resources/"
+---
+
+```{r setup, include = FALSE, cahe = FALSE}
+source(paste0(params$setup_path, "knitr_setup.R"))
+```
+
+## References
+
+Many ideas/examples inspired/stolen there:
+
+### R for data science [@r4ds], [http://r4ds.had.co.nz](http://r4ds.had.co.nz)
+
+![](../resources/common_figs/cover_R4ds.png){width="50px"}\
+
+
+### Tidyverse website, [https://www.tidyverse.org/](https://www.tidyverse.org/)
+
+![](../Rmd_files/tidyverse/figs/tidyverse_packages.jpg){width="50%"}\
+
+
+## Prerequisites
+
+### Data Structures in base R
+  1. Atomic vector (integer, double, logical, character)
+  2. Recursive vector (list)
+  3. Factor
+  4. Matrix and array
+  5. Data Frame
+
+### R base programming
+
+  1 Control Statements
+  2. Functions
+  3. Functionals
+  4. Input/output
+  5. Rstudio API (application programming interface)
+
+# Introduction to tidy data and tidyverse
+
+```{r tidy_data, child = paste0('tidyverse/', c("tidy_data.Rmd", "intro_tidyverse.Rmd")), cache = FALSE}
+```
+
+# magrittr
+
+# tidyr
+
+# dplyr
+
+# tibble
+
+## References
+
