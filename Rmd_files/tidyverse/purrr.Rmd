@@ -1,0 +1,4 @@
+## {purrr}
+ 
+![enhances R's functional programming (FP) toolkit](../Rmd_files/tidyverse/figs/hex-purrr.png){width="100px"}
+

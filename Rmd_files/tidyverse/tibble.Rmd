@@ -1,0 +1,97 @@
+## {tibble}
+
+![a modern re-imagining of the data frame](../Rmd_files/tidyverse/figs/hex-tibble.png){width="100px"}
+
+### `tibble` versus `data.frame`
+
+`tibbles` (or `tbl_df`) are modern reimagining of the `data.frame`, 
+
+- _lazy_: do less (e.g. do not change variable names, types, no partial matching) 
+- _surly_: complain more (e.g. when a variable does not exist)
+
+
+## Conversion from a `data.frame`
+
+```{r}
+head(iris)
+```
+
+\pause
+
+```{r}
+as_tibble(iris)
+```
+
+##  Creating a `tibble`
+
+```{r}
+tibble(
+  x = 1:5, 
+  y = 1, 
+  z = x ^ 2 + y
+)
+```
+
+\pause
+
+### Column names of a `tibble` {.allowframebreaks}
+
+Names can start by any character. To refer such variables, use the backticks
+
+```{r}
+tibble(`:)` = "smile", ` ` = "space", `2000` = "number")
+```
+
+## Row names
+
+Row do not have names in a `tibble`
+
+### Solution
+  - one can use name by adding a specfic column
+  - `rownames_to_column ()` can help
+
+
+### Example
+```{r}
+as_tibble(swiss, rownames = "Province")
+```
+
+## Consistency in subsetting
+
+```{r consistencytbl1}
+df <- data.frame(x = 1:9, y = LETTERS[1:9])
+tbl <- tibble(x = 1:9, y = LETTERS[1:9])
+```
+
+\pause
+
+```{r consistencytbl2}
+class(df[, 1:2])
+class(tbl[, 1:2])
+```
+
+\pause
+
+```{r consistencytbl3}
+class(df[, 1])
+class(tbl[, 1])
+```
+
+
+## List-column
+
+The type `list` is available for a column in `tibble`
+
+  - a `tibble` allows cells containing lists
+  - a `tibble` allows cells containing data frames.
+
+```{r listcolum1}
+subset(starwars, select = c('name', 'height', 'mass', 'hair_color', 'films', 'vehicles'))
+```
+
+## List-column: put a vector in each case
+
+```{r listcolum2}
+head(starwars$films, 4)
+```
+

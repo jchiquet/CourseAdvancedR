@@ -1,0 +1,68 @@
+## {tidyr}
+
+![a set of functions that help you get to tidy data](../Rmd_files/tidyverse/figs/hex-tidyr.png){width="100px"}
+
+```{r libtidyr, message=FALSE}
+library(tidyr)
+```
+
+\rsa `tidyr` is a package which helps you to transform messy datasets into tidy datasets.
+
+- evolution of base function `reshape` 
+- available functions are `spread`, `gather`, `unite`, `separate`
+
+
+## Grades dataset
+
+```{r grades}
+grades <- tibble(
+  Name = c("Tommy", "Mary", "Gary", "Cathy"),
+  Sexage = c("m.15", "f.15", "m.16", "f.14"),
+  Test1 = c(10, 15, 16, 14),
+  Test2 = c(11, 13, 10, 12),
+  Test3 = c(12, 13, 17, 10)
+  )
+grades
+```
+
+```{r, echo=FALSE}
+knitr::kable(grades)
+
+```
+
+## `separate()`
+
+Separate one column into multiple columns
+
+```{r separate}
+grades <- separate(grades, Sexage, into = c("Sex", "Age"))
+grades
+```
+
+```{r, echo=FALSE}
+knitr::kable(grades)
+```
+
+\pause
+
+### Remark
+The inverse of `separate()` is `unite()`
+
+## `gather()`
+
+Gather Columns Into Key-Value Pairs
+
+```{r gather}
+grades <- gather(grades, Test1, Test2, Test3, key = Test, value = Grade)
+head(grades)
+```
+
+```{r, echo=FALSE}
+knitr::kable(head(grades, 6))
+```
+
+\pause
+
+### Remark
+The inverse of `gather()` is `spread()`
+

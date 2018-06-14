@@ -1,0 +1,6 @@
+## readr 
+
+![a fast and friendly way to read rectangular data (like csv, tsv, and fwf)](../Rmd_files/tidyverse/figs/hex-readr.png){width="100px"}
+
+
+

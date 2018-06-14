@@ -1,0 +1,142 @@
+## {magrittr}
+
+![a set of operators which make your code more readable](../Rmd_files/tidyverse/figs/hex-magrittr.png){width=100px}
+
+```{r libmagrittr}
+library(magrittr)
+```
+
+Provides the following operators
+
+  - Pipe  `%>%`
+  - Reassignment pipe  `%<>%`
+  - T-Pipe  `%T>%`
+
+## Motivation: make Tom eat an apple
+
+### Everyday language
+> Tom eats an apple
+
+Subject - Verb - Complement
+
+### Programming language
+
+> `eat(Tom, apple)`
+
+Verb - Subject - Complement
+
+### Pipes
+
+\rsa get closer to everyday language in your code
+
+\rsa clearly expressing a sequence of multiple operations
+
+
+## Pipe  `%>%`
+
+- when you read code, `%>%` is pronounced "then" 
+- the keybord shortcut for `%>%` is Ctrl + shift + M
+
+### Objective
+- Helps writing `R` code which is easy to read (and thus, easy to understand)
+
+- `x %>% f()` is equivalent to `f(x)`
+- `x %>% f(y)` is equivalent to `f(x, y)`
+- `x %>% f(y,.)` is équivalent to `f(y,x)`
+
+\pause 
+
+### Example
+
+```{r nopipe}
+2^mean(log(seq_len(10), base = 2), na.rm = TRUE)
+```
+
+\pause
+
+```{r pipe}
+10 %>% 
+  seq_len() %>% 
+  log(base = 2) %>% 
+  mean(na.rm = TRUE) %>% 
+  {2^.}
+```
+
+## Exercise
+
+Consider
+```{r exercise_pipe}
+x <- c(0.109, 0.359, 0.63, 0.996, 0.515, 0.142, 0.017, 0.829, 0.907)
+```
+
+Compute the logarithm of `x`, return suitably lagged and iterated differences, compute the exponential function and round the result
+
+1. In base `R`
+2. Using `%>%` 
+
+
+## (Re)assignment pipe  `%<>%`
+
+For affectation, `magrittr` provides the operator `%<>%` which allows to replace code like
+``` {r, eval=FALSE}
+mtcars <- mtcars%>% transform(cyl = cyl * 2)
+```
+
+by
+```{r, eval=FALSE}
+mtcars %<>% transform(cyl = cyl * 2)
+```
+
+## T-pipe `%T>%` 
+
+### Problem with functions requiring early side effects along succession of `%>%` 
+  - you might want to plot or print and object
+  - such function do not send back anything and break the pipe
+
+### Solution
+  - to overcome such an issue, use the "tee"  pipe `%T>%` 
+  - works like `%>%`  except that it sends left side in place of right side of the expression 
+  - "tee"because it looks like a pipe with a T shape
+
+## T-pipe `%T>%`: example without T
+
+```{r pipeT1, fig.cap = "plot of bivariate Gaussian sample"}
+    rnorm (100) %>%
+      matrix(ncol = 2) %>%
+      plot() %>%
+      str()
+``` 
+
+##  T-pipe `%T>%`: example with T
+
+```{r pipeT2, fig.cap = "plot of bivariate Gaussian sample"} 
+    rnorm (100) %>%
+      matrix(ncol = 2) %T>%
+      plot() %>%
+      str()
+```
+
+##  Exposition Operator `%$%`
+
+When working with functions that do not take data argumentbut still useful in a pipeline, e.g., when your data is first processed and then passed into the function.
+
+### Example
+```{r pipe_exposing}
+iris %>%
+  subset(Sepal.Length > mean(Sepal.Length)) %$%
+  cor(Sepal.Length, Sepal.Width)
+```
+
+##  When not to use the pipe
+
+Consider other solutions when
+
+### Pipes contain too many steps
+Create _intermediate_ objects with meaningful names
+
+### Multiple inputs or outputs are required 
+E.g., when several objects need to _combine_ together
+
+### Complex dependance structures exists between your entries
+Pipes are fundamentally _linear_: expressing complex relationships with them yield confusing code.
+

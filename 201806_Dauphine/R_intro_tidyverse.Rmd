@@ -55,18 +55,45 @@ Many ideas/examples inspired/stolen there:
   4. Input/output
   5. Rstudio API (application programming interface)
 
-# Introduction to tidy data and tidyverse
+# Introduction
 
-```{r tidy_data, child = paste0('tidyverse/', c("tidy_data.Rmd", "tidyverse.Rmd")), cache = FALSE}
+```{r, child = paste0('tidyverse/', c("tidy_data.Rmd", "tidyverse.Rmd")), cache = FALSE}
+```
+
+# tibble
+
+```{r, child = paste0('tidyverse/', c("tibble.Rmd")), cache = FALSE}
+```
+
+# readr
+
+```{r, child = paste0('tidyverse/', c("readr.Rmd")), cache = FALSE}
+```
+
+# tidyr
+
+```{r, child = paste0('tidyverse/', c("tidyr.Rmd")), cache = FALSE}
 ```
 
 # magrittr
 
-# tidyr
+```{r, child = paste0('tidyverse/', c("magrittr.Rmd")), cache = FALSE}
+```
 
 # dplyr
 
-# tibble
+```{r, child = paste0('tidyverse/', c("dplyr.Rmd")), cache = FALSE}
+```
+
+# purrr
+
+```{r, child = paste0('tidyverse/', c("purrr.Rmd")), cache = FALSE}
+```
+
+# ggplot2
+
+```{r, child = paste0('tidyverse/', c("ggplot2.Rmd")), cache = FALSE}
+```
 
 ## References
 

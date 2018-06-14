@@ -1,0 +1,5 @@
+## dplyr 
+
+![a consistent set of verbs that solve the most common data manipulation challenges](../Rmd_files/tidyverse/figs/hex-dplyr.png){width="100px"}
+
+
