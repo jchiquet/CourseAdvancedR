@@ -1,8 +1,8 @@
-## data analysis process
+## The process of data analysis
 
 ![scheme for data analysis process](../Rmd_files/tidyverse/figs/data_science.png){width='80%'} 
 
-  * **import:** read / load the data  
+  * **import:** read/load the data  
   * **tidy:**  formating (individuals/variables data frame)
   * **transform:**  suppression/creation/filtering/selection
   * **visualization:** representation and validation
@@ -21,20 +21,14 @@
 
 > allows the user to focus on the important statistical questions rather than focusing on the technical aspects of data analysis
 
-## Let's have a look {.allowframebreaks}
-
-### Installation
-
-```{r install_tidyverse, eval = FALSE}
-install.packages("tidyverse")
-```
-
-### Load 
+## Let's have a look
 
 The core `tidyverse` loads `ggplot2`, `tibble`, `tidyr`, `readr`, `purrr`, `stringr`, `forecats`, `dplyr` and others in a fancy and unconflicted way.
 
-```{r load_tidyverse, message = TRUE, warning = TRUE}
+```{r load_tidyverse, message = TRUE, warning = TRUE, cache = FALSE}
 library(tidyverse)
+tidyverse:::tidyverse_conflicts()
+tidyverse:::tidyverse_deps()
 ```
 
 ## Packages roles and overview {.allowframebreaks}

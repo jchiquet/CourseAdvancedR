@@ -4,42 +4,51 @@ Collected data are (never) under a proper canonical format
 
 > "Happy families are all alike; every unhappy family is unhappy in its own way." -- Leo Tolstoy
 
-> "Tidy datasets are all alike, but every messy dataset is messy in its own way." -- Hadley Wickham
+\pause
 
-## Tidy data: what
+> "Tidy datasets are all alike, but every messy dataset is messy in its own way." -- Hadley Wickham^[Rstudio's chief scientific advisor]
+
+
+
+## Tidy data: what?
 
 ### First, a subjective question
-What is the observation/statistical unit in your data?
+What is the _observation/statistical unit_ in your data?
+
+\pause
 
 ### Definition
+_Tidy data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types._
 
-Tidy data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types. In tidy data:
+\pause
 
-1. Each variable forms a column.
-2. Each observation forms a row.
-3. Each type of observational unit forms a table.
+In tidy data,
 
-## tidy data: why? 
+1. each variable forms a column,
+2. each observation forms a row,
+3. each type of observational unit forms a table.
+
+## Tidy data: why? 
 
 ![Tidy data](../Rmd_files/tidyverse/figs/tidy_data.png)
 
  - make manipulation, visualization and modelling easier
  - a common structure for all packages
- - a design philosophy for datat representation beyond `R` 
+ - a philosophy for data representation (beyond the `R` framework) 
 
-## Tidy vs non tidy: example I
+## Tidy or not ?
  
 ```{r show_non_tidy1}
-print(tidyr::table3)
+tidyr::table3
 ```
 
-## Tidy vs non tidy: example II
+## Tidy or not ?
  
 ```{r show_non_tidy2}
 tidyr::table2
 ```
 
-## Tidy vs non tidy: example III
+## Tidy or not ?
  
 ```{r show_tidy}
 tidyr::table1

@@ -21,7 +21,7 @@ params:
   setup_path : "../resources/"
 ---
 
-```{r setup, include = FALSE, cahe = FALSE}
+```{r setup, include = FALSE, cache = FALSE}
 source(paste0(params$setup_path, "knitr_setup.R"))
 ```
 
@@ -49,8 +49,7 @@ Many ideas/examples inspired/stolen there:
   5. Data Frame
 
 ### R base programming
-
-  1 Control Statements
+  1. Control Statements
   2. Functions
   3. Functionals
   4. Input/output
@@ -58,7 +57,7 @@ Many ideas/examples inspired/stolen there:
 
 # Introduction to tidy data and tidyverse
 
-```{r tidy_data, child = paste0('tidyverse/', c("tidy_data.Rmd", "intro_tidyverse.Rmd")), cache = FALSE}
+```{r tidy_data, child = paste0('tidyverse/', c("tidy_data.Rmd", "tidyverse.Rmd")), cache = FALSE}
 ```
 
 # magrittr
