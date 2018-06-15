@@ -1,0 +1,9 @@
+## {forcats}
+
+![a suite of useful tools that solve common problems with factor](../Rmd_files/tidyverse/figs/hex-forcats.png){width="100px"}
+
+### `forcats` versus `base` factors
+
+- easy use in conjuction with other tidyverse packages
+- correct inconsistent behaviours of `R` base factors facilities
+

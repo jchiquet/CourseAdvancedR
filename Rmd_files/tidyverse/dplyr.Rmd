@@ -1,5 +1,179 @@
 ## dplyr 
 
-![a consistent set of verbs that solve the most common data manipulation challenges](../Rmd_files/tidyverse/figs/hex-dplyr.png){width="100px"}
+![a consistent set of verbs (_a grammar_) that solves the most common data manipulation challenges](../Rmd_files/tidyverse/figs/hex-dplyr.png){width="100px"}
+
+### Typical operations
+
+- create and pick variables
+- pick and reorder observations
+- create summaries
+- ...
+
+\rsa Functions in this package are verbs and work similarly
+
+## mtcars dataset
+
+```{r}
+data(mtcars)
+as_tibble(mtcars)
+```
+
+## Select rows with `filter()`
+
+### Arguments
+  1. data 
+  2. filtering expressions
+
+### Output
+  - a `tibble`
+  - **do not modify** the original data
+
+### Example
+
+```{r}
+filter(mtcars, cyl == 4, mpg > 30)
+```
+
+## Reorder rows with `arrange()`
+
+### Principle 
+works like `filter()` but reorder rows according to a series of conditions
+
+### Example
+```{r}
+as_tibble(arrange(mtcars, desc(carb), mpg))
+```
+
+
+## Selecting columns with `select()` I
+
+Similar to `base::subsect(, select = c("","") )`
+
+### With names
+can be quoted or unquoted
+```{r}
+as_tibble(select(mtcars, mpg, 'wt', cyl))
+```
+
+## Selecting columns with `select()` II 
+
+### With indexes
+
+```{r}
+as_tibble(select(mtcars, 1,2,5:7))
+```
+
+## Renaming columns with `rename()`
+
+### `rename()` keeps all variables
+```{r}
+as_tibble(rename(iris, petal_length = Petal.Length))
+```
+
+## Renaming columns with `select()`
+
+Renaming can be done with `select()`
+
+### `select()` only keeps the variables specified 
+```{r}
+as_tibble(select(iris, petal_length = Petal.Length))
+```
+
+
+
+## Add new variables with  `mutate()`
+
+`mutate` keeps the existing variables
+
+```{r}
+as_tibble(
+  mutate(mtcars, 
+         cyl2 = 2 * cyl,
+         cyl4 = 2 * cyl2,
+         disp = disp * 0.0163871,
+         drat = NULL) 
+)
+```
+
+## Add new variables with  `transmute()`
+
+`transmute` drops the existing variables
+
+```{r}
+as_tibble(
+  transmute(mtcars, 
+         cyl2 = 2 * cyl,
+         cyl4 = 2 * cyl2,
+         disp = disp * 0.0163871,
+         drat = NULL) 
+)
+```
+
+## Create summary statistics with `summarise()`
+
+Reduction is done by means of statistical functions
+
+- Center: `mean()`, `median()`
+- Spread: `sd()`, `IQR()`, `mad()`
+- Range: `min()`, `max()`, `quantile()`
+- Position: `first()`, `last()`, `nth()`,
+- Count: `n()`, `n_distinct()`
+- Logical: `any()`, `all()`
+
+### Example
+
+```{r summarise_example}
+summarise(mtcars, Mean_mpg = mean(mpg),  Var_disp = var(disp))
+```
+
+## group rows according to factors with `group_by()`
+
+`group_by()` does not do much visible expect creating a grouped data frame with type `grouped_df`
+```{r}
+group_by(mtcars, cyl,am)
+```
+
+`ungroup()` performs the reverse operation.
+
+##  Combine `summarise()` and `group_by()` 
+
+Magic of `group_by()` comes true when used in conjunction with `summarise()`
+
+```{r groupby}
+grp_mtcars <- group_by(mtcars, cyl, carb)
+summarise(grp_mtcars, Count = n(),  Mean_mpg = mean(mpg),  Var_disp = var(disp))
+```
+
+## Common remarks and extension
+
+### Remarks
+
+Most primitive in `dyplr` do no modify the original table
+
+### Other verbs/functions
+
+`rename`, `filter`, `select`, `summarise`, etc. all have _scoped_ variant
+
+- `rename_all()`: apply operation on all variables 
+- `rename_at()`: apply an operation on a subset of _specified_  variables 
+- `rename_if()`:) apply an operation on the subset of _predicated_ variables
+
+## Simple Exercise {.allowframebreaks}
+
+# grades dataset
+
+Consider the grade student data set:
+```{r grades}
+grades <- tibble(
+  Name = c("Tommy", "Mary", "Gary", "Cathy"),
+  Sexage = c("m.15", "f.15", "m.16", "f.14"),
+  Math = c(10, 15, 16, 14),
+  Philo = c(11, 13, 10, 12),
+  English = c(12, 13, 17, 10)
+  )
+```
+
+- Compute the mean by Topic
+- Compute the mean by Student
 
 

@@ -1,0 +1,11 @@
+## {stringr}
+
+![cohesive set of functions designed to make working with strings as easy as possible](../Rmd_files/tidyverse/figs/hex-stringr.png){width="100px"}
+
+### `stringr` versus `base` string utilities
+
+ String manipulmtion is cumbersome in `R` base. However, string plays a big role in many data cleaning and preparation.
+ 
+- easy use in conjuction with other tidyverse packages
+- faster and correct implementations of common string manipulations
+

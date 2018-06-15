@@ -60,39 +60,19 @@ Many ideas/examples inspired/stolen there:
 ```{r, child = paste0('tidyverse/', c("tidy_data.Rmd", "tidyverse.Rmd")), cache = FALSE}
 ```
 
-# tibble
+# Structures and types: `tibble`, `forcats`, `stringr`
 
-```{r, child = paste0('tidyverse/', c("tibble.Rmd")), cache = FALSE}
+```{r, child = paste0('tidyverse/', c("tibble.Rmd", "forcats.Rmd", "stringr.Rmd")), cache = FALSE}
 ```
 
-# readr
+# data wrangling: `readr`, `tidyr`, `dplyr`
 
-```{r, child = paste0('tidyverse/', c("readr.Rmd")), cache = FALSE}
+```{r, child = paste0('tidyverse/', c("readr.Rmd", "tidyr.Rmd", "dplyr.Rmd")), cache = FALSE}
 ```
 
-# tidyr
+# Manipulation, vizualization: `magrittr`, `purrr`, `ggplot2`   
 
-```{r, child = paste0('tidyverse/', c("tidyr.Rmd")), cache = FALSE}
-```
-
-# magrittr
-
-```{r, child = paste0('tidyverse/', c("magrittr.Rmd")), cache = FALSE}
-```
-
-# dplyr
-
-```{r, child = paste0('tidyverse/', c("dplyr.Rmd")), cache = FALSE}
-```
-
-# purrr
-
-```{r, child = paste0('tidyverse/', c("purrr.Rmd")), cache = FALSE}
-```
-
-# ggplot2
-
-```{r, child = paste0('tidyverse/', c("ggplot2.Rmd")), cache = FALSE}
+```{r, child = paste0('tidyverse/', c("magrittr.Rmd", "purrr.Rmd", "ggplot2.Rmd")), cache = FALSE}
 ```
 
 ## References

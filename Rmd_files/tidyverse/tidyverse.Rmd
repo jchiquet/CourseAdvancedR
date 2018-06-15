@@ -31,11 +31,25 @@ tidyverse:::tidyverse_conflicts()
 tidyverse:::tidyverse_deps()
 ```
 
-## Packages roles and overview {.allowframebreaks}
+## Packages roles and overview: types
 
 ### tibble ![tibble](../Rmd_files/tidyverse/figs/hex-tibble.png){width="30px"}
 
 a modern re-imagining of the data frame
+
+### stringr ![stringr](../Rmd_files/tidyverse/figs/hex-stringr.png){width="30px"}
+
+a cohesive set of functions designed to make working with strings as easy as possible
+
+### forcats ![forcats](../Rmd_files/tidyverse/figs/hex-forcats.png){width="30px"}
+
+a suite of useful tools that solve common problems with factors
+
+## Packages roles and overview: wrangling
+
+### readr ![readr](../Rmd_files/tidyverse/figs/hex-readr.png){width="30px"}
+
+a fast and friendly way to read rectangular data (like csv, tsv, and fwf)
 
 ### tidyr ![tidyr](../Rmd_files/tidyverse/figs/hex-tidyr.png){width="30px"}
 
@@ -45,17 +59,7 @@ a set of functions that help you get to tidy data
 
 a consistent set of verbs that solve the most common data manipulation challenges
 
-### readr ![readr](../Rmd_files/tidyverse/figs/hex-readr.png){width="30px"}
-
-a fast and friendly way to read rectangular data (like csv, tsv, and fwf)
-
-### stringr ![stringr](../Rmd_files/tidyverse/figs/hex-stringr.png){width="30px"}
-
-a cohesive set of functions designed to make working with strings as easy as possible
-
-### forcats ![forcats](../Rmd_files/tidyverse/figs/hex-forcats.png){width="30px"}
-
-a suite of useful tools that solve common problems with factors
+## Packages roles and overview: manipulation
  
 ### ggplot2 ![ggplot2](../Rmd_files/tidyverse/figs/hex-ggplot2.png){width="30px"}
 
