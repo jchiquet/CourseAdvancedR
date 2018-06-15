@@ -67,7 +67,7 @@ Many ideas/examples inspired/stolen there:
 
 # data wrangling: `readr`, `tidyr`, `dplyr`
 
-```{r, child = paste0('tidyverse/', c("readr.Rmd", "tidyr.Rmd", "dplyr.Rmd")), cache = FALSE}
+```{r, child = paste0('tidyverse/', c("readr.Rmd", "tidyr.Rmd", "dplyr.Rmd", "dplyr_exercises.Rmd")), cache = FALSE}
 ```
 
 # Manipulation, vizualization: `magrittr`, `purrr`, `ggplot2`   
