@@ -14,8 +14,5 @@ Material used to generate slides for various teachings about R language and prog
 
 ### Part 3: a tour of the `tidyverse`
 
-coming..
+[slides](https://github.com/jchiquet/CourseAdvancedR/raw/master/201806_Dauphine/R_intro_tidyverse.pdf)
 
-### Part 4: grammar of graphics with `ggplot2`
-
-coming..
