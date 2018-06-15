@@ -1,6 +1,10 @@
 ## {readr}
 
-![a fast and friendly way to read rectangular data (like csv, tsv, and fwf)](../Rmd_files/tidyverse/figs/hex-readr.png){width="100px"}
+![a fast and friendly way to read rectangular data (like csv, tsv and so on)](../Rmd_files/tidyverse/figs/hex-readr.png){width="100px"}
 
 
+- offer coherent/unified functions compared to `base::read.table` and friends
+- offer interactive readinf
+- output `tibble` rather than `data.frame`  
+- `read_csv`, `read_delim`, `read_rds`, `read_file`, `read_table`, etc
 

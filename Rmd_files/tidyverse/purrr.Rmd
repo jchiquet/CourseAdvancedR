@@ -2,3 +2,45 @@
  
 ![enhances R's functional programming (FP) toolkit](../Rmd_files/tidyverse/figs/hex-purrr.png){width="100px"}
 
+### Map family of functions
+
+Apply a function to each element of a vector: replace the [x]`apply` families (more coherent)
+
+- `map()`, `map_if()` and `map_at()` _always return a list_
+- `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return vectors of the corresponding type
+- `map_dfr()` and `map_dfc()` return data frames created by row-binding and column-binding respectively
+
+## Examples
+
+What is this piece of code doing?
+```{r map_exmaple1}
+1:10 %>%
+  map(rnorm, n = 10) %>%
+  map_dbl(mean)
+```
+
+\pause
+
+split a data frame into pieces, fit a model to each piece, compute the summary, then extract the R2.
+
+```{r map_example2}
+mtcars %>%
+  split(.$cyl) %>% # from base R
+  map(~ lm(mpg ~ wt, data = .)) %>%
+  map(summary) %>%
+  map_dbl("r.squared")
+```
+
+## A more complicated example
+
+```{r map_lists}
+iris %>% 
+  group_by(Species) %>% 
+  nest(.key = Data) %>% 
+  mutate(Model = purrr::map(Data,
+                            ~ lm(data = ., 
+                                 Sepal.Length ~ Petal.Length))) %>% 
+  mutate(Summary = purrr::map(Model, summary)) %>% 
+  mutate(`R squared` = purrr::map_dbl(Summary, ~ .$r.squared))
+```
+

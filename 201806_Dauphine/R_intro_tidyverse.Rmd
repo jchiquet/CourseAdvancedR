@@ -15,7 +15,7 @@ output:
 bibliography: ../resources/bibliography.bib
 fontsize: 10pt
 nocite: |
-  @advr, @Rbase
+  @advr, @Rbase, @ggplot2, @cookbookR,  
 params: 
   child_path : "../Rmd_files/"
   setup_path : "../resources/"
@@ -70,9 +70,14 @@ Many ideas/examples inspired/stolen there:
 ```{r, child = paste0('tidyverse/', c("readr.Rmd", "tidyr.Rmd", "dplyr.Rmd", "dplyr_exercises.Rmd")), cache = FALSE}
 ```
 
-# Manipulation, vizualization: `magrittr`, `purrr`, `ggplot2`   
+# Manipulation: `magrittr`, `purrr`, `ggplot2`   
 
-```{r, child = paste0('tidyverse/', c("magrittr.Rmd", "purrr.Rmd", "ggplot2.Rmd")), cache = FALSE}
+```{r, child = paste0('tidyverse/', c("magrittr.Rmd", "purrr.Rmd")), cache = FALSE}
+```
+
+# Vizualization: `ggplot2`   
+
+```{r, child = paste0('tidyverse/', c("ggplot2.Rmd")), cache = FALSE}
 ```
 
 ## References
