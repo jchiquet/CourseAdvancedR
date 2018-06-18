@@ -3,3 +3,296 @@
 ![a system for declaratively creating graphics, based on The Grammar of Graphics](../Rmd_files/tidyverse/figs/hex-ggplot2.png){width="100px"}
 
 
+### Fully documented [@ggplot2] [http://ggplot2.tidyverse.org/](http://ggplot2.tidyverse.org/)
+
+![](../resources/common_figs/cover_ggplot.jpg){width="50px"}\
+
+
+## Learning `ggplot2`
+
+### R for data science [@r4ds], [http://r4ds.had.co.nz](http://r4ds.had.co.nz)
+
+See chapters _data visualisation_ and _graphics for communication_
+
+![](../resources/common_figs/cover_R4ds.png){width="50px"}\
+
+
+### R for data science [@cookbookR], [http://www.cookbook-r.com/Graphs/](http://www.cookbook-r.com/Graphs/)
+
+![](../resources/common_figs/cover_cookbook.jpg){width="50px"}\
+
+
+### This course
+
+A short introduction, mostly based on examples
+
+
+## `ggplot2`: grammar of graphics
+
+### Implements the grammar of graphics [@grammarOfGraphics]
+
+![](../resources/common_figs/cover_grammarGraphics.jpg){width="50px"}\
+
+
+### Elements that composes a the grammar of `ggplot`
+
+  - a data set (_data_),
+  - a graphical projection/mapping (_aes_),
+  - a geometrical representation (_geom_),
+  - a statistical transformation (_stats_),
+  - a coordinate system (coord),
+  - some scales (_scale_),
+  - some groupings (_facet_).
+
+## Grammar of Graphics in `ggplot`: summary
+
+```{r gg, eval = FALSE}
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>), 
+                  stat = <STAT>, position = <POSITION>) +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION>
+```
+
+\rsa any plot can be described by a combination of these 7 parameters.
+
+## `ggplot2`: standard steps
+
+### Supply data and specify  mapping
+
+with functions ` ggplot()` and `aes()`
+
+### Create a layer
+
+Combine data, mapping, a geometric object,  a stat (statistical transformation) and a position adjustment
+
+- by using `geom()` (overide the statistical transformation and position)
+- by using `stat()` (specifying a statistical transformation with `stat`) 
+- add layers to the current ggplot object with the `+` operator
+
+### Adjustements
+
+- the position (`position_`)
+- the coordinate system (`coord_`)
+- some annotations (`annotation_`)
+- faceting (` facet_`)
+
+## Example: good old `iris` data set
+
+```{r iris_ggplot, echo = TRUE}
+as_tibble(iris)
+```
+
+
+## Initializing the plot object
+
+### Supply data and mapping
+All layers use a common data set and common set of aesthetics 
+
+```{r ggplot_init_1, eval = FALSE}
+ggplot(data = iris, aes(x = Species, y = Sepal.Length))
+```
+
+### Supply data
+All layers use a common data set, but with specific aesthetics
+
+```{r ggplot_init_2, eval = FALSE}
+ggplot(data = iris)
+```
+
+### Simple initialization 
+Each layer use a specific data set
+
+```{r ggplot_init_3, eval = FALSE}
+ggplot()
+```
+
+## Add a layer: scatterplot
+
+```{r ggplot_scatterplot}
+ggplot(iris) + geom_point(aes(x = Sepal.Length, y = Sepal.Width))
+```
+
+## Add a layer: scatterplot + annotation
+
+some aesthetic are optional
+```{r ggplot_scatterplot2}
+ggplot(iris) + geom_point(aes(x = Sepal.Length, y = Sepal.Width, color = Species, shape = Species))
+```
+
+## Add a layer: boxplot
+
+the aes depends on the geometry (here, a factor is expected for ` x`)
+```{r ggplot_boxplot0}
+ggplot(iris) + geom_boxplot(aes(x = Species, y = Sepal.Width))
+```
+
+## Add a layer: boxplot + annotation
+
+the aes depends on the geometry (here, a factor is expected for ` x`)
+```{r ggplot_boxplot1}
+ggplot(iris) + geom_boxplot(aes(x = Species, y = Sepal.Width, color = Species))
+```
+
+## Add a layer: boxplot + annotation (Cont'd)
+
+the aes depends on the geometry (here, a factor is expected for ` x`)
+```{r ggplot_boxplot2}
+ggplot(iris) + 
+  geom_boxplot(aes(x = Species, y = Sepal.Width, color = Species)) +
+  labs("species", y = "Sepal width", title = "my beautiful plot") 
+```
+
+## Add a layer: boxplot + annotation (Cont'd)
+
+the aes depends on the geometry (here, a factor is expected for ` x`)
+```{r ggplot_boxplot3}
+ggplot(iris) + 
+  geom_boxplot(aes(x = Species, y = Sepal.Width, color = Species)) +
+  labs("species", y = "Sepal width", title = "my beautiful plot") +
+  theme(legend.position = "bottom")
+```
+
+## Add a layer: boxplot + annotation (Cont'd)
+
+the aes depends on the geometry (here, a factor is expected for ` x`)
+```{r ggplot_boxplot4}
+ggplot(iris) + 
+  geom_boxplot(aes(x = Species, y = Sepal.Width, color = Species)) +
+  labs("species", y = "Sepal width", title = "my beautiful plot") +
+  theme(legend.position = c(.75, .75))
+```
+
+## Add several layers: boxplot + points
+
+Note how I changed the use of `ggplot` since aesthetic where common to both
+```{r ggplot_two_layers0}
+ggplot(iris, aes(x = Species, y = Sepal.Width)) + geom_boxplot() + geom_point()
+```
+
+## Add several layers: boxplot + jitter
+
+Note how I changed the use of `ggplot` since aesthetic where common to both
+```{r ggplot_two_layers1}
+ggplot(iris, aes(x = Species, y = Sepal.Width)) + geom_boxplot() + geom_jitter()
+```
+
+## Add several layers: boxplot + jitter
+
+Note how I changed the use of `ggplot` since aesthetic where common to both
+```{r ggplot_two_layers2}
+ggplot(iris, aes(x = Species, y = Sepal.Width)) + 
+  geom_boxplot(aes(fill = Species), notch = TRUE) + 
+  geom_jitter(alpha = .5)
+```
+
+## Faceting
+
+Note how I changed the use of `ggplot` since aesthetic where common to both
+```{r ggplot_faceting1}
+ggplot(iris) + geom_histogram(aes(x = Sepal.Length)) + facet_grid( . ~ Species)
+``` 
+
+## Faceting (Cont'd)
+
+Note how I changed the use of `ggplot` since aesthetic where common to both
+```{r ggplot_faceting2}
+ggplot(iris) + geom_histogram(aes(x = Sepal.Length, color = Species)) + facet_grid(Species ~ .)
+``` 
+
+## Use `ggplot2` in conjonction other packages of the `tidyverse`
+
+![Rember the data process scheme?](../Rmd_files/tidyverse/figs/tidyverse_data_science.png){width="75%"}
+
+The model/vizualization part need constant wrangling/new arragement of your data set
+
+## Example: `forcats`
+
+Automatically more readable graphs
+```{r ggplot_faceting3}
+ggplot(iris) + 
+  geom_boxplot(aes(
+    x = forcats::fct_reorder(Species, Sepal.Length, median), 
+    y = Sepal.Length, color = Species))
+```
+
+## Example: `dplyr` + `%>%` for renaming before ploting
+
+```{r ggplot_dplyr_rude}
+iris %>% rename(sepal_length = Sepal.Length, 
+                sepal_width = Sepal.Width,
+                petal_length = Petal.Length, 
+                pepal_width = Petal.Width) %>% 
+  ggplot() + geom_boxplot(aes(x = Species, y = sepal_width, color = Species)) +
+  theme(axis.text.x=element_text(angle=90,hjust=1))
+```
+
+## Example: `dplyr` + `%>%` for gathering new data
+
+```{r}
+iris %>%  
+  gather(key = "Attribute", value = "Measurement", -Species) %>% 
+  ggplot(aes(x = Species, y = Measurement)) + geom_boxplot(aes(fill = Species), alpha = .5) + 
+  geom_jitter(aes(color = Species), alpha = 0.25) + facet_grid(. ~ Attribute)
+```
+
+## Add a model layer
+
+Adjust one linear model per species
+```{r ggplot_linear_model1}
+ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, colour = Species)) +
+  geom_point() +  geom_smooth(method = lm)
+```
+
+## Add a model layer (Cont'd)
+
+Adjust one nonlinear model per species
+```{r ggplot_linear_model2}
+ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+  geom_point() +  geom_smooth(method = loess)
+```
+
+## Add model + stat layers and colorblind pallete
+
+Adjust one nonlinear model per species
+```{r ggplot_nonlinear_model}
+ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
+  geom_point() +  geom_smooth(method = loess) + 
+  stat_ellipse() + viridis::scale_color_viridis(discrete = TRUE)
+```
+
+## Transform coordinate: log-scales
+
+```{r, dev = "png"}
+ggplot(diamonds, aes(carat, price)) +
+  geom_point()
+```
+
+## Transform coordinate: log-scales
+
+```{r, dev = "png"}
+ggplot(diamonds, aes(carat, price)) +
+  geom_point() + coord_trans(x = "log10") + coord_trans(y = "log10")
+```
+
+## Changing coordinate system: polar
+
+```{r polar}
+ggplot(iris, mapping = aes(x = Species, fill = Species)) +
+  geom_bar() + coord_polar() + theme_bw()
+```
+
+## Changing coordinate system: maps {.allowframebreaks}
+
+```{r worldmap}
+# World map, using geom_path instead of geom_polygon
+world <- map_data("world")
+worldmap <- ggplot(world, aes(x = long, y = lat, group = group)) +
+  geom_path() +
+  scale_y_continuous(breaks = (-2:2) * 30) +
+  scale_x_continuous(breaks = (-4:4) * 45)
+
+# Orthographic projection centered on Paris
+worldmap + coord_map("ortho",orientation = c(48, -2, 0))
+```
+

@@ -1,0 +1,25 @@
+## Exercice  (thanks to Sophie Donnet)  {.allowframebreaks}
+
+On s'intéresse à la base de données IMdb 
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages("ggplot2movies")
+```
+
+```{r, echo=TRUE, eval=TRUE}
+library(ggplot2movies)
+data(movies)
+movies
+```
+
+## Questions
+
+1. Vérifier que le jeu de données est bien de type `tibble`
+2. Tracer le `rate` en fonction de l'année de sortie du film.  
+3. Créer grâce aux fonctions de `dplyr` et `tidyr` un sous jeu de données ne contenant les variables `title`, `year`, `length`, `rating` et durant moins de 300 minutes; les films devront être classés pas ordre décroissant de durée. 
+4. Mettre les points dans une couleur entre cyan et violet en fonction de la durée du film (utiliser `scale_colour_gradient`)
+5. À partir du jeu de données complet, créer une variable "genre" à valeur dans ("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance", "Short")
+6. Créer maintenant un jeu de données contenant les films de moins de 300 minutes qui sont des drames, des romances, des films d'action ou des comédies.  
+7.  On s'intéresse aux films dont on a le budget et qui ne sont par des courts-métrages, ni des documentaires ni de genre inconnu.  Tracer les densités de probabilités des budgets par type de film
+8. Ajuster un modèle linéaire entre $\log$ budget et le rating des films pour chaque genre de film. 
+

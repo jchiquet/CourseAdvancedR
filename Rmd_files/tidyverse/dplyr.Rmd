@@ -133,6 +133,7 @@ summarise(mtcars, Mean_mpg = mean(mpg),  Var_disp = var(disp))
 group_by(mtcars, cyl,am)
 ```
 
+### Remark
 `ungroup()` performs the reverse operation.
 
 ##  Combine `summarise()` and `group_by()` 

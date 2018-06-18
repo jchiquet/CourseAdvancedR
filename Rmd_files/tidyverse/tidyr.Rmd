@@ -54,11 +54,11 @@ Gather Columns Into Key-Value Pairs
 
 ```{r gather}
 grades <- gather(grades, Test1, Test2, Test3, key = Test, value = Grade)
-head(grades)
+head(grades, 5)
 ```
 
 ```{r, echo=FALSE}
-knitr::kable(head(grades, 6))
+knitr::kable(head(grades, 5))
 ```
 
 \pause
