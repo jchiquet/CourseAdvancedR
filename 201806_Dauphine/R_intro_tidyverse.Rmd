@@ -70,7 +70,7 @@ Many ideas/examples inspired/stolen there:
 ```{r, child = paste0('tidyverse/', c("readr.Rmd", "tidyr.Rmd", "dplyr.Rmd", "dplyr_exercises.Rmd")), cache = FALSE}
 ```
 
-# Manipulation: `magrittr`, `purrr`, `ggplot2`   
+# Manipulation: `magrittr`, `purrr`
 
 ```{r, child = paste0('tidyverse/', c("magrittr.Rmd", "purrr.Rmd")), cache = FALSE}
 ```

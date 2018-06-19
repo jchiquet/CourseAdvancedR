@@ -49,7 +49,7 @@ a suite of useful tools that solve common problems with factors
 
 ### readr ![readr](../Rmd_files/tidyverse/figs/hex-readr.png){width="30px"}
 
-a fast and friendly way to read rectangular data (like csv, tsv, and fwf)
+a fast and friendly way to read rectangular data (like csv, tsv, ...)
 
 ### tidyr ![tidyr](../Rmd_files/tidyverse/figs/hex-tidyr.png){width="30px"}
 
@@ -76,3 +76,22 @@ offers a set of operators which make your code more readable
 ## Data analysis with the tidyverse
 
 ![Updated scheme for data analysis process](../Rmd_files/tidyverse/figs/tidyverse_data_science.png) 
+
+## Getting help
+
+### Rstudio's cheatsheets [https://www.rstudio.com/resources/cheatsheets/](https://www.rstudio.com/resources/cheatsheets/)
+For a quick overview of the main features
+
+### Stackoverflow [https://stackoverflow.com/](https://stackoverflow.com/)
+For all your specific questions
+
+![](../resources/common_figs/stackoverflow.png){width='100px'}\
+
+
+### Tidyverse.org [https://www.tidyverse.org](https://www.tidyverse.org)
+For an exhaustive documentation 
+
+![](../Rmd_files/tidyverse/figs/hex-tidyverse.png){width='30px'}\
+
+
+
