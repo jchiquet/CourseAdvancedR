@@ -16,4 +16,4 @@ Material used to generate slides for various teachings about R language and prog
 
 [slides](https://github.com/jchiquet/CourseAdvancedR/raw/master/201806_Dauphine/R_intro_tidyverse.pdf)
 
-[corrections of ggplot exercises](https://github.com/jchiquet/CourseAdvancedR/raw/master/201806_Dauphine/correction_exo_ggplot.Rmd)
+[corrections of ggplot exercises](https://raw.githubusercontent.com/jchiquet/CourseAdvancedR/master/201806_Dauphine/correction_exo_ggplot2.Rmd)
