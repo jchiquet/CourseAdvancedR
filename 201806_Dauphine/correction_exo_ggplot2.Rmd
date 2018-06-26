@@ -1,0 +1,110 @@
+---
+title: "Correction exercice ggplot2"
+author: "Julien Chiquet"
+date: "June 26, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercice  (thanks to Sophie Donnet)  {.allowframebreaks}
+
+On s'intéresse à la base de données IMdb 
+
+```{r, eval=FALSE, echo=TRUE}
+install.packages("ggplot2movies")
+```
+
+```{r, echo=TRUE, eval=TRUE}
+library(ggplot2movies)
+library(tidyverse)
+data(movies)
+movies
+```
+
+## Questions
+
+### 1.
+
+Vérifier que le jeu de données est bien de type `tibble`
+
+```{r}
+class(movies)
+```
+
+### 2. 
+
+Tracer le `rate` en fonction de l'année de sortie du film.  
+
+```{r}
+movies %>% ggplot(aes(x = year, y = rating)) + geom_point(alpha = .25) + geom_smooth() + theme_bw()
+```
+
+### 3.
+
+Créer grâce aux fonctions de `dplyr` et `tidyr` un sous jeu de données ne contenant les variables `title`, `year`, `length`, `rating` et durant moins de 300 minutes; les films devront être classés pas ordre décroissant de durée. 
+
+```{r}
+sub_movies <- movies %>% select(year, title, length, rating) %>% filter(length < 300) %>% arrange(desc(length))
+sub_movies
+```
+
+
+### 4.
+
+Mettre les points dans une couleur entre cyan et violet en fonction de la durée du film (utiliser `scale_colour_gradient`)
+
+```{r}
+sub_movies %>% ggplot(aes(x = year, y = rating, color = length)) + theme_bw() + 
+  geom_point(alpha = .1) + geom_smooth() + scale_color_gradient(low = "orange", high = "purple")
+```
+
+### 5.
+
+À partir du jeu de données complet, créer une variable "genre" à valeur dans ("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance", "Short")
+
+```{r}
+library(magrittr)
+movies %<>% 
+  # add a column other for movies with no label
+  mutate(Other = 1*((Animation | Comedy | Drama | Documentary | Romance | Short) == 0)) %>% #
+  select(Action, Animation, Comedy, Drama, Documentary, Romance, Short, Other, title) %>% 
+  gather(genre, indicator, -title) %>% 
+  # some movies have several "genre", I only keep the first one
+  filter(indicator != 0) %>% distinct(title, .keep_all = TRUE) %>% select(-indicator) %>% 
+  # I join the result to the original data once removed useless columns
+  left_join(., movies %>% select(-Action, -Animation, -Comedy, -Drama, -Documentary, -Romance, -Short)) %>% 
+  arrange(title)
+```
+
+### 6.
+
+Créer maintenant un jeu de données contenant les films de moins de 300 minutes qui sont des drames, des romances, des films d'action ou des comédies.  
+
+```{r}
+sub_movies <- movies %>% filter(length < 300, genre %in% c("Drama", "Romance", "Action", "Comedy"))
+```
+
+### 7.
+
+On s'intéresse aux films dont on a le budget et qui ne sont par des courts-métrages, ni des documentaires ni de genre inconnu. Tracer les densités de probabilités des budgets par type de film
+
+```{r}
+movies %>% filter(!(genre %in% c("Short", "Documentary", "Other"))) %>% 
+  ggplot(aes(budget, color = genre), alpha = .25) + geom_density() + facet_grid(. ~ genre) + scale_x_log10()
+```
+
+```{r}
+movies %>% filter(!(genre %in% c("Short", "Documentary", "Other"))) %>% 
+  ggplot(aes(budget, color = genre, fill = genre), alpha = .25) + geom_density() + scale_x_log10()
+```
+
+
+### Ajuster un modèle linéaire entre $\log$ budget et le rating des films pour chaque genre de film. 
+
+```{r}
+movies %>%  group_by(genre) %>% ggplot(aes(x = budget, y = rating, color = genre)) + geom_smooth(formula = y ~ x + 1, method = lm) + geom_point(alpha = .25) + scale_x_log10()
+```
+
