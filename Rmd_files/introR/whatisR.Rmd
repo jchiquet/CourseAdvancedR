@@ -1,0 +1,57 @@
+## R ?
+
+### In a nutshell
+
+\C{R} is a scientific software specialized in calculation and statistical analysis. 
+
+&nbsp;
+
+It is also
+
+&nbsp;
+
+* a programming language, 
+
+* a environment/interpreter, 
+
+* an open-source project (\C{GNU}-R)
+
+* a multi-plateform software (Linux, Mac, Windows)
+
+## A bit of history
+
+- 1970s: \C{S}-language developed at Bell labs (Chambers, Beckers)
+
+- 1980s: \C{S-PLUS} developed at AT\&T. Lab
+
+- 1990s: \C{R} is developed as a GNU/GPL open-source counterpart to \C{S} by  Gentleman  and  Ihaka (Auckland university)
+
+- 1997: The \C{R}-core team now leads  the development
+
+- 2002: The \C{R} fondation is created and chaired by Gentleman and Ihaka
+
+- 2011: first public of \C{R}-studio (JJ Allaire)
+
+- 2019: \C{R}studio lead scientist H. Wickham receives COPSS Award (statistician Nobel price)
+
+## Remarkable basics features
+
+### Scientific Computing
+
+* linear algebra
+* statistical models and data analysis
+
+### Data manipulation an visualization
+
+* import, export, transformation
+* great, versatile plotting system
+
+### Interfacing is easy
+
+* to most programming languages (C/C++, Python)
+* to most database systems (SQL, postgrey)
+* for distributed computing (Hadoop, H20, spark)
+
+### Package manager
+
+* Extremely versatile

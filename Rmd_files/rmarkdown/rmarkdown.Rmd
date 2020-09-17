@@ -1,0 +1,79 @@
+# R Markdown
+
+![an authoring framework for data science](../Rmd_files/rmarkdown/figs/hex-rmarkdown.png){width="100px"}
+
+## R Markdown?
+
+* Markdown is a _lightweight markup language_ with plain text formatting syntax that can be converted to HTML. It is completely independent from R. The extension is typically `.md`.
+
+* R Markdown is an _extension of the markdown syntax_ that enables R code to be executed. The extention is typically `.Rmd`.
+
+* `rmarkdown` is a library/package which processes and converts `.Rmd` files into a number of different formats, including HTML or `.pdf`. The core function is `rmarkdown::render()`.
+
+* `knitr` is a library/package which processes plain text document with embedded code, executes the code and 'knits' the results back into the document.  The core function is `knitr::knit()`.
+
+&nbsp;
+
+```{r install, eval=FALSE}
+install.packages("rmarkdown")
+install.packages("knitr")
+```
+
+## How does it work?
+
+![R Markdow workflow](../Rmd_files/rmarkdown/figs/workflow.png){width="400px"}
+
+## References
+
+### Rmarkdown: Dynamic Documents for \C{R} [@Rmarkdown], [https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
+
+![](../resources/common_figs/cover_rmarkdown.png){width="50px"}\
+
+### Knitr: A General-Purpose Package for Dynamic Report Generation in \C{R} [@knitr], [https://yihui.name/knitr/](https://yihui.name/knitr/)
+
+![](../resources/common_figs/cover_knitr.jpg){width="50px"}\
+
+### Rstudio doc
+
+See [https://rmarkdown.rstudio.com/](https://rmarkdown.rstudio.com/)
+
+## R Markdown possibilities
+
+See [https://rmarkdown.rstudio.com/](https://rmarkdown.rstudio.com/)
+
+### Handle various inputs
+
+* Markdown Syntax ([Markdown reference cheat sheet](https://commonmark.org/help/))
+* \LaTeX (Advanced mathematical expressions)
+* HTML/javascript
+* Code chunks (R, Python, Julia and more)
+
+### Handle various output
+
+* Rstudio Notebook
+* HTML report (static, dynamic)
+* HTML website (static, dynamic)
+* PDF document
+* Doc documents
+
+&nbsp;
+
+\rsa More than a Jupyter notebook
+
+## Create a new `.Rmd`
+
+![](../Rmd_files/rmarkdown/figs/CreateRmd1.png){width="200px"}
+![](../Rmd_files/rmarkdown/figs/CreateRmd2.png){width="200px"}
+
+## New `.Rmd`
+
+![](../Rmd_files/rmarkdown/figs/CreateRmd3.png){width="400px"}
+
+## Compile `.Rmd`
+
+Use the `Knit` button to produce a HTML file
+
+![](../Rmd_files/rmarkdown/figs/CreateRmd4.png){width="200px"}
+
+Shortcut: Ctrl + Maj + K
+

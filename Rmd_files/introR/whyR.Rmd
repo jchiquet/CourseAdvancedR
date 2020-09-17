@@ -1,0 +1,55 @@
+## Why R ?
+
+### Community
+
+* SatRDay, R user groups, meet-up, conference
+* CRAN community [https://cran.r-project.org/](https://cran.r-project.org/)
+* Rstudio community [https://community.rstudio.com/](https://community.rstudio.com/)
+* R dev/package well integrated on [github](http://github.com)
+
+### Packages manager
+
+* more than 13,000 community-based libraries
+* cutting-edges statistical methods
+* easy to learn even for non-statistician/data scientist
+
+### Reproducibility
+
+* Rmarkdown is not just notebook
+* Great for interfacing, plotting, scientific reports
+
+## Why not R?
+
+- Easy to make dirty code (less and less true)
+
+- Not typed language, not compilation by default: may be slow
+
+- Many ways to do the same things
+
+- Less well interfaced to ML/Deep-learning library than Python
+
+
+## Why R again?
+
+### The Rstudio group
+
+Even if it is a company...
+
+\&nbsp; 
+
+- Rstudio API is a great all-in-one tool for data analysis and development
+
+- Cleaner implementation (tidyverse and co)
+
+- New functionalities (unitary test, github integration)  
+
+- Interface to deep learning tools (Tensor Flow, Keras, Torch, etc.)  
+
+- Interface with Python (reticulate)
+
+- Nice surrogate Oriented-Object programming with R6 
+
+\&nbsp; 
+
+\rsa Rstudio basically saved \C{R} from \C{Python}
+
