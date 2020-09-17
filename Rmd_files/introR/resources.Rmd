@@ -1,4 +1,42 @@
 
-* SatRDay, R user groups, meet-up, conference
+## Academic resources
 
-* Stackoverflow [https://stackoverflow.com/](https://stackoverflow.com/)
+### Conferences
+
+- UseR, annual conference of the R foundation conference
+
+- SatRday, community-led, regional conferences 
+
+- Rstudio-conf, annual conference of the Rstudio community
+
+&nbsp;
+
+### Journals
+
+- The \C{R} journal [http://journal.r-project.org/](http://journal.r-project.org/)
+
+- The Journal of Statistical software [https://www.jstatsoft.org/](https://www.jstatsoft.org/)
+
+&nbsp;
+
+## Important web resources
+
+### Institutional
+
+- \red{R fondation} web site: [http://www.r-project.org/](http://www.r-project.org/)
+- \red{CRAN}  (Comprehensive R  Arxiv Network): [http://cran.r-project.org/](http://cran.r-project.org/)
+- Rstudio Community [https://rstudio.com](https://rstudio.com)
+
+### Community
+
+- [https://ropensci.org/](https://ropensci.org/) promotes reproducible science
+- \C{R} user groups, meet-up, conference
+- Stackoverflow [https://stackoverflow.com/](https://stackoverflow.com/)
+
+### Blogs and plateforms
+
+- \C{Datacamp}, online teaching plateform [https://www.datacamp.com/](https://www.datacamp.com/)
+- Rstudio eduction program [https://education.rstudio.com/](https://education.rstudio.com/)
+- Blogs community-driven [http://www.inside-r.org/](http://www.inside-r.org/), [http://www.r-statistics.com/](http://www.r-statistics.com/), [http://www.r-bloggers.com/](http://www.r-bloggers.com/)
+- Twitter \C{\#rstats}
+

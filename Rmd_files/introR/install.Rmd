@@ -1,0 +1,50 @@
+## Setup instructions {.allowframebreaks}
+
+&nbsp;
+
+**R** and **RStudio** are separate downloads and installations
+
+- R is the underlying statistical computing environment
+
+- RStudio is a graphical integrated development environment (IDE)
+
+&nbsp; 
+
+&nbsp; 
+
+### Windows
+
+1. Download R from
+  the [CRAN website](https://cran.r-project.org/bin/windows/base/release.htm) and
+
+2. Run the `.exe` file that was just downloaded
+
+3. Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
+
+4. Under *Installers* select **RStudio x.yy.zzz - Windows Vista/7/8/10**
+
+&nbsp;
+
+&nbsp;
+
+### MacOS
+
+1. Download R from the [CRAN website](https://cran.r-project.org/bin/macosx/).
+
+2. Select the `.pkg` file for the latest R version and double click
+
+3. Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
+
+4. Under *Installers* select **RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)** 
+
+
+### Linux
+
+1. Follow the [CRAN instructions](https://cloud.r-project.org/bin/linux), to update your /etc/sources.list
+
+2. On Debian/Ubuntu, run `sudo apt-get install r-base` 
+
+3. Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
+
+4. Under *Installers* select the version that matches your distribution
+

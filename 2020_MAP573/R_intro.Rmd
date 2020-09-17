@@ -15,7 +15,7 @@ output:
 bibliography: ../resources/bibliography.bib
 fontsize: 10pt
 nocite: |
-  @advr, @Rbase
+  @advr, @Rbase, @knitr, @Rmarkdown, @efficientR, @Rcpp, @reproducibleR, @ggplot2, @grammarOfGraphics
 params: 
   child_path : "../Rmd_files/"
   setup_path : "../resources/"
@@ -30,41 +30,31 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 ```{r whatisR, child = paste0('introR/', c("whatisR.Rmd", "whyR.Rmd")), cache = FALSE}
 ```
 
-# Why R?
+# Getting started
 
-## The Rstudio API
+```{r whatisR, child = paste0('introR/', c("install.Rmd", "first_session.Rmd", "resources.Rmd")), cache = FALSE}
+```
 
-- A full API with code, interpreter, workspace and plots
-- Package developement and external code integration are easier
-- Notebooks integration with Rmarkdown
-- Interface with github
+# First steps
+
+## Data Structures in base R
+
+  1. Atomic vector (integer, double, logical, character)
+  2. Recursive vector (list)
+  3. Factor
+  4. Matrix and array
+  5. Data Frame
 
 &nbsp;
 
-\rsa Rstudio is a state-of-the-art tool for efficent development in `R`
+\rsa Creation, Basic Operation, Manipulation, Representation
 
-## My favorites shortcuts
+### Resources
+  - Advanced R, chapters I.2, I.3 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)]
+  - An introduction to R programming [http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html](http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html)
 
-- `ctrl + return`: execute current selection in console
-- `ctrl + 1/2/3/4`: navigate between panels
-- `ctrl + down/up`: navigate between tabs
-- `ctrl + shift + k`: knit current doccument
 
-###
-
-![Screenshot of the Rstudio API](figures/rstudio)
-
-# A dummy Rsession
-
-<!-- # R markdown -->
-```{r rmarkdown, child = paste0('rmarkdown/', c("rmarkdown.Rmd")), cache = FALSE}
-```
-
-<!-- ## Developement environment {.allowframebreaks} -->
-
-## References
-
-Many ideas/examples inspired/stolen from the following books:
+## Going further
 
 ### Advanced R [@advr], [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 
@@ -76,34 +66,22 @@ Many ideas/examples inspired/stolen from the following books:
 ![](../resources/common_figs/cover_Rbase.png){width="50px"}\
 
 
-<!-- ## Prerequisites -->
+## Basics plotting
 
-<!-- ### Data Structures in base R -->
-<!--   1. Atomic vector (integer, double, logical, character) -->
-<!--   2. Recursive vector (list) -->
-<!--   3. Factor -->
-<!--   4. Matrix and array -->
-<!--   5. Data Frame -->
+\rsa Creation, Basic Operation, Manipulation, Representation
 
-<!-- &nbsp; -->
+### Resources
+- tutorial
 
-<!-- \rsa Creation, Basic Operation, Manipulation, Representation -->
+# R markdown
+```{r rmarkdown, child = paste0('rmarkdown/', c("rmarkdown.Rmd")), cache = FALSE}
+```
 
-<!-- ### Resources -->
-<!--   - Advanced R, chapters I.2, I.3 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)] -->
-<!--   - An introduction to R programming [http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html](http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html) -->
+# Interfacing to other languages
+
+## TODO
 
 
 
-<!-- ## Developement environment {.allowframebreaks} -->
-
-
-<!-- # Why R? -->
-
-<!-- ## Packages management system -->
-
-<!-- ## Interfacing with others langages -->
-
-
-<!-- ## References -->
+## References
 

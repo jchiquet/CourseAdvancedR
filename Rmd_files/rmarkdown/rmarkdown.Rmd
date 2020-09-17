@@ -1,4 +1,3 @@
-# R Markdown
 
 ![an authoring framework for data science](../Rmd_files/rmarkdown/figs/hex-rmarkdown.png){width="100px"}
 

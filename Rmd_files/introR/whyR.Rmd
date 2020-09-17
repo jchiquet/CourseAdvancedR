@@ -35,9 +35,9 @@
 
 Even if it is a company...
 
-\&nbsp; 
+&nbsp; 
 
-- Rstudio API is a great all-in-one tool for data analysis and development
+- Rstudio IDE is a great all-in-one tool for data analysis and development
 
 - Cleaner implementation (tidyverse and co)
 
@@ -49,7 +49,7 @@ Even if it is a company...
 
 - Nice surrogate Oriented-Object programming with R6 
 
-\&nbsp; 
+&nbsp; 
 
 \rsa Rstudio basically saved \C{R} from \C{Python}
 
