@@ -1,0 +1,37 @@
+## Interfacing `Python` with `R` is _really_ easy I
+
+### Configuring Python via reticulate
+
+```{r}
+library(reticulate)
+use_python("/usr/local/bin/python")
+reticulate::py_config()
+```
+&nbsp;
+
+First time, install 
+```{r, eval = FALSE}
+py_install("pandas")
+```
+
+## Interfacing `Python` with `R` is _really_ easy II
+
+### Performing analysis with Python
+
+```{python}
+import pandas
+flights = pandas.read_csv("flights.csv")
+flights = flights[flights['dest'] == "ORD"]
+flights = flights[['carrier', 'dep_delay', 'arr_delay']]
+flights = flights.dropna()
+```
+
+&nbsp;
+
+Now use Python output with \C{R}
+
+```{r, fig.}
+head(py$flights)
+```
+
+

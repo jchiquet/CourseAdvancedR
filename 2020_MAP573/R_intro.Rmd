@@ -15,7 +15,7 @@ output:
 bibliography: ../resources/bibliography.bib
 fontsize: 10pt
 nocite: |
-  @advr, @Rbase, @knitr, @Rmarkdown, @efficientR, @Rcpp, @reproducibleR, @ggplot2, @grammarOfGraphics
+  @advr, @moderndive, @Rbase, @Rinferno, @r4ds, @rpkg, @knitr, @Rmarkdown, @efficientR, @Rcpp, @reproducibleR, @ggplot2, @grammarOfGraphics
 params: 
   child_path : "../Rmd_files/"
   setup_path : "../resources/"
@@ -32,56 +32,100 @@ source(paste0(params$setup_path, "knitr_setup.R"))
 
 # Getting started
 
-```{r whatisR, child = paste0('introR/', c("install.Rmd", "first_session.Rmd", "resources.Rmd")), cache = FALSE}
+```{r whatisR, child = paste0('introR/', c("install.Rmd", "Rsession.Rmd", "resources.Rmd")), cache = FALSE}
 ```
 
-# First steps
-
-## Data Structures in base R
-
-  1. Atomic vector (integer, double, logical, character)
-  2. Recursive vector (list)
-  3. Factor
-  4. Matrix and array
-  5. Data Frame
-
-&nbsp;
-
-\rsa Creation, Basic Operation, Manipulation, Representation
-
-### Resources
-  - Advanced R, chapters I.2, I.3 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)]
-  - An introduction to R programming [http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html](http://julien.cremeriefamily.info/teachings_L3BI_ISV51.html)
-
-
-## Going further
-
-### Advanced R [@advr], [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
-
-![](../resources/common_figs/cover_advancerdR.png){width="50px"}\
-
-
-### A Language and Environment for Statistical Computing  [@Rbase], [https://www.R-project.org/](https://www.R-project.org/)
-
-![](../resources/common_figs/cover_Rbase.png){width="50px"}\
-
-
-## Basics plotting
-
-\rsa Creation, Basic Operation, Manipulation, Representation
-
-### Resources
-- tutorial
 
 # R markdown
 ```{r rmarkdown, child = paste0('rmarkdown/', c("rmarkdown.Rmd")), cache = FALSE}
 ```
 
-# Interfacing to other languages
+# Interfacing with other languages
 
-## TODO
+## Rcpp 
 
+### Seamless R and C++ integration with Rcpp [@Rcpp], for sale but see [http://dirk.eddelbuettel.com](http://dirk.eddelbuettel.com)
 
+![](../resources/common_figs/cover_Rcpp.jpg){width="50px"}\
 
-## References
+```{r Rcpp, child = paste0('Rcpp/', c("RcppArmadillo.Rmd")), cache = FALSE}
+```
+
+## Reticulate
+
+###  R interface to Python [https://rstudio.github.io/reticulate/](https://rstudio.github.io/reticulate/)
+
+![](../Rmd_files/reticulate/figs/hex-reticulate.png){width="50px"}\
+
+```{r rmarkdown, child = paste0('reticulate/', c("reticulate.Rmd")), cache = FALSE}
+```
+
+# First steps
+
+## Basic notions
+
+\C{R} owns the same ingredients as most programming language
+
+### Functions 
+
+Functions have a special flavor in \C{R} (functional programming)
+
+### Variables, Objects
+
+We manipulate object in \C{R} (as in OO programming)
+
+### Data structure
+
+  1. Atomic vector (integer, double, logical, character)
+  2. List (recursive vector)
+  3. Factor (vector with categories of values)
+  4. Matrix and array
+  5. Data Frame
+
+### Resources
+  - Advanced R, chapters I.2, I.3 [@advr, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)]
+  - [https://rbasics.netlify.app/](https://rbasics.netlify.app/)
+
+## Your turn
+
+I do not believe (anymore) in learning any programming language by reading slides
+
+### Basics programming
+
+```{r tuto basics, eval = FALSE}
+learnr::run_tutorial("basics_prog" , package = "MAP573tutorials")
+```
+
+### Basics plotting
+
+```{r tuto basics vis, eval = FALSE}
+learnr::run_tutorial("basics_vis" , package = "MAP573tutorials")
+```
+
+### Swirl
+
+```{r, eval = FALSE}
+library(swirl)
+install_course_github("swirldev", "R_Programming_E")
+swirl()
+```
+
+## Going further
+
+_Great_ material available on the web
+
+### Advanced R [@advr], [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
+
+![](../resources/common_figs/cover_advancerdR.png){width="50px"}\
+
+### Modern dive into R [@moderndive], [https://moderndive.com/](https://moderndive.com/)
+
+![](../resources/common_figs/cover_moderndive.png){width="50px"}\
+
+### Other personal links
+
+- Base R: more comprehensive, faster [https://github.com/jchiquet/CourseAdvancedR/](https://github.com/jchiquet/CourseAdvancedR/)
+- Keep watch: workgroup [https://stateofther.github.io/](https://stateofther.github.io/)
+
+## Bibliographical references {.allowframebreaks}
 

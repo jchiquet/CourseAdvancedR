@@ -20,6 +20,8 @@ It is also
 
 ## A bit of history
 
+### Chronological approach
+
 - 1970s: \C{S}-language developed at Bell labs (Chambers, Beckers)
 
 - 1980s: \C{S-PLUS} developed at AT\&T. Lab
@@ -34,7 +36,7 @@ It is also
 
 - 2019: \C{R}studio lead scientist H. Wickham receives COPSS Award (statistician Nobel price)
 
-## Remarkable basics features
+## Remarkable features
 
 ### Scientific Computing
 
@@ -46,12 +48,14 @@ It is also
 * import, export, transformation
 * great, versatile plotting system
 
-### Interfacing is easy
-
-* to most programming languages (C/C++, Python)
-* to most database systems (SQL, postgrey)
-* for distributed computing (Hadoop, H20, spark)
-
 ### Package manager
 
-* Extremely versatile
+* easy to use, portable
+* community driven
+
+### Interfacing is "easy"
+
+* with most programming languages (C/C++, Python)
+* with most database systems (SQL, postgrey)
+* for distributed computing (Hadoop, H20, spark)
+

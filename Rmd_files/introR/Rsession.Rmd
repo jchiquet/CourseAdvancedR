@@ -1,0 +1,60 @@
+## The R console
+
+![Screenshot of the R console](../Rmd_files/introR/figs/screenshot_R)
+
+- \C{help(str), ?str}: launch dedicated help for command \C{str},
+- \C{help.search("factorial"), ??factorial}:  look for command with key word \C{factorial},
+- \C{help.start(), ???}: launch the HTML help pages in a browser 
+
+## The Rstudio IDE
+
+- A full IDE with code, interpreter, workspace and plots
+
+- Code completion (even for C++, Python)
+
+- Debugger
+
+- Package development and external code integration are easier
+
+- Notebooks integration with Rmarkdown
+
+- Interface with github
+
+&nbsp;
+
+\rsa Rstudio is a state-of-the-art tool for efficient development in `R`
+
+## The Rstudio IDE
+
+![Screenshot of the Rstudio API](../Rmd_files/introR/figs/rstudio)
+
+## Rstudio hints
+
+### Shortcuts
+
+- `Ctrl + Return`: execute current selection in console
+- `Ctrl + 1/2/3/4`: navigate between panels
+- `Ctrl + Shift + K`: knit current document
+
+etc., see 'Alt + Shift + K'
+
+### Integrated Help
+
+- "Cheatsheets" for data manipulation/plots
+- Markdown reference
+- Roxygen refenrece
+
+### Good practices
+
+- Comment your code
+
+- Create projects whenever possible
+
+- Use relevant variables/files names
+
+- Use notebook to perform and comment a data analysis
+
+- Write a function when you repeat some code 3 times
+
+- Coding style: [https://google.github.io/styleguide/Rguide.html](https://google.github.io/styleguide/Rguide.html)
+

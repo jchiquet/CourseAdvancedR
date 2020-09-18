@@ -33,7 +33,7 @@ Arma <- cppFunction(depends = "RcppArmadillo", 'NumericVector Arma(NumericVector
 
 ```{r do_plot}
 x <-  runif(1e7, 1,2)
-res <- microbenchmark(R = cumsum(log(x)), cpp = rcpp(x), arma = Arma(x), times = 40)
+res <- microbenchmark(R = cumsum(log(x)), cpp = rcpp(x), arma = Arma(x), times = 10)
 print(autoplot(res))
 ```
 

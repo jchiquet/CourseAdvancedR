@@ -35,8 +35,9 @@
 
 ### Blogs and plateforms
 
+- \C{Swirl}, plateform + package to learnr R in R [https://swirlstats.com/](https://swirlstats.com/)
 - \C{Datacamp}, online teaching plateform [https://www.datacamp.com/](https://www.datacamp.com/)
 - Rstudio eduction program [https://education.rstudio.com/](https://education.rstudio.com/)
 - Blogs community-driven [http://www.inside-r.org/](http://www.inside-r.org/), [http://www.r-statistics.com/](http://www.r-statistics.com/), [http://www.r-bloggers.com/](http://www.r-bloggers.com/)
-- Twitter \C{\#rstats}
+- Many book freely available at [https://bookdown.org/](https://bookdown.org/)
 
