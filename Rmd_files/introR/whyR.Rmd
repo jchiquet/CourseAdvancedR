@@ -3,7 +3,6 @@
 ### Accessibility
 
 * easy to learn even for non-statistician/data scientist
-* easy to learn even for non-statistician/data scientist
 
 ### Packages manager
 
@@ -27,19 +26,19 @@
 
 ### Some limitations
 
-- Easy to make dirty (unreadable) code
+- Easy to write dirty (unreadable) code
 
 - Easy to write inefficient code
 
 - Many useless packages
 
-- Not a typed language and not compilation by default: may be slow
+- Not a typed language and no compilation by default: may be slow
 
 - Many ways to do the same things
 
 - Less well interfaced to GAFAM ML/Deep-learning libraries than Python
 
-## Why R again?
+## So why R again?
 
 ### The Rstudio group
 
@@ -49,17 +48,23 @@ Even if it is a company...
 
 - Rstudio IDE is a great all-in-one tool for data analysis and development
 
-- Cleaner/consistent implementation (tidyverse and co)
+- Towards cleaner/consistent implementation (\texttt{tidyverse} and co)
 
 - Many features from computer science (unitary test, github integration)  
 
-- Better interface to ML/DL tools (Tensor Flow, Keras, Torch, etc.)  
+- Enhanced interfaces to ML/DL tools (Tensor Flow, Keras, Torch, etc.)  
 
-- Great interface with Python (package reticulate)
+- Great interface with with Python (package \texttt{reticulate})
+
+### The \C{R} community
+
+- CRAN taskviews and \texttt{R} foundation
+
+- Great interface with with \texttt{C++} (packages \texttt{Rcpp}, \texttt{RcppArmadillo})
 
 - Nice surrogate Oriented-Object programming with R6 
 
 &nbsp; 
 
-\rsa Rstudio basically saved \C{R}
+\rsa These features basically saved \C{R} (for how long?) 
 

@@ -32,11 +32,13 @@ It is also
 
 - 2002: The \C{R} foundation is created and chaired by Gentleman and Ihaka
 
-- 2011: first public of \C{R}-studio (JJ Allaire)
+- 2011: first public beta version of \C{R}-studio (JJ Allaire and co)
+
+- 2016: version 1.0 of \C{R}studio
 
 - 2019: \C{R}studio lead scientist H. Wickham receives COPSS Award (statistician Nobel price)
 
-## Remarkable features
+## \C{R} remarkable features
 
 ### Scientific Computing
 

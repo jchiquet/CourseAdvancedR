@@ -3,13 +3,13 @@
 
 ## R Markdown?
 
-* Markdown is a _lightweight markup language_ with plain text formatting syntax that can be converted to HTML. It is completely independent from R. The extension is typically `.md`.
+* Markdown is a \alert{\bf lightweight markup language} with plain text formatting syntax that can be converted to HTML. It is completely independent from R. The extension is typically `.md`.
 
-* R Markdown is an _extension of the markdown syntax_ that enables R code to be executed. The extention is typically `.Rmd`.
+* R Markdown is an  _extension_ of the markdown that \alert{\bf enables R code to be executed}. The extension is typically `.Rmd`.
 
-* `rmarkdown` is a library/package which processes and converts `.Rmd` files into a number of different formats, including HTML or `.pdf`. The core function is `rmarkdown::render()`.
+* `rmarkdown` is a _package_ which processes and \alert{\bf converts `.Rmd` files} into a number of different formats, including HTML or `.pdf`. The core function is `rmarkdown::render()`.
 
-* `knitr` is a library/package which processes plain text document with embedded code, executes the code and 'knits' the results back into the document.  The core function is `knitr::knit()`.
+* `knitr` is a _package_ which processes plain text document \alert{\bf with embedded code, executes the code} and 'knits' the results back into the document.  The core function is `knitr::knit()`.
 
 &nbsp;
 
