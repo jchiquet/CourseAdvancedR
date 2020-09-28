@@ -1,0 +1,9 @@
+## {lubridate}
+
+![cohesive set of functions designed to make working with date as easy as possible](../Rmd_files/tidyverse/figs/hex-lubridate.jpg){width="100px"}
+
+### `lubridate` versus `base R`  utilities
+
+ Data manipulation is always boring, whatever the system used...
+ 
+See A. Bichat's slides again: [https://abichat.github.io/slides/factors_dates_strings/#38](https://abichat.github.io/slides/factors_dates_strings/#38)

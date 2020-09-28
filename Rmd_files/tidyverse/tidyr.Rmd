@@ -50,19 +50,33 @@ The inverse of `separate()` is `unite()`
 
 ## `gather()`
 
-Gather Columns Into Key-Value Pairs
+Gather columns into key-value pairs
 
 ```{r gather}
 grades <- gather(grades, Test1, Test2, Test3, key = Test, value = Grade)
-head(grades, 5)
-```
-
-```{r, echo=FALSE}
-knitr::kable(head(grades, 5))
+grades
 ```
 
 \pause
 
-### Remark
+### Remark 1
 The inverse of `gather()` is `spread()`
 
+### Remark 2
+`pivot_longer()/pivot_wider()`: updates of gather and spread
+
+
+
+## `nest()`
+
+Nesting creates a list-column of data frames
+
+```{r}
+nest(iris, !Species)
+
+```
+
+\pause
+
+### Remark 
+The inverse of `nest()` is `unnest()`

@@ -73,9 +73,14 @@ enhances R's functional programming (FP) toolkit
 
 offers a set of operators which make your code more readable
 
-## Data analysis with the tidyverse
+## Data analysis with the tidyverse (v1)
 
-![Updated scheme for data analysis process](../Rmd_files/tidyverse/figs/tidyverse_data_science.png) 
+![Updated scheme for data analysis process](../Rmd_files/tidyverse/figs/tidyverse_data_science.png){width="400px"}
+
+## Data analysis with the tidyverse (v2)
+
+![Updated scheme for data analysis process (v2)](../Rmd_files/tidyverse/figs/tidyv-flow.png){width="425px"}
+
 
 ## Getting help
 

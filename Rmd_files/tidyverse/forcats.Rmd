@@ -7,3 +7,112 @@
 - easy use in conjuction with other tidyverse packages
 - correct inconsistent behaviours of `R` base factors facilities
 
+\bigskip
+
+\rsa Slides borrowed to Antoine Bichat [https://abichat.github.io/slides/factors_dates_strings](https://abichat.github.io/slides/factors_dates_strings)
+
+
+## Convert to factor
+
+```{r asfactor}
+fruits <- c("banana", "apple", "mango", "apple", "pear", "apple", 
+            "banana", "pitaya", "mango", "mango", "apple")
+as.factor(fruits) # Use alphabetical order
+```
+
+\pause
+
+```{r asfactor2}
+forcats::as_factor(fruits) # Use appearance order 
+## equivalent to factor(countries, levels = unique(countries))
+```
+
+Using appearance order increased reproducibility because it's independent from `locale()`.
+
+## Change level names
+
+```{r fct_recode}
+fct_recode(fruits, dragonfruit = "pitaya")
+```
+
+\pause
+
+```{r fct_relabel}
+fct_relabel(fruits, str_to_title)
+```
+
+Note that when converting from strings to factors, `fct_recode()` and `fct_relabel()` use alphabetical order.
+
+## Reorder levels
+
+You can reorder levels:
+
+* manually with `fct_relevel()`,
+
+* by appearance with `fct_inorder()`,
+
+* by frequency with `fct_infreq()`,
+
+* according to another variable with `fct_reorder()`,
+
+* according to the last value of another variable with `fct_reorder2()`,
+
+* randomly with `fct_shuffle()`,
+
+* by reversing order with `fct_rev()`...
+
+## Reorder by frequency 
+
+```{r fct_infreq}
+fct_count(fruits, sort = TRUE)
+fct_infreq(fruits)
+```
+
+## According to another variable 
+
+```{r levelsiris}
+levels(iris$Species)
+``` 
+
+```{r irisreorder}
+iris$Species <- fct_reorder(iris$Species, iris$Sepal.Width)
+ggplot(iris) + aes(x = Species, y = Sepal.Width, fill = Species) + geom_boxplot()  
+``` 
+
+## Handling many modalities
+
+A data set about nuclear testings and explosion around the world:
+```{r}
+library(tidytuesdayR)
+nuclear <- tt_load("2019-08-20")$nuclear_explosion
+```
+
+```{r}
+nuclear$type <- stringr::str_to_title(nuclear$type)
+fct_count(nuclear$type, sort = TRUE)
+```
+
+## Lump least common factors
+
+
+```{r lump-n}
+table(fct_lump(nuclear$type, n = 5))
+```
+
+\pause
+
+```{r lump-min}
+table(fct_lump_min(nuclear$type, min = 20))
+```
+
+## Manually collapse levels
+
+```{r}
+nuclear_collapsed <- fct_collapse(nuclear$type, 
+    Air = c("Atmosph", "Airdrop", "Balloon", "Rocket"),
+    Underground = c("Shaft", "Tunnel", "Shaft/Gr", "Shaft/Lg", "Ug", "Gallery"),
+    Water = c("Barge", "Uw", "Ship", "Water Su", "Watersur"), 
+    other_level = "Other")
+fct_count(nuclear_collapsed, sort = TRUE)
+```
+

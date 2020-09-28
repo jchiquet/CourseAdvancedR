@@ -27,7 +27,7 @@ my_lapply <-function(vector, FUN, ...) {
 
 ### Exercise 1
 
-Use the closure `power` to generate various exponentation functions that you will store in a list. Use a functionals to compute the exponents of numbers of your choice. 
+Use the closure `power` to generate various exponentiation functions that you will store in a list. Use a functionals to compute the exponents of numbers of your choice. 
 
 ### Exercise 2
 
@@ -40,4 +40,4 @@ Suppose we want to predict `mpg` (consumption) from the regressors `disp` (engin
 - `mgp ~ I(1/disp)`
 - `mgp ~ 1 + I(1 / disp) + wt`
 
-Use ` lapply` to adjust linear models with such formulaes and extract the coefficient of determination ($R^2$).
+Use ` lapply` to adjust linear models with such formulas and extract the coefficient of determination ($R^2$).

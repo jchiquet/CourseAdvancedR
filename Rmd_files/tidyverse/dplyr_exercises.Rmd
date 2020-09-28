@@ -12,8 +12,8 @@ DF2 = data.frame(id = c(3L, 1L, 1L, 2L, 3L),
                  code = c("b", "a", "c", "c", "d"), 
                  mul = 5:1, stringsAsFactors = FALSE)
 ## corresponding data tibble
-TB1 <- as.tibble(DF1)
-TB2 <- as.tibble(DF2)
+TB1 <- as_tibble(DF1)
+TB2 <- as_tibble(DF2)
 ```
 
 ## Question 1

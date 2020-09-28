@@ -4,8 +4,9 @@
 
 ### `stringr` versus `base` string utilities
 
- String manipulmtion is cumbersome in `R` base. However, string plays a big role in many data cleaning and preparation.
+ String manipulation is cumbersome in `R` base. However, string plays a big role in many data cleaning and preparation.
  
-- easy use in conjuction with other tidyverse packages
+- easy use in conjunction with other tidyverse packages
 - faster and correct implementations of common string manipulations
 
+[See A. Bichat's slides] [https://abichat.github.io/slides/factors_dates_strings/#73](https://abichat.github.io/slides/factors_dates_strings/#73)

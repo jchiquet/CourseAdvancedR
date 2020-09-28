@@ -2,26 +2,114 @@
  
 ![enhances R's functional programming (FP) toolkit](../Rmd_files/tidyverse/figs/hex-purrr.png){width="100px"}
 
-### Map family of functions
+Some slides borrowed to
+- Happy dev with {purrr} [https://colinfay.me/happy-dev-purrr/](https://colinfay.me/happy-dev-purrr/) (C. Fay)
+- Modeling in the tidyverse [https://abichat.github.io/slides/modelingtidyverse/](https://abichat.github.io/slides/modelingtidyverse/) (A. Bichat)
 
-Apply a function to each element of a vector: replace the [x]`apply` families (more coherent)
+## Functional programming "phylosophy"
 
-- `map()`, `map_if()` and `map_at()` _always return a list_
-- `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return vectors of the corresponding type
-- `map_dfr()` and `map_dfc()` return data frames created by row-binding and column-binding respectively
+* Never use `for` loops
 
-## Examples
+### Base R
 
-What is this piece of code doing?
-```{r map_exmaple1}
-1:10 %>%
-  map(rnorm, n = 10) %>%
+`*apply()` functions and friends for lists and data frames
+
+  * `apply`, `lapply()`, `sapply()`, `tapply()`, `mapply()`, ...
+  
+  * `Map()`, `Reduce()`
+  
+  * `Vectorize()`
+
+### Tidyverse variants
+
+`map()` function and variants
+
+  * `map()`, `map_dbl()`, `map_chr()`, `map_lgl()`, ...
+  
+  * `map2()`, `map2_dbl()`, `map2_chr()`, `map2_lgl()`, ...
+  
+  * `pmap()`, `pmap_dbl()`, `pmap_chr()`, `pmap_lgl()`, ...
+  
+  * `reduce()`
+
+
+## `map*()`
+
+
+![map](../Rmd_files/tidyverse/figs/map.png){width=30%"}
+
+
+* `map()` applies the function to each element and returns a list
+
+* `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` applies the function to each element and returns a atomic vector of the corresponding type
+
+## `map*()`: examples {.allowframebreaks}
+
+```{r}
+map(1:5, rnorm)
+```
+
+```{r}
+map(1:5, rnorm) %>% 
   map_dbl(mean)
 ```
 
-\pause
+## `map*()` (additional arguments)
 
-split a data frame into pieces, fit a model to each piece, compute the summary, then extract the R2.
+
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+
+```{r echo=FALSE}
+set.seed(42)
+```
+
+```{r}
+map(1:4, rnorm, n = 6)
+```
+
+## `map*()`
+
+
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+
+```{r echo=FALSE}
+set.seed(42)
+```
+
+```{r}
+map(1:4, rnorm, n = 6) %>% 
+  map_dbl(function(x) x[2])
+```
+
+## `map*()`
+
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+
+```{r echo=FALSE}
+set.seed(42)
+```
+
+```{r}
+map(1:4, rnorm, n = 6) %>% 
+  map_dbl(~ .[2])
+```
+
+## `map*()`
+
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+
+```{r echo=FALSE}
+set.seed(42)
+```
+
+```{r}
+map(1:4, rnorm, n = 6) %>% 
+  map_dbl(2)
+```
+
+## Examples
+
+Split a data frame into pieces, fit a model to each piece, compute the summary, then extract the R2.
 
 ```{r map_example2}
 mtcars %>%
@@ -34,13 +122,154 @@ mtcars %>%
 ## A more complicated example
 
 ```{r map_lists}
-iris %>% 
-  group_by(Species) %>% 
-  nest(.key = Data) %>% 
-  mutate(Model = purrr::map(Data,
-                            ~ lm(data = ., 
-                                 Sepal.Length ~ Petal.Length))) %>% 
-  mutate(Summary = purrr::map(Model, summary)) %>% 
-  mutate(`R squared` = purrr::map_dbl(Summary, ~ .$r.squared))
+iris %>%
+  group_by(Species) %>%
+  nest() %>%
+  mutate(model = map(data, ~ lm(data = ., Sepal.Length ~ Petal.Length))) %>%
+  mutate(Summary = map(model, summary)) %>%
+  mutate(`R squared` = map_dbl(Summary, ~ .$r.squared))
 ```
+
+## Advantages of `map()` vs the `apply()` family
+
+* Stable and consistent grammar
+
+```{r eval=FALSE}
+apply(X, MARGIN, FUN, ...)
+lapply(X, FUN, ...)
+sapply(X, FUN, ..., simplify = TRUE, USE.NAMES = TRUE)
+tapply(X, INDEX, FUN = NULL, ..., default = NA, simplify = TRUE)
+mapply(FUN, ..., MoreArgs = NULL, SIMPLIFY = TRUE, USE.NAMES = TRUE)
+eapply(env, FUN, ..., all.names = FALSE, USE.NAMES = TRUE)
+...
+```
+
+VS 
+
+```{r eval=FALSE}
+map(.x, .f, ...)
+map_if(.x, .p, .f, ...)
+map_chr(.x, .f, ...)
+map_int(.x, .f, ...)
+map_dbl(.x, .f, ...)
+...
+```
+
+## Advantages of `map()` vs the `apply()` family
+
+* Type stability
+
+```{r}
+sapply(iris$Sepal.Length, as.numeric) %>% class()
+sapply(iris$Sepal.Length, as.data.frame) %>% class()
+```
+
+VS 
+
+```{r}
+map_dbl(iris$Sepal.Length, as.numeric) %>% class()
+map_df(iris$Sepal.Length, as.data.frame) %>% class()
+```
+
+## Advantages of `map()` vs the `apply()` family
+
+* Anonymous functions & verbosity
+
+```{r eval=FALSE}
+lapply(list, function(x) x + 2)
+mapply(function(x, y) x + y, list1, list2)
+lapply(list, function(x) x[[2]])
+lapply(list, function(x) x$foo)
+```
+
+VS 
+
+```{r eval=FALSE}
+map(list, ~ . + 2)
+map2(list1, list2, ~ .x + .y)
+map(list, 2)
+map(list, "foo")
+```
+
+
+## `map2*()`
+
+![map2](../Rmd_files/tidyverse/figs/map2.png){width=30%"}
+
+`map2()` and `map2_*()` are variants of `map()` and `map_*()` which work with two arguments
+
+
+```{r}
+map2(1:4, c(2, 5, 5, 10), runif, n = 5)
+```
+
+## `pmap*()`
+
+![pmap](../Rmd_files/tidyverse/figs/pmap-3.png){width=30%"}
+
+`pmap()` and `pmap_*()` are generalized versions of `map()` and `map_*()` which work with any number of arguments
+
+```{r}
+pmap(list(n = c(2, 3, 2, 5), min = 1:4, max = c(2, 5, 5, 10)), runif)
+```
+
+
+---
+## `reduce()`
+
+![reduce](../Rmd_files/tidyverse/figs/reduce.png){width=30%"}
+
+
+`reduce(list(x1, x2, x3), f)` is equivalent to `f(f(x1, x2), x3)` 
+
+---
+## `reduce()`
+
+```{r echo=FALSE}
+set.seed(1)
+```
+
+```{r}
+rerun(4, sample(1:10, 6)) 
+```
+
+
+```{r echo=FALSE}
+set.seed(1)
+```
+
+```{r eval=FALSE}
+rerun(4, sample(1:10, 6)) %>% 
+  reduce(intersect)
+```
+
+
+## `reduce()`
+
+```{r echo=FALSE}
+set.seed(1)
+```
+
+```{r}
+rerun(4, sample(1:10, 6))
+```
+
+```{r echo=FALSE}
+set.seed(1)
+```
+
+```{r}
+rerun(4, sample(1:10, 6)) %>% 
+  reduce(intersect)
+```
+
+
+<!-- ### Map family of functions -->
+
+<!-- Apply a function to each element of a vector: replace the [x]`apply` families (more coherent) -->
+
+<!-- - `map()`, `map_if()` and `map_at()` _always return a list_ -->
+<!-- - `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return vectors of the corresponding type -->
+<!-- - `map_dfr()` and `map_dfc()` return data frames created by row-binding and column-binding respectively -->
+
 

@@ -151,7 +151,7 @@ summarise(grp_mtcars, Count = n(),  Mean_mpg = mean(mpg),  Var_disp = var(disp))
 
 Most primitive in `dyplr` do no modify the original table
 
-### Other verbs/functions
+### Scoping
 
 `rename`, `filter`, `select`, `summarise`, etc. all have _scoped_ variant
 
@@ -159,20 +159,31 @@ Most primitive in `dyplr` do no modify the original table
 - `rename_at()`: apply an operation on a subset of _specified_  variables 
 - `rename_if()`:) apply an operation on the subset of _predicated_ variables
 
-## Simple Exercise
+### Others verbs/functions
 
-Consider the grade student data set:
-```{r}
-grades <- tibble(
-  Name = c("Tommy", "Mary", "Gary", "Cathy"),
-  Sexage = c("m.15", "f.15", "m.16", "f.14"),
-  Math = c(10, 15, 16, 14),
-  Philo = c(11, 13, 10, 12),
-  English = c(12, 13, 17, 10)
-  )
-```
+- `distinct()` subset unique rows
+- `relocate()` change column position
+- `top_n()`, `sample_n()` ... select rows
+- `n()`, `if_else()` ... vector function for selection
 
-- Compute the mean by Topic
-- Compute the mean by Student
+\bigskip
+
+More on [https://dplyr.tidyverse.org/reference/index.html](https://dplyr.tidyverse.org/reference/index.html)
+
+<!-- ## Simple Exercise -->
+
+<!-- Consider the grade student data set: -->
+<!-- ```{r} -->
+<!-- grades <- tibble( -->
+<!--   Name = c("Tommy", "Mary", "Gary", "Cathy"), -->
+<!--   Sexage = c("m.15", "f.15", "m.16", "f.14"), -->
+<!--   Math = c(10, 15, 16, 14), -->
+<!--   Philo = c(11, 13, 10, 12), -->
+<!--   English = c(12, 13, 17, 10) -->
+<!--   ) -->
+<!-- ``` -->
+
+<!-- - Compute the mean by Topic -->
+<!-- - Compute the mean by Student -->
 
 

@@ -200,11 +200,11 @@ Note how I changed the use of `ggplot` since aesthetic where common to both
 ggplot(iris) + geom_histogram(aes(x = Sepal.Length, color = Species)) + facet_grid(Species ~ .)
 ``` 
 
-## Use `ggplot2` in conjonction other packages of the `tidyverse`
+## Use `ggplot2` in conjonction with other packages
 
-![Rember the data process scheme?](../Rmd_files/tidyverse/figs/tidyverse_data_science.png){width="75%"}
+![Remember the data process scheme?](../Rmd_files/tidyverse/figs/tidyverse_data_science.png){width="70%"}
 
-The model/vizualization part need constant wrangling/new arragement of your data set
+The model/visualization part need constant wrangling/new arragement of your data set
 
 ## Example: `forcats`
 

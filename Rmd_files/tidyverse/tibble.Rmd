@@ -9,6 +9,12 @@
 - _lazy_: do less (e.g. do not change variable names, types, no partial matching) 
 - _surly_: complain more (e.g. when a variable does not exist)
 
+\bigskip
+
+\rsa smarter printing, no row-names, no partial matching, wider string name for columns, etc.
+
+
+\rsa 100\% compatible  with `data.frame`
 
 ## Conversion from a `data.frame`
 
@@ -42,7 +48,7 @@ Names can start by any character. To refer such variables, use the backticks
 tibble(`:)` = "smile", ` ` = "space", `2000` = "number")
 ```
 
-## Row names
+## Row names {.allowframebreaks}
 
 Row do not have names in a `tibble`
 
@@ -55,6 +61,18 @@ Row do not have names in a `tibble`
 ```{r}
 as_tibble(swiss, rownames = "Province")
 ```
+
+### Example 2
+```{r}
+as_tibble(rownames_to_column(swiss))
+```
+
+### Example 3
+```{r}
+my_tibble <- as_tibble(swiss, rownames = "Province")
+head(as.data.frame(column_to_rownames(my_tibble, "Province")))
+```
+
 
 ## Consistency in subsetting
 
