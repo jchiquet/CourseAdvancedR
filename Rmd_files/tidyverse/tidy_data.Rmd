@@ -2,12 +2,13 @@
 
 Collected data are (never) under a proper canonical format
 
+\bigskip
+
 > "Happy families are all alike; every unhappy family is unhappy in its own way." -- Leo Tolstoy
 
-\pause
+\bigskip
 
 > "Tidy datasets are all alike, but every messy dataset is messy in its own way." -- Hadley Wickham^[Rstudio's chief scientific advisor]
-
 
 
 ## Tidy data: what?
@@ -15,13 +16,11 @@ Collected data are (never) under a proper canonical format
 ### First, a subjective question
 What is the _observation/statistical unit_ in your data?
 
-\pause
-
 ### Definition
 _Tidy data is a standard way of mapping the meaning of a dataset to its structure. A dataset is messy or tidy depending on how rows, columns and tables are matched up with observations, variables and types._\
 
 
-\pause
+\bigskip
 
 In tidy data,
 

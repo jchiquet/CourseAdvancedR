@@ -51,10 +51,10 @@ Core packages
   5. Data Frame
 
 ### R base programming
-  1. Control Statements
-  2. Functions
-  3. Functionals ([x]apply)
-  4. Input/output
+  1. Control Statements (`if/then/else`, `while`, `for`)
+  2. Functions 
+  3. Functionals (`[x]apply`)
+  4. Input/output (`read.[x]/write.[x]`)
   5. Rstudio IDE
 
 # Introduction

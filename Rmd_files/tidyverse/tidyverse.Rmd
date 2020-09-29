@@ -25,10 +25,15 @@
 
 The core `tidyverse` loads `ggplot2`, `tibble`, `tidyr`, `readr`, `purrr`, `stringr`, `forecats`, `dplyr` and others in a fancy and unconflicted way.
 
+
 ```{r load_tidyverse, message = TRUE, warning = TRUE, cache = FALSE}
 library(tidyverse)
-tidyverse:::tidyverse_conflicts()
-tidyverse:::tidyverse_deps()
+```
+
+## Tidyverse dependencies: a lot
+
+```{r, message = TRUE, warning = TRUE, cache = FALSE}
+tidyverse:::tidyverse_deps() %>% knitr::kable()
 ```
 
 ## Packages roles and overview: types

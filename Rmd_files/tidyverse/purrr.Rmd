@@ -36,7 +36,7 @@ Some slides borrowed to
 ## `map*()`
 
 
-![map](../Rmd_files/tidyverse/figs/map.png){width=30%"}
+![map](../Rmd_files/tidyverse/figs/map.png){width="50%"}
 
 
 * `map()` applies the function to each element and returns a list
@@ -57,7 +57,7 @@ map(1:5, rnorm) %>%
 ## `map*()` (additional arguments)
 
 
-![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width="40%"}
 
 ```{r echo=FALSE}
 set.seed(42)
@@ -70,7 +70,7 @@ map(1:4, rnorm, n = 6)
 ## `map*()`
 
 
-![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width="40%"}
 
 ```{r echo=FALSE}
 set.seed(42)
@@ -83,7 +83,7 @@ map(1:4, rnorm, n = 6) %>%
 
 ## `map*()`
 
-![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width="40%"}
 
 ```{r echo=FALSE}
 set.seed(42)
@@ -96,7 +96,7 @@ map(1:4, rnorm, n = 6) %>%
 
 ## `map*()`
 
-![map](../Rmd_files/tidyverse/figs/map-arg.png){width=30%"}
+![map](../Rmd_files/tidyverse/figs/map-arg.png){width="40%"}
 
 ```{r echo=FALSE}
 set.seed(42)
@@ -194,7 +194,7 @@ map(list, "foo")
 
 ## `map2*()`
 
-![map2](../Rmd_files/tidyverse/figs/map2.png){width=30%"}
+![map2](../Rmd_files/tidyverse/figs/map2.png){width="30%"}
 
 `map2()` and `map2_*()` are variants of `map()` and `map_*()` which work with two arguments
 
@@ -205,7 +205,7 @@ map2(1:4, c(2, 5, 5, 10), runif, n = 5)
 
 ## `pmap*()`
 
-![pmap](../Rmd_files/tidyverse/figs/pmap-3.png){width=30%"}
+![pmap](../Rmd_files/tidyverse/figs/pmap-3.png){width="30%"}
 
 `pmap()` and `pmap_*()` are generalized versions of `map()` and `map_*()` which work with any number of arguments
 
@@ -217,7 +217,7 @@ pmap(list(n = c(2, 3, 2, 5), min = 1:4, max = c(2, 5, 5, 10)), runif)
 ---
 ## `reduce()`
 
-![reduce](../Rmd_files/tidyverse/figs/reduce.png){width=30%"}
+![reduce](../Rmd_files/tidyverse/figs/reduce.png){width="30%"}
 
 
 `reduce(list(x1, x2, x3), f)` is equivalent to `f(f(x1, x2), x3)` 
@@ -232,17 +232,6 @@ set.seed(1)
 ```{r}
 rerun(4, sample(1:10, 6)) 
 ```
-
-
-```{r echo=FALSE}
-set.seed(1)
-```
-
-```{r eval=FALSE}
-rerun(4, sample(1:10, 6)) %>% 
-  reduce(intersect)
-```
-
 
 ## `reduce()`
 
@@ -262,14 +251,4 @@ set.seed(1)
 rerun(4, sample(1:10, 6)) %>% 
   reduce(intersect)
 ```
-
-
-<!-- ### Map family of functions -->
-
-<!-- Apply a function to each element of a vector: replace the [x]`apply` families (more coherent) -->
-
-<!-- - `map()`, `map_if()` and `map_at()` _always return a list_ -->
-<!-- - `map_lgl()`, `map_int()`, `map_dbl()` and `map_chr()` return vectors of the corresponding type -->
-<!-- - `map_dfr()` and `map_dfc()` return data frames created by row-binding and column-binding respectively -->
-
 

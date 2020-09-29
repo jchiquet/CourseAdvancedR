@@ -4,7 +4,11 @@
 
 
 - offer coherent/unified functions compared to `base::read.table` and friends
-- offer interactive readinf
+- offer interactive reading
 - output `tibble` rather than `data.frame`  
 - `read_csv`, `read_delim`, `read_rds`, `read_file`, `read_table`, etc
+
+\bigskip
+
+\rsa Read the manual when needed!
 

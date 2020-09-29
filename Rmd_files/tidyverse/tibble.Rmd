@@ -11,7 +11,7 @@
 
 \bigskip
 
-\rsa smarter printing, no row-names, no partial matching, wider string name for columns, etc.
+\rsa smarter output, no row-name, no partial matching, more flexible column names, etc.
 
 
 \rsa 100\% compatible  with `data.frame`

@@ -6,10 +6,10 @@
 library(tidyr)
 ```
 
-\rsa `tidyr` is a package which helps you to transform messy datasets into tidy datasets.
+\rsa helps transforming messy data sets into tidy data sets.
 
 - evolution of base function `reshape` 
-- available functions are `spread`, `gather`, `unite`, `separate`
+- more useful functions are `spread`/`gather`, `unite`/`separate`, `nest/unest`
 
 
 ## Grades dataset
@@ -43,8 +43,6 @@ grades
 knitr::kable(grades)
 ```
 
-\pause
-
 ### Remark
 The inverse of `separate()` is `unite()`
 
@@ -56,8 +54,6 @@ Gather columns into key-value pairs
 grades <- gather(grades, Test1, Test2, Test3, key = Test, value = Grade)
 grades
 ```
-
-\pause
 
 ### Remark 1
 The inverse of `gather()` is `spread()`
@@ -76,7 +72,6 @@ nest(iris, !Species)
 
 ```
 
-\pause
 
 ### Remark 
 The inverse of `nest()` is `unnest()`

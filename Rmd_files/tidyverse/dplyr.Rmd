@@ -63,6 +63,16 @@ as_tibble(select(mtcars, mpg, 'wt', cyl))
 as_tibble(select(mtcars, 1,2,5:7))
 ```
 
+## Selecting columns with `select()` III
+
+### With scoping
+
+See `starts_with`, `end_with`, `matches`, `any_of`, `last_col`, `everything` ...
+
+```{r}
+as_tibble(select(mtcars, contains('t')))
+```
+
 ## Renaming columns with `rename()`
 
 ### `rename()` keeps all variables
@@ -111,7 +121,7 @@ as_tibble(
 
 ## Create summary statistics with `summarise()`
 
-Reduction is done by means of statistical functions
+Reduction is done by means of statistical functions, among which
 
 - Center: `mean()`, `median()`
 - Spread: `sd()`, `IQR()`, `mad()`
@@ -165,6 +175,7 @@ Most primitive in `dyplr` do no modify the original table
 - `relocate()` change column position
 - `top_n()`, `sample_n()` ... select rows
 - `n()`, `if_else()` ... vector function for selection
+- any function from `stringr` (`str_to_title`, `toupper`, etc.)
 
 \bigskip
 

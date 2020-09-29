@@ -4,6 +4,8 @@
 
 ### `lubridate` versus `base R`  utilities
 
- Data manipulation is always boring, whatever the system used...
- 
-See A. Bichat's slides again: [https://abichat.github.io/slides/factors_dates_strings/#38](https://abichat.github.io/slides/factors_dates_strings/#38)
+Data manipulation is \emph{always} boring^[In my humble opinion\dots], whatever the system used...
+
+\bigskip
+
+See A. Bichat's slides: [https://abichat.github.io/slides/factors_dates_strings/#38](https://abichat.github.io/slides/factors_dates_strings/#38)

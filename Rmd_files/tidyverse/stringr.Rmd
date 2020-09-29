@@ -1,6 +1,6 @@
 ## {stringr}
 
-![cohesive set of functions designed to make working with strings as easy as possible](../Rmd_files/tidyverse/figs/hex-stringr.png){width="100px"}
+![cohesive set of functions designed to work more easily with](../Rmd_files/tidyverse/figs/hex-stringr.png){width="100px"}
 
 ### `stringr` versus `base` string utilities
 
@@ -9,4 +9,6 @@
 - easy use in conjunction with other tidyverse packages
 - faster and correct implementations of common string manipulations
 
-[See A. Bichat's slides] [https://abichat.github.io/slides/factors_dates_strings/#73](https://abichat.github.io/slides/factors_dates_strings/#73)
+\bigskip
+
+See A. Bichat's slides: [https://abichat.github.io/slides/factors_dates_strings/#73](https://abichat.github.io/slides/factors_dates_strings/#73)

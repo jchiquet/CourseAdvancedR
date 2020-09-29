@@ -1,6 +1,6 @@
 ## {forcats}
 
-![a suite of useful tools that solve common problems with factor](../Rmd_files/tidyverse/figs/hex-forcats.png){width="100px"}
+![a suite of useful tools that solve common problems with factors](../Rmd_files/tidyverse/figs/hex-forcats.png){width="100px"}
 
 ### `forcats` versus `base` factors
 
@@ -14,34 +14,42 @@
 
 ## Convert to factor
 
+### Base `R` 
+
 ```{r asfactor}
 fruits <- c("banana", "apple", "mango", "apple", "pear", "apple", 
             "banana", "pitaya", "mango", "mango", "apple")
 as.factor(fruits) # Use alphabetical order
 ```
 
-\pause
+### `forcats` equivalent
 
 ```{r asfactor2}
 forcats::as_factor(fruits) # Use appearance order 
 ## equivalent to factor(countries, levels = unique(countries))
 ```
 
-Using appearance order increased reproducibility because it's independent from `locale()`.
+### Remark
+
+Appearance order increases reproducibility (independent from `locale()`).
 
 ## Change level names
+
+### `recode`
 
 ```{r fct_recode}
 fct_recode(fruits, dragonfruit = "pitaya")
 ```
 
-\pause
+### `relabel`
 
 ```{r fct_relabel}
-fct_relabel(fruits, str_to_title)
+fct_relabel(fruits, stringr::str_to_title)
 ```
 
-Note that when converting from strings to factors, `fct_recode()` and `fct_relabel()` use alphabetical order.
+### Remark
+
+When converting from strings to factors, `fct_recode()` and `fct_relabel()` use alphabetical order.
 
 ## Reorder levels
 
@@ -81,7 +89,7 @@ ggplot(iris) + aes(x = Species, y = Sepal.Width, fill = Species) + geom_boxplot(
 
 ## Handling many modalities
 
-A data set about nuclear testings and explosion around the world:
+A data set about nuclear testings around the world (enjoy!):
 ```{r}
 library(tidytuesdayR)
 nuclear <- tt_load("2019-08-20")$nuclear_explosion

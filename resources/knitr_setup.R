@@ -1,8 +1,6 @@
-## libraries always loaded 
-library(microbenchmark)
-library(tidyverse)
-
 ## Basic option chunks
+library(ggplot2)
+
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, cache = TRUE, verbose = TRUE,
                size = 'scriptsize',dev = 'pdf', fig.align = "center", results = "markup", 
                fig.width = 6, fig.height = 4,  fig.pos = 'htbp!', out.width = '.8\\textwidth',
